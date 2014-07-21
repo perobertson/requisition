@@ -1,23 +1,45 @@
-<h1>Listing ships</h1>
+<div class="page-header">
+  <h1>Available Ships</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @ships.count.zero? %>
+  <div class="panel panel-default">
+    <div class="panel-body">No ships are available at this time.  Please check back later.</div>
+  </div>
+<% else %>
+  <div class="container-fluid">
+    <div class="row">
+      <% @ships.each do |ship| %>
+        <div class="col-md-2">
+          <a class="ship-thumb" data-ship-id="<%= ship.id %>">
+            <span><%= ship.name %></span>
+            <%= image_tag "https://image.eveonline.com/Render/#{ship.type_id}_128.png", class: "img-responsive img-thumbnail" %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-  <tbody>
-    <% @ships.each do |ship| %>
-      <tr>
-        <td><%= link_to 'Show', ship %></td>
-        <td><%= link_to 'Edit', edit_ship_path(ship) %></td>
-        <td><%= link_to 'Destroy', ship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="panel panel-default">
+    <div class="panel-body">
 
-<br>
+      <form id="purchase-form" role="form">
+        <div class="form-group">
+          <label for="ship-selection">Ship</label>
+          <select id="ship-selection" class="form-control">
+            <option selected>None</option>
+            <% @ships.each do |ship| %>
+              <option value="<%= ship.id %>"><%= ship.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="character-name">EVE Character Name</label>
+          <input type="text" class="form-control" id="character-name" placeholder="Your character name">
+        </div>
 
-<%= link_to 'New Ship', new_ship_path %>
+        <button type="submit" class="btn btn-default">Place Order</button>
+      </form>
+    </div>
+  </div>
+<% end %>

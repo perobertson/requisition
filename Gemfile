@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 
 # language and framework version
-ruby '2.1.1'
-gem 'rails', '4.1.1'
+ruby '2.1.2'
+gem 'rails', '4.1.4'
 
 group :production do
+  # For heroku logging and static assets
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -27,6 +29,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Web server
+gem 'thin'
 # Postgres database
 gem 'pg'
 # Use SCSS for stylesheets
