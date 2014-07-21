@@ -1,10 +1,34 @@
 source 'https://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# language and framework version
+ruby '2.1.1'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+group :production do
+end
+
+group :development, :test do
+  # Lets you go back and forth in time virtually
+  gem 'timecop'
+  # Byebug is a simple to use, feature rich debugger for Ruby 2
+  gem 'byebug'
+  # Trust me, better errors
+  gem 'better_errors'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+end
+
+group :test do
+end
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
+# Postgres database
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,11 +44,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+# For getting controller data into the js
+gem 'gon'
+# gives us the SASS version of bootstrap
+gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -34,7 +58,3 @@ gem 'spring',        group: :development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
