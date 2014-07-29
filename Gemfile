@@ -19,6 +19,8 @@ group :development, :test do
   gem 'byebug'
   # Trust me, better errors
   gem 'better_errors'
+  # Debug console on error page
+  gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Thin web server
