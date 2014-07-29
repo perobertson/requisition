@@ -8,6 +8,8 @@ gem 'rails', '4.1.4'
 group :production do
   # For heroku logging and static assets
   gem 'rails_12factor'
+  # Unicorn web server
+  gem 'unicorn'
 end
 
 group :development, :test do
@@ -19,6 +21,8 @@ group :development, :test do
   gem 'better_errors'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Thin web server
+  gem 'thin'
 end
 
 group :test do
@@ -29,8 +33,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Web server
-gem 'thin'
 # Postgres database
 gem 'pg'
 # Use SCSS for stylesheets
@@ -56,9 +58,6 @@ gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
