@@ -33,6 +33,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Logging add-on that compresses Rails multi-line output
+# so that it doesn't get mixed up with other requests in parallel
+gem 'lograge'
 # Postgres database
 gem 'pg'
 # Use SCSS for stylesheets

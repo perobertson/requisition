@@ -34,4 +34,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Use lograge for many wins
+  config.lograge.enabled = true
+
+  # This makes sure that request params get dumped into the same single line that lograge outputs
+  # See ActionController's append_info_to_payload() function for other things we're adding
+  config.lograge.custom_options = lambda do |event|
+    payload = { "params" => event.payload[:params].except('controller', 'action') }
+    payload.merge(event.payload.select { |k,v| [:ip].include?(k) && v.present? })
+  end
 end
