@@ -23,6 +23,10 @@ group :development, :test do
   gem 'spring'
   # Thin web server
   gem 'thin'
+  # Squelch the logging of asset retrieval
+  gem 'quiet_assets'
+  # For finding security vulnerabilities
+  gem 'brakeman'
 end
 
 group :test do
