@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729002535) do
+ActiveRecord::Schema.define(version: 20140729025016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "orders", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.string   "character_name", null: false
+    t.integer  "ship_id",        null: false
+  end
+
+  add_index "orders", ["ship_id"], name: "index_orders_on_ship_id", using: :btree
 
   create_table "ships", force: true do |t|
     t.datetime "created_at"
@@ -24,5 +34,7 @@ ActiveRecord::Schema.define(version: 20140729002535) do
   end
 
   add_index "ships", ["type_id"], name: "index_ships_on_type_id", using: :btree
+
+  add_foreign_key "orders", "ships", name: "orders_ship_id_fk"
 
 end

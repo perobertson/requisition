@@ -64,8 +64,11 @@ GEM
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    excon (0.38.0)
     execjs (2.2.1)
     fastercsv (1.5.5)
+    foreigner (1.6.1)
+      activerecord (>= 3.0.0)
     gon (5.1.2)
       actionpack (>= 2.3.0)
       json
@@ -91,6 +94,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mandrill-api (1.0.52)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     mime-types (1.25.1)
     minitest (5.4.0)
     multi_json (1.10.1)
@@ -189,10 +195,12 @@ DEPENDENCIES
   brakeman
   byebug
   coffee-rails (~> 4.0.0)
+  foreigner
   gon
   jbuilder (~> 2.0)
   jquery-rails
   lograge
+  mandrill-api
   pg
   quiet_assets
   rails (= 4.1.4)
