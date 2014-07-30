@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
 
   belongs_to :ship
 
+  validates :character_name, presence: true
+
   private
 
   def send_order_notification
