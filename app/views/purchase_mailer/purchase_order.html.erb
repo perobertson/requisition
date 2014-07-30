@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>A user has placed an order</h1>
+    <p>
+      <strong><%= @order.character_name %></strong> has placed an order for:
+      <ol>
+        <li><%= @order.ship.name %></li>
+      </ol>
+    </p>
+  </body>
+</html>

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :ships
 
+  namespace :api, defaults: {format: 'json'} do
+    resources :orders,      only: [:create]
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
