@@ -5,8 +5,8 @@ default: &default
   pool: 5
   timeout: 5000
   host: localhost
-  user: <%= ENV["PG_USERNAME"] %>
-  password: <%= ENV["PG_PASSWORD"] %>
+  user: <%= ENV["REQUISITION_PG_USERNAME"] %>
+  password: <%= ENV["REQUISITION_PG_PASSWORD"] %>
 
 development:
   <<: *default

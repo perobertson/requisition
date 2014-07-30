@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 
+//= require classes/base
+
 //= require_directory .

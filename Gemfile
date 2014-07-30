@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov'
 end
 
 group :doc do
@@ -39,11 +40,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Mailer
+gem 'mandrill-api'
 # Logging add-on that compresses Rails multi-line output
 # so that it doesn't get mixed up with other requests in parallel
 gem 'lograge'
 # Postgres database
 gem 'pg'
+# Foreign key support
+gem 'foreigner'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

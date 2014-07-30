@@ -1,0 +1,12 @@
+<div class="container-fluid page-alert">
+  <div class="row">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-dismissable alert-<%= name %> col-md-offset-2 col-md-8">
+        <%= msg %>
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
