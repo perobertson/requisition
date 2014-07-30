@@ -12,6 +12,8 @@ group :production do
   gem 'unicorn'
   # App stats
   gem 'newrelic_rpm'
+  # Error reporting
+  gem 'rollbar'
 end
 
 group :development, :test do
