@@ -18,5 +18,11 @@
 @import "bootstrap/theme";
 
 body {
-  padding-top: 70px;
+  padding-top: 55px;
+}
+
+.page-alert {
+  .alert {
+    margin-bottom: 5px;
+  }
 }
