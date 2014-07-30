@@ -10,6 +10,8 @@ group :production do
   gem 'rails_12factor'
   # Unicorn web server
   gem 'unicorn'
+  # App stats
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
@@ -32,6 +34,8 @@ group :development, :test do
 end
 
 group :test do
+  # Code coverage for Ruby 1.9+ with a powerful configuration library
+  # and automatic merging of coverage across test suites
   gem 'simplecov'
 end
 
