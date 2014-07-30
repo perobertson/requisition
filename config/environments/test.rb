@@ -31,6 +31,8 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  ActionMailer::Base.default from: "EVE Requisition <#{ENV['REQUISITION_MAILER_ACCOUNT']}>"
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
