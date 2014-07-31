@@ -1,21 +1,28 @@
 revelation:
+  type: "Ship"
   type_id: 19720
   name: "Revelation"
 naglfar:
+  type: "Ship"
   type_id: 19722
   name: "Naglfar"
 moros:
+  type: "Ship"
   type_id: 19724
   name: "Moros"
 archon:
+  type: "Ship"
   type_id: 23757
   name: "Archon"
 thanatos:
+  type: "Ship"
   type_id: 23911
   name: "Thanatos"
 chimera:
+  type: "Ship"
   type_id: 23915
   name: "Chimera"
 nidhoggur:
+  type: "Ship"
   type_id: 24483
   name: "Nidhoggur"

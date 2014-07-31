@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 
   after_save :send_order_notification
 
-  belongs_to :ship
+  belongs_to :ship, foreign_key: "item_id"
 
   validates :character_name, presence: true
 
