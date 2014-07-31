@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731005729) do
+ActiveRecord::Schema.define(version: 20140731010056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,20 +32,11 @@ ActiveRecord::Schema.define(version: 20140731005729) do
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "character_name", null: false
-    t.integer  "ship_id",        null: false
+    t.integer  "item_id",        null: false
   end
 
-  add_index "orders", ["ship_id"], name: "index_orders_on_ship_id", using: :btree
+  add_index "orders", ["item_id"], name: "index_orders_on_item_id", using: :btree
 
-  create_table "ships", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",       null: false
-    t.integer  "type_id",    null: false
-  end
-
-  add_index "ships", ["type_id"], name: "index_ships_on_type_id", using: :btree
-
-  add_foreign_key "orders", "ships", name: "orders_ship_id_fk"
+  add_foreign_key "orders", "items", name: "orders_item_id_fk"
 
 end

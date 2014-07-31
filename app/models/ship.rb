@@ -1,2 +1,2 @@
-class Ship < ActiveRecord::Base
+class Ship < Item
 end
