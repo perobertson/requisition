@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731010056) do
+ActiveRecord::Schema.define(version: 20140731012900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20140731010056) do
 
   add_index "items", ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
 
+  create_table "order_items", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.integer  "order_id",   null: false
+    t.integer  "item_id",    null: false
+    t.integer  "quantity",   null: false
+  end
+
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,6 +48,9 @@ ActiveRecord::Schema.define(version: 20140731010056) do
   end
 
   add_index "orders", ["item_id"], name: "index_orders_on_item_id", using: :btree
+
+  add_foreign_key "order_items", "items", name: "order_items_item_id_fk"
+  add_foreign_key "order_items", "orders", name: "order_items_order_id_fk"
 
   add_foreign_key "orders", "items", name: "orders_item_id_fk"
 
