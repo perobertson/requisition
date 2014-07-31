@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731012900) do
+ActiveRecord::Schema.define(version: 20140731014005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,14 +44,9 @@ ActiveRecord::Schema.define(version: 20140731012900) do
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "character_name", null: false
-    t.integer  "item_id",        null: false
   end
-
-  add_index "orders", ["item_id"], name: "index_orders_on_item_id", using: :btree
 
   add_foreign_key "order_items", "items", name: "order_items_item_id_fk"
   add_foreign_key "order_items", "orders", name: "order_items_order_id_fk"
-
-  add_foreign_key "orders", "items", name: "orders_item_id_fk"
 
 end
