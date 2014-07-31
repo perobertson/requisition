@@ -14,7 +14,7 @@ class Api::OrdersController < Api::BaseApiController
   private
 
   def permitted_params
-    params.require(:order).permit(:character_name, :ship_id)
+    params.require(:order).permit(:character_name, order_items_attributes: [:item_id, :quantity])
   end
 
 end

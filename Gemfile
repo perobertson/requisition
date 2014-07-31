@@ -33,6 +33,8 @@ group :development, :test do
   gem 'quiet_assets'
   # For finding security vulnerabilities
   gem 'brakeman'
+  # Gives you spec syntax like Rspec but for minitest
+  gem 'minitest-spec-rails'
 end
 
 group :test do
