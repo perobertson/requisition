@@ -1,5 +1,5 @@
 $(document).on "page:change", ->
-  if $("body[data-controller=ships][data-action=index]").get 0
+  if $("body[data-controller=purchases][data-action=index]").get 0
     $(".ship-thumb").click ->
       $("#ship-selection").val $(this).data "ship-id"
       $('html, body').animate({
