@@ -1,0 +1,9 @@
+order_items_mailer_test_1:
+  order: order_mailer_test
+  item: naglfar
+  quantity: 1
+
+order_items_mailer_test_2:
+  order: order_mailer_test
+  item: chimera
+  quantity: 2

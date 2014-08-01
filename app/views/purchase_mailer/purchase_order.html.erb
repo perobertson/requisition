@@ -8,7 +8,9 @@
     <p>
       <strong><%= @order.character_name %></strong> has placed an order for:
       <ol>
-        <li><%= @order.ship.name %></li>
+        <% @order.order_items.each do |order_item| %>
+          <li><%= order_item.item.name %></li>
+        <% end %>
       </ol>
     </p>
   </body>

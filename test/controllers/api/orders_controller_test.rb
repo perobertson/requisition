@@ -9,16 +9,17 @@ describe Api::OrdersController do
   describe "order api tests" do
     it "must create orders" do
       request_body = {
+        format: :json,
         order: {
           character_name: "Gandhi",
           order_items_attributes: [
-            item_id: ships(:naglfar),
+            item_id: ships(:naglfar).id,
             quantity: 1
           ]
         }
       }
       post :create, request_body, format: :json
-      response.status.must_equal 204
+      response.status.must_equal 201
       response_body = JSON.parse(response.body)
       order = Order.find response_body["id"]
       order.wont_be_nil
