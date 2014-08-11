@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731014005) do
+ActiveRecord::Schema.define(version: 20140811033204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,5 @@ ActiveRecord::Schema.define(version: 20140731014005) do
     t.datetime "deleted_at"
     t.string   "character_name", null: false
   end
-
-  add_foreign_key "order_items", "items", name: "order_items_item_id_fk"
-  add_foreign_key "order_items", "orders", name: "order_items_order_id_fk"
 
 end
