@@ -1,0 +1,48 @@
+hobgoblin_ii:
+  type: "Drone"
+  type_id: 2456
+  name: "Hobgoblin II"
+warrior_ii:
+  type: "Drone"
+  type_id: 2488
+  name: "Warrior II"
+hammerhead_ii:
+  type: "Drone"
+  type_id: 2185
+  name: "Hammerhead II"
+valkyrie_ii:
+  type: "Drone"
+  type_id: 21640
+  name: "Valkyrie II"
+ogre_ii:
+  type: "Drone"
+  type_id: 2446
+  name: "Ogre II"
+berserker_ii:
+  type: "Drone"
+  type_id: 2478
+  name: "Berserker II"
+garde_ii:
+  type: "Drone"
+  type_id: 28211
+  name: "Garde II"
+bouncer_ii:
+  type: "Drone"
+  type_id: 28215
+  name: "Bouncer II"
+dragonfly:
+  type: "Drone"
+  type_id: 23057
+  name: "Dragonfly"
+eingerji:
+  type: "Drone"
+  type_id: 23061
+  name: "Eingerji"
+firbolg:
+  type: "Drone"
+  type_id: 23059
+  name: "Firbolg"
+templar:
+  type: "Drone"
+  type_id: 23055
+  name: "Templar"

@@ -1,0 +1,2 @@
+class Drone < Item
+end
