@@ -10,7 +10,10 @@ $(document).on "page:change", ->
       $.post "/api/orders",
         order:
           character_name: $("#character-name").val()
-          ship_id: $("#ship-selection").val()
+          order_items_attributes: [{
+            item_id: $("#ship-selection").val()
+            quantity: 1
+          }]
       .done ->
         new Requisition.FlashMessage "Order placed", "alert-success"
       .fail ->

@@ -25,7 +25,7 @@ class OrderTest < ActiveSupport::TestCase
       {
         character_name: "Gandhi",
         order_items_attributes: [{
-          item: ships(:naglfar),
+          item_id: ships(:naglfar).id,
           quantity: 1
         }]
       }

@@ -2,13 +2,12 @@ class Api::OrdersController < Api::BaseApiController
 
   def create
     @order = Order.new(permitted_params)
-
     if @order.save
       flash[:success] = "Order placed"
       return render status: :created
     end
 
-    render_nothing :unprocessable_entity
+    render status: :unprocessable_entity
   end
 
   private
