@@ -41,6 +41,8 @@ group :test do
   # Code coverage for Ruby 1.9+ with a powerful configuration library
   # and automatic merging of coverage across test suites
   gem 'simplecov'
+  # JS engine for testing
+  gem 'therubyracer'
 end
 
 group :doc do
