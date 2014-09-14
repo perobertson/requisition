@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # language and framework version
 ruby '2.1.2'
-gem 'rails', '4.1.5'
+gem 'rails', '>= 4.2.beta'
 
 group :production do
   # For heroku logging and static assets
@@ -60,7 +60,7 @@ gem 'pg'
 # Foreign key support
 gem 'foreigner'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.0.beta'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
