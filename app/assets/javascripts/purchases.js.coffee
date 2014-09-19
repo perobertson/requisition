@@ -1,6 +1,8 @@
 $(document).on "page:change", ->
   if $("body[data-controller=purchases][data-action=index]").get 0
     $(".ship-thumb").click ->
+      $(this).parents(".row").find("img").removeClass "bg-primary"
+      $(this).find("img").addClass "bg-primary"
       $("#ship-selection").val $(this).data "ship-id"
       $('html, body').animate({
         scrollTop: $("#purchase-form").offset().top
