@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
 
   def index
-    @ships = Ship.all
-    @drones = Drone.all
+    @ships = Ship.all.order :name
+    @drones = Drone.all.order :name
   end
 
 end

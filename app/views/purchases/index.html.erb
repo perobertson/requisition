@@ -1,75 +1,67 @@
-<div class="page-header">
-  <h1>Available Ships</h1>
-</div>
-
 <% if @ships.count.zero? %>
   <div class="panel panel-default">
     <div class="panel-body">No ships are available at this time.  Please check back later.</div>
   </div>
 <% else %>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Ships</div>
-    <div class="panel-body">
-      <div class="container-fluid">
-        <div class="row">
-          <% @ships.each do |ship| %>
-            <div class="col-xs-6 col-md-1">
-              <h4><%= ship.name %></h4>
-              <a class="ship-thumb" data-ship-id="<%= ship.id %>">
-                <%= image_tag "https://image.eveonline.com/Render/#{ship.type_id}_128.png", class: "img-responsive img-thumbnail" %>
-              </a>
-            </div>
-          <% end %>
+  <form id="purchase-form" role="form">
+
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        <h4>Ships</h4>
+      </div>
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <input id="ship-selection" type="hidden">
+            <% @ships.each do |ship| %>
+              <div class="col-xs-6 col-md-2">
+                <h4><%= ship.name %></h4>
+                <a class="ship-thumb" data-ship-id="<%= ship.id %>">
+                  <%= image_tag ship.image_url, class: "img-responsive img-thumbnail" %>
+                </a>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Drones</div>
-    <div class="panel-body">
-      <div class="container-fluid">
-        <div class="row">
-          <% @drones.each do |drone| %>
-            <div class="col-md-2">
-              <h4><%= drone.name %></h4>
-              <div class="row">
-                <div class="col-md-6">
-                  <%= image_tag "https://image.eveonline.com/Render/#{drone.type_id}_128.png", class: "img-responsive img-thumbnail" %>
-                </div>
-                <div class="col-md-6">
-                  <input type="number" class="form-control" min="0" value="0">
+    <div id="drones" class="panel panel-default">
+      <div class="panel-heading text-center">
+        <h4>Drones</h4>
+      </div>
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <% @drones.each do |drone| %>
+              <div class="col-md-2">
+                <h4><%= drone.name %></h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= image_tag drone.image_url, class: "img-responsive img-thumbnail" %>
+                  </div>
+                  <div class="col-md-6">
+                    <input class="form-control" type="number" min="0" value="0" data-drone-id="<%= drone.id %>">
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Order</div>
-    <div class="panel-body">
-
-      <form id="purchase-form" role="form">
-        <div class="form-group">
-          <label for="ship-selection">Ship</label>
-          <select id="ship-selection" class="form-control">
-            <option selected>None</option>
-            <% @ships.each do |ship| %>
-              <option value="<%= ship.id %>"><%= ship.name %></option>
-            <% end %>
-          </select>
-        </div>
+    <div class="panel">
+      <div class="panel-body">
         <div class="form-group">
           <label for="character-name">EVE Character Name</label>
           <input type="text" class="form-control" id="character-name" placeholder="Your character name">
         </div>
 
         <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
+
 <% end %>
