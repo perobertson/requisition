@@ -7,11 +7,23 @@
     <h1>A user has placed an order</h1>
     <p>
       <strong><%= @order.character_name %></strong> has placed an order for:
-      <ol>
-        <% @order.order_items.each do |order_item| %>
-          <li><%= order_item.item.name %></li>
-        <% end %>
-      </ol>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.name %></td>
+              <td><%= order_item.quantity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </p>
   </body>
 </html>

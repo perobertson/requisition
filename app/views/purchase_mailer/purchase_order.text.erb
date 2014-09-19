@@ -4,5 +4,5 @@ A user has placed an order
 <%= @order.character_name %> has placed an order for:
 
 <% @order.order_items.each do |order_item| %>
-<%= order_item.item.name %>
+<%= order_item.quantity %> - <%= order_item.item.name %>
 <% end %>
