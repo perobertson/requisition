@@ -10,6 +10,10 @@ moros:
   type: "Ship"
   type_id: 19724
   name: "Moros"
+fenrir:
+  type: "Ship"
+  type_id: 20189
+  name: "Fenrir"
 archon:
   type: "Ship"
   type_id: 23757
