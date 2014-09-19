@@ -7,20 +7,50 @@
     <div class="panel-body">No ships are available at this time.  Please check back later.</div>
   </div>
 <% else %>
-  <div class="container-fluid">
-    <div class="row">
-      <% @ships.each do |ship| %>
-        <div class="col-xs-6 col-md-1">
-          <h4><%= ship.name %></h4>
-          <a class="ship-thumb" data-ship-id="<%= ship.id %>">
-            <%= image_tag "https://image.eveonline.com/Render/#{ship.type_id}_128.png", class: "img-responsive img-thumbnail" %>
-          </a>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Ships</div>
+    <div class="panel-body">
+      <div class="container-fluid">
+        <div class="row">
+          <% @ships.each do |ship| %>
+            <div class="col-xs-6 col-md-1">
+              <h4><%= ship.name %></h4>
+              <a class="ship-thumb" data-ship-id="<%= ship.id %>">
+                <%= image_tag "https://image.eveonline.com/Render/#{ship.type_id}_128.png", class: "img-responsive img-thumbnail" %>
+              </a>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 
   <div class="panel panel-default">
+    <div class="panel-heading">Drones</div>
+    <div class="panel-body">
+      <div class="container-fluid">
+        <div class="row">
+          <% @drones.each do |drone| %>
+            <div class="col-md-2">
+              <h4><%= drone.name %></h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= image_tag "https://image.eveonline.com/Render/#{drone.type_id}_128.png", class: "img-responsive img-thumbnail" %>
+                </div>
+                <div class="col-md-6">
+                  <input type="number" class="form-control" min="0" value="0">
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Order</div>
     <div class="panel-body">
 
       <form id="purchase-form" role="form">
