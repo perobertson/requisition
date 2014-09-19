@@ -13,7 +13,7 @@ describe Api::OrdersController do
         order: {
           character_name: "Gandhi",
           order_items_attributes: [
-            item_id: ships(:naglfar).id,
+            item_id: items(:naglfar).id,
             quantity: 1
           ]
         }
