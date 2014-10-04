@@ -50,6 +50,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Auth
+gem 'devise'
 # Mailer
 gem 'mandrill-api'
 # Logging add-on that compresses Rails multi-line output

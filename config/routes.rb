@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root 'purchases#index'
 
   namespace :api, defaults: {format: 'json'} do
