@@ -1,7 +1,13 @@
 <div class="container-fluid page-alert">
   <div class="row">
     <% flash.each do |name, msg| %>
-      <% name = "danger" unless ["success", "info", "warning", "danger"].include? name %>
+      <%
+        if name == "alert"
+          name = "danger"
+        elsif name == "notice"
+          name = "success"
+        end
+      %>
       <div class="alert alert-dismissable alert-<%= name %> col-md-offset-2 col-md-8">
         <%= msg %>
         <button type="button" class="close" data-dismiss="alert">
