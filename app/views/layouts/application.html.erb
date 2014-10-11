@@ -24,6 +24,11 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">Requisition</a>
+        <% if Rails.env.development? %>
+          <div class="navbar-left" style="color:white;">
+            <%= render 'shared/debug_responsive' %>
+          </div>
+        <% end %>
       </div>
       <div class="collapse navbar-collapse" id="top-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
