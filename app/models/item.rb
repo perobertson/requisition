@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+
+  scope :for_sale, -> { where(for_sale: true) }
+  scope :not_for_sale, -> { where(for_sale: false) }
+
   has_many :orders, through: :order_items
   has_many :order_items
 
@@ -7,4 +11,5 @@ class Item < ActiveRecord::Base
   def image_url(size = 128)
     "https://image.eveonline.com/Render/#{type_id}_#{size}.png"
   end
+
 end
