@@ -46,6 +46,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-switch-rails (3.0.2)
     brakeman (2.6.3)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -243,6 +244,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-switch-rails
   brakeman
   byebug
   coffee-rails

@@ -81,6 +81,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'gon'
 # gives us the SASS version of bootstrap
 gem 'bootstrap-sass'
+# a switch component for bootstrap
+gem "bootstrap-switch-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
