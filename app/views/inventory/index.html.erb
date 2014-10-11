@@ -2,6 +2,33 @@
   <div class="row">
     <div class="col-xs-12 ">
       <p class="bg-info text-center">
+        Add new items to sell.
+      </p>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <%= form_for @new_item, url: api_items_path, html: {id: "new-item", role: "form"}, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :type_id, value: "Type id" %>
+            <%= f.number_field :type_id, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.select :type, options_for_select(Item.TYPES) %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Add Item", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 ">
+      <p class="bg-info text-center">
         Select the items that you want to sell.
       </p>
     </div>

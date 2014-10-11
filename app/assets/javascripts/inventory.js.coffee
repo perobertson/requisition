@@ -7,3 +7,9 @@ $(document).on "page:change", ->
         type: "put"
         contentType: "application/json"
         data: JSON.stringify item: for_sale: state
+
+    $("#new-item").on "ajax:error", (event, jqXHR, errorThrown) ->
+      data = JSON.parse(jqXHR.responseText)
+      return unless data?
+      $(data.error_messages).each (index, item) ->
+        new Requisition.FlashMessage(item.message, "alert-danger")
