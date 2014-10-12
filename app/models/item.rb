@@ -24,6 +24,7 @@ class Item < ActiveRecord::Base
   # Callbacks
 
   def image_url(size = 128)
+    # TODO validate the size choices (Not sure whats valid)
     "https://image.eveonline.com/Render/#{type_id}_#{size}.png"
   end
 

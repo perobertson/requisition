@@ -37,8 +37,10 @@
         Select the items that you want to sell.
       </p>
     </div>
-    <% @items.each do |item| %>
-      <%= render "api/items/item", item: item %>
-    <% end %>
+    <div class="items-container">
+      <% @items.each do |item| %>
+        <%= render "api/items/item", item: item %>
+      <% end %>
+    </div>
   </div>
 </div>
