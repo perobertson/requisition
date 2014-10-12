@@ -21,7 +21,7 @@ class Api::ItemsController < Api::BaseApiController
   private
 
   def permitted_create_params
-    params.require(:item).permit(:type, :type_id, :name)
+    params.require(:item).permit(:type, :type_id, :name, :for_sale)
   end
 
   def permitted_update_params

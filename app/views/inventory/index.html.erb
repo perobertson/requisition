@@ -17,7 +17,12 @@
             <%= f.number_field :type_id, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.select :type, options_for_select(Item.TYPES) %>
+            <%= f.label :type %>
+            <%= f.select :type, options_for_select(Item.TYPES), {include_blank: "Select a type"}, { class: "form-control" } %>
+          </div>
+          <div class="form-group">
+            <%= f.label :for_sale %>
+            <%= f.check_box :for_sale, class: "form-control", "data-on-text"=>"Y", "data-off-text"=>"N" %>
           </div>
           <div class="form-group">
             <%= f.submit "Add Item", class: "btn btn-primary" %>
@@ -40,7 +45,7 @@
           col-lg-2">
         <h4><%= item.name %></h4>
         <a class="item-thumb">
-          <%= image_tag item.image_url, class: "img-responsive img-thumbnail" %>
+          <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
         </a>
         <br />
         <% if item.for_sale? %>
