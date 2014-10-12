@@ -1,5 +1,11 @@
 class Api::ItemsController < Api::BaseApiController
 
+  before_action :set_resource, only: [:show, :update]
+
+  def index
+    @items = Item.all
+  end
+
   def create
     @item = Item.new permitted_create_params
     if @item.save
@@ -9,9 +15,11 @@ class Api::ItemsController < Api::BaseApiController
     render status: :unprocessable_entity
   end
 
+  def show
+  end
+
   def update
-    item = Item.find params[:id]
-    if item.update permitted_update_params
+    if @item.update permitted_update_params
       flash[:success] = "Item saved"
       return render_nothing :no_content
     end
@@ -19,6 +27,10 @@ class Api::ItemsController < Api::BaseApiController
   end
 
   private
+
+  def set_resource
+    @item = Item.find params[:id]
+  end
 
   def permitted_create_params
     params.require(:item).permit(:type, :type_id, :name, :for_sale)

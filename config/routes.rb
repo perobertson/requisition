@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     resources :orders,      only: [:create]
-    resources :items,       only: [:create, :update]
+    resources :items,       only: [:index, :create, :show, :update]
   end
 
   match "*path", to: "errors#catch_404", via: :all
