@@ -1,7 +1,5 @@
 class Api::ItemsController < Api::BaseApiController
 
-  before_action :set_resource, only: [:show, :update]
-
   def index
     @items = Item.all
   end

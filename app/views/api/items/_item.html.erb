@@ -1,0 +1,16 @@
+<div data-item-id="<%= item.id %>" class="item-container
+    col-xs-6
+    col-sm-4
+    col-md-3
+    col-lg-2">
+  <h4><%= item.name %></h4>
+  <a class="item-thumb">
+    <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
+  </a>
+  <br />
+  <% if item.for_sale? %>
+    <input type="checkbox" checked data-on-text="Y" data-off-text="N">
+  <% else %>
+    <input type="checkbox" data-on-text="Y" data-off-text="N">
+  <% end %>
+</div>
