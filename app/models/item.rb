@@ -1,19 +1,18 @@
 class Item < ActiveRecord::Base
 
   # Constants
-  @@TYPES = [:Ship, :Drone]
-  cattr_reader :TYPES
+  TYPES = [:Ship, :Drone]
 
   # Scopes
-  scope :for_sale, -> { where(for_sale: true) }
-  scope :not_for_sale, -> { where(for_sale: false) }
+  scope :for_sale,      -> { where(for_sale: true) }
+  scope :not_for_sale,  -> { where(for_sale: false) }
 
   # Relations
   has_many :orders, through: :order_items
   has_many :order_items
 
   # Validations
-  validates :type,      inclusion: @@TYPES.map(&:to_s)
+  validates :type,      inclusion: TYPES.map(&:to_s)
   validates :type_id,   presence: true
   validates :type_id,   numericality: { only_integer: true, greater_than: 0 }
   validates :type_id,   uniqueness: true

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012162711) do
+ActiveRecord::Schema.define(version: 20141016022138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.string   "kind",       null: false
+  end
+
+  add_index "abilities", ["kind"], name: "index_abilities_on_kind", unique: true, using: :btree
 
   create_table "items", force: true do |t|
     t.datetime "created_at"
@@ -47,6 +56,16 @@ ActiveRecord::Schema.define(version: 20141012162711) do
     t.datetime "deleted_at"
     t.string   "character_name", null: false
   end
+
+  create_table "user_abilities", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.integer  "user_id",    null: false
+    t.integer  "ability_id", null: false
+  end
+
+  add_index "user_abilities", ["user_id", "ability_id", "deleted_at"], name: "index_user_abilities_on_user_id_and_ability_id_and_deleted_at", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
