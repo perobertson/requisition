@@ -1,6 +1,14 @@
 class Api::OrdersController < Api::BaseApiController
 
   def create
+    if !current_user
+      flash[:danger] = "You need to sign in"
+      return render_nothing :not_authorized
+    elsif !current_user.can_place_order?
+      flash[:danger] = "You are not allowed to place orders"
+      return render_nothing :not_authorized
+    end
+
     @order = Order.new(permitted_params)
     if @order.save
       flash[:success] = "Order placed"

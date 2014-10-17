@@ -26,6 +26,8 @@ $(document).on "page:change", ->
           order_items_attributes: order_items
       .done ->
         new Requisition.FlashMessage "Order placed", "alert-success"
-      .fail ->
-        new Requisition.FlashMessage "Could not place order", "alert-danger"
+      .fail (xhr) ->
+        msg = xhr.getResponseHeader("X-Message")
+        msg ||= "Could not place order"
+        new Requisition.FlashMessage msg, "alert-danger"
       false
