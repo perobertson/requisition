@@ -8,9 +8,17 @@
     <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
   </a>
   <br />
-  <% if item.for_sale? %>
-    <input type="checkbox" checked data-on-text="Y" data-off-text="N">
+  <% if current_user.can_change_inventory? %>
+    <% if item.for_sale? %>
+      <input type="checkbox" checked data-on-text="Y" data-off-text="N">
+    <% else %>
+      <input type="checkbox" data-on-text="Y" data-off-text="N">
+    <% end %>
   <% else %>
-    <input type="checkbox" data-on-text="Y" data-off-text="N">
+    <% if item.for_sale? %>
+      <span class="text-success">For Sale</span>
+    <% else %>
+      <span class="text-danger">Not For Sale</span>
+    <% end %>
   <% end %>
 </div>

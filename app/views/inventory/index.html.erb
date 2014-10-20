@@ -1,36 +1,38 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 ">
-      <p class="bg-info text-center">
-        Add new items to sell.
-      </p>
-    </div>
-    <div class="panel">
-      <div class="panel-body">
-        <%= form_for @new_item, url: api_items_path, html: {id: "new-item", role: "form"}, remote: true do |f| %>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :type_id, value: "Type id" %>
-            <%= f.number_field :type_id, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :type %>
-            <%= f.select :type, options_for_select(Item::TYPES), {include_blank: "Select a type"}, { class: "form-control" } %>
-          </div>
-          <div class="form-group">
-            <%= f.label :for_sale %>
-            <%= f.check_box :for_sale, class: "form-control", "data-on-text"=>"Y", "data-off-text"=>"N" %>
-          </div>
-          <div class="form-group">
-            <%= f.submit "Add Item", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+  <% if current_user.can_add_inventory? %>
+    <div class="row">
+      <div class="col-xs-12 ">
+        <p class="bg-info text-center">
+          Add new items to sell.
+        </p>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <%= form_for @new_item, url: api_items_path, html: {id: "new-item", role: "form"}, remote: true do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :type_id, value: "Type id" %>
+              <%= f.number_field :type_id, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :type %>
+              <%= f.select :type, options_for_select(Item::TYPES), {include_blank: "Select a type"}, { class: "form-control" } %>
+            </div>
+            <div class="form-group">
+              <%= f.label :for_sale %>
+              <%= f.check_box :for_sale, class: "form-control", "data-on-text"=>"Y", "data-off-text"=>"N" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Add Item", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
   <div class="row">
     <div class="col-xs-12 ">
       <p class="bg-info text-center">

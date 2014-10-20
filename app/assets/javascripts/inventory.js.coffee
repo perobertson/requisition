@@ -8,6 +8,9 @@ $(document).on "page:change", ->
         type: "put"
         contentType: "application/json"
         data: JSON.stringify item: for_sale: state
+      .fail (jqXHR, status, errorThrown) =>
+        msg = jqXHR.getResponseHeader("X-Message")
+        new Requisition.FlashMessage(msg, "alert-danger") if msg?
 
     $("#new-item").on "ajax:success", (event, data, status, xhr) ->
       $.ajax "/api/items/#{data.id}.html",
@@ -20,6 +23,8 @@ $(document).on "page:change", ->
         window.location.reload()
 
     $("#new-item").on "ajax:error", (event, jqXHR, errorThrown) ->
+      msg = jqXHR.getResponseHeader("X-Message")
+      new Requisition.FlashMessage(msg, "alert-danger") if msg?
       data = JSON.parse(jqXHR.responseText)
       return unless data?
       $(data.error_messages).each (index, item) ->
