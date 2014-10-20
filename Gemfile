@@ -61,10 +61,10 @@ gem 'pg'
 gem 'foreigner'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# Use YUI as compressor for JavaScript assets
+gem 'yui-compressor'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
