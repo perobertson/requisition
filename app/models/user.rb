@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :user_abilities
 
   # Ability helper methods 'can_ability_kind?'
-  Ability::KINDS.each do |kind|
+  Ability.KINDS.each do |kind|
     define_method('can_' + kind.to_s.downcase.gsub('.', '').gsub(' ', '_') + '?') do
       abilities.where(kind: kind).any?
     end

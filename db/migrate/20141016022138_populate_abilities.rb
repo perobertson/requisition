@@ -1,6 +1,6 @@
 class PopulateAbilities < ActiveRecord::Migration
   def up
-    Ability::KINDS.each do |kind|
+    Ability.KINDS.each do |kind|
       Ability.create! kind: kind unless Ability.where(kind: kind).any?
     end
 
