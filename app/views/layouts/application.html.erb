@@ -33,6 +33,9 @@
       <div class="collapse navbar-collapse" id="top-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+            <% if current_user.can_view_users? %>
+              <li><%= link_to('Permissions', permissions_index_path) %></li>
+            <% end %>
             <% if current_user.can_view_inventory? %>
               <li><%= link_to('Inventory', inventory_index_path) %></li>
             <% end %>

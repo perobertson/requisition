@@ -1,0 +1,27 @@
+<div data-user-id="<%= user.id %>" class="user-container">
+  <h4><%= user.email %></h4>
+  <% Ability.KINDS.each do |kind| %>
+    <div class="ability-container" data-ability-kind="<%= kind %>">
+      <% if current_user.can_change_user? %>
+        <label for="user-<%=user.id%>-ability-<%=kind%>"><%= kind.to_s.titleize %></label>
+        <% if user.has_ability? kind %>
+          <% user_ability = user.user_abilities.joins(:ability).where(abilities: {kind: kind}).first %>
+          <input id="user-<%=user.id%>-ability-<%=kind%>" type="checkbox" checked
+            data-on-text="Y"
+            data-off-text="N"
+            data-user-ability-id="<%=user_ability.id%>">
+        <% else %>
+          <input id="user-<%=user.id%>-ability-<%=kind%>" type="checkbox"
+            data-on-text="Y"
+            data-off-text="N">
+        <% end %>
+      <% else %>
+        <% if user.has_ability? kind %>
+          <span class="text-success well well-sm"><%= kind.to_s.titleize %></span>
+        <% else %>
+          <span class="text-danger well well-sm"><%= kind.to_s.titleize %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

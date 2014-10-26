@@ -1,0 +1,7 @@
+<div class="container-fluid users-container">
+  <% @users.each do |user| %>
+    <div class="row">
+      <%= render "api/users/user", user: user %>
+    </div>
+  <% end %>
+</div>

@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20141016022138) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.string   "type",       limit: 255, null: false
-    t.integer  "type_id",                null: false
-    t.string   "name",       limit: 255, null: false
-    t.boolean  "for_sale",               null: false
+    t.string   "type",       null: false
+    t.integer  "type_id",    null: false
+    t.string   "name",       null: false
+    t.boolean  "for_sale",   null: false
   end
 
   add_index "items", ["name"], name: "index_items_on_name", unique: true, using: :btree
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141016022138) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
-    t.string   "character_name", limit: 255, null: false
+    t.string   "character_name", null: false
   end
 
   create_table "user_abilities", force: true do |t|

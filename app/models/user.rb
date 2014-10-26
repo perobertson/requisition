@@ -14,5 +14,9 @@ class User < ActiveRecord::Base
     define_method('can_' + kind.to_s.downcase.gsub('.', '').gsub(' ', '_') + '?') do
       abilities.where(kind: kind).any?
     end
+
+    define_method('has_ability?') do |kind|
+      abilities.where(kind: kind).any?
+    end
   end
 end
