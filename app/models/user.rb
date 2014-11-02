@@ -6,17 +6,16 @@ class User < ActiveRecord::Base
          :confirmable, :lockable
 
   # Associations
-  has_many :abilities, through: :user_abilities
   has_many :user_abilities
+
+  def has_ability?(kind)
+    user_abilities.not_deleted.joins(:ability).where(abilities: {kind: kind}).any?
+  end
 
   # Ability helper methods 'can_ability_kind?'
   Ability.KINDS.each do |kind|
-    define_method('can_' + kind.to_s.downcase.gsub('.', '').gsub(' ', '_') + '?') do
-      abilities.where(kind: kind).any?
-    end
-
-    define_method('has_ability?') do |kind|
-      abilities.where(kind: kind).any?
+    define_method('can_' + kind.to_s + '?') do
+      has_ability? kind
     end
   end
 end

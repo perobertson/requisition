@@ -11,7 +11,7 @@ describe Ability do
 
     it "must have only 1 of each kind created" do
       Ability.KINDS.each do |kind|
-        Ability.where(kind: kind).count.must_equal 1
+        Ability.where(kind: kind).count.must_equal 1, kind
       end
     end
 

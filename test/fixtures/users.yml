@@ -1,5 +1,7 @@
 user1:
   email: "user1@gmail.com"
+  confirmed_at: "2014-01-01"
 
 user2:
   email: "user2@gmail.com"
+  confirmed_at: "2014-01-01"

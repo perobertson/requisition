@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path, status: :see_other)
+  end
+
   def flash_to_headers
     return unless request.xhr?
 

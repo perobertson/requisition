@@ -17,4 +17,20 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
+  # use the devise test helpers for controller tests
+  include Devise::TestHelpers
+
+  def teardown
+    switch_login nil
+    super
+  end
+
+  def switch_login(user)
+    sign_out @current_user if @current_user.present?
+    @current_user = user
+    if @current_user
+      @current_user.confirm!
+      sign_in @current_user
+    end
+  end
 end

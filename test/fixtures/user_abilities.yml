@@ -34,6 +34,24 @@ user_ability_user1_add_inventory_deleted:
   ability: ability_add_inventory
   deleted_at: <%= DateTime.now %>
 
+user_ability_user1_view_users:
+  user: user1
+  ability: ability_view_users
+
+user_ability_user1_view_users_deleted:
+  user: user1
+  ability: ability_view_users
+  deleted_at: <%= DateTime.now %>
+
+user_ability_user1_change_user:
+  user: user1
+  ability: ability_change_user
+
+user_ability_user1_change_user_deleted:
+  user: user1
+  ability: ability_change_user
+  deleted_at: <%= DateTime.now %>
+
 user_ability_user2_place_order:
   user: user2
   ability: ability_place_order
@@ -68,4 +86,22 @@ user_ability_user2_add_inventory:
 user_ability_user2_add_inventory_deleted:
   user: user2
   ability: ability_add_inventory
+  deleted_at: <%= DateTime.now %>
+
+user_ability_user2_view_users:
+  user: user2
+  ability: ability_view_users
+
+user_ability_user2_view_users_deleted:
+  user: user2
+  ability: ability_view_users
+  deleted_at: <%= DateTime.now %>
+
+user_ability_user2_change_user:
+  user: user2
+  ability: ability_change_user
+
+user_ability_user2_change_user_deleted:
+  user: user2
+  ability: ability_change_user
   deleted_at: <%= DateTime.now %>

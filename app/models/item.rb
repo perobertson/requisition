@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
 
   # Constants
-  TYPES = [:Ship, :Drone]
+  @@TYPES = [:Ship, :Drone].freeze
+  cattr_reader :TYPES
 
   # Scopes
   scope :for_sale,      -> { where(for_sale: true) }
@@ -12,7 +13,7 @@ class Item < ActiveRecord::Base
   has_many :order_items
 
   # Validations
-  validates :type,      inclusion: TYPES.map(&:to_s)
+  validates :type,      inclusion: @@TYPES.map(&:to_s)
   validates :type_id,   presence: true
   validates :type_id,   numericality: { only_integer: true, greater_than: 0 }
   validates :type_id,   uniqueness: true

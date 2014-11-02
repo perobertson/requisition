@@ -9,7 +9,7 @@ class Api::UserAbilitiesController < Api::BaseApiController
     @user_ability = UserAbility.new permitted_create_params
     @user_ability.user_id = params[:user_id] if params[:user_id]
 
-    if !@user_ability.ability_id && params[:user_ability]
+    if params[:user_ability] && !@user_ability.ability_id
       ability = Ability.find_by_kind params[:user_ability][:kind]
       @user_ability.ability = ability
     end

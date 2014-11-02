@@ -9,3 +9,9 @@ ability_change_inventory:
 
 ability_add_inventory:
   kind: 'add_inventory'
+
+ability_view_users:
+  kind: 'view_users'
+
+ability_change_user:
+  kind: 'change_user'
