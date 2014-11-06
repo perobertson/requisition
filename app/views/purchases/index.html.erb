@@ -54,12 +54,19 @@
 
     <div class="panel">
       <div class="panel-body">
-        <div class="form-group">
-          <label for="character-name">EVE Character Name</label>
-          <input type="text" class="form-control" id="character-name" placeholder="Your character name">
-        </div>
-
-        <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
+        <% if user_signed_in? %>
+          <div class="form-group">
+            <label for="character-name">EVE Character Name</label>
+            <input type="text" class="form-control" id="character-name" placeholder="Your character name">
+          </div>
+          <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
+        <% else %>
+          <h4>You need to sign in before placing an order</h4>
+          <div class="form-group">
+            <%= link_to "Sign up", new_registration_path(:user), class: "btn btn-primary" %>
+            <%= link_to "Log in", new_session_path(:user), class: "btn btn-default" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </form>

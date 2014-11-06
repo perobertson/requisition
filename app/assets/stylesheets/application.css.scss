@@ -16,9 +16,12 @@
 @import "bootstrap";
 @import "bootstrap/mixins";
 @import "bootstrap/theme";
+@import "bootstrap3-switch";
 
 body {
   padding-top: 55px;
+  background-color: $gray-dark;
+  color: $gray-light;
 }
 
 .page-alert {

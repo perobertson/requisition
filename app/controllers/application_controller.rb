@@ -23,10 +23,19 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path, status: :see_other)
+  end
+
   def flash_to_headers
     return unless request.xhr?
-    response.headers['X-Message'] = flash_message
-    response.headers["X-Message-Type"] = flash_type.to_s
+
+    message = flash_message
+    type = flash_type
+
+    response.headers['X-Message']      = message   || ""
+    response.headers["X-Message-Type"] = type.to_s || ""
 
     flash.discard # don't want the flash to appear when you reload page
   end
@@ -37,11 +46,13 @@ class ApplicationController < ActionController::Base
     [:danger, :warning, :info, :success].each do |type|
       return flash[type] unless flash[type].blank?
     end
+    nil
   end
 
   def flash_type
     [:danger, :warning, :info, :success].each do |type|
       return type unless flash[type].blank?
     end
+    nil
   end
 end

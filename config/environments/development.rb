@@ -27,9 +27,8 @@ Rails.application.configure do
     password:               ENV['REQUISITION_MANDRILL_APIKEY'],  # SMTP password is any valid API key
     domain:                 ENV['REQUISITION_MAILER_DOMAIN'],     # your domain to identify your server when connecting
   }
-  config.action_mailer.default_url_options = {
-    host:                   ENV['REQUISITION_MAILER_HOST']
-  }
+  # for devise
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

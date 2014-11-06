@@ -5,6 +5,7 @@ describe Ship do
     @valid_ship = {
       type_id: 1,
       name: "Test ship",
+      for_sale: true,
     }
   end
 

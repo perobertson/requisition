@@ -5,7 +5,7 @@ describe PurchaseMailer do
     it "must send purchase mail" do
       order = orders(:order_mailer_test)
 
-      PurchaseMailer.purchase_order(order).deliver
+      PurchaseMailer.purchase_order(order).deliver_now
 
       mail = ActionMailer::Base.deliveries.last
       mail.wont_be_nil
