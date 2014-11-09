@@ -1,56 +1,36 @@
-<% if @ships.count.zero? %>
+<% if @items.count.zero? %>
   <div class="panel panel-default">
-    <div class="panel-body">No ships are available at this time.  Please check back later.</div>
+    <div class="panel-body">We are sold out of everything at this time.  Please check back later.</div>
   </div>
 <% else %>
 
   <form id="purchase-form" role="form">
 
-    <div class="panel panel-default">
-      <div class="panel-heading text-center">
-        <h4>Ships</h4>
-      </div>
-      <div class="panel-body">
-        <div class="container-fluid">
-          <div class="row">
-            <input id="ship-selection" type="hidden">
-            <% @ships.each do |ship| %>
-              <div class="col-xs-6 col-md-2">
-                <h4><%= ship.name %></h4>
-                <a class="ship-thumb" data-ship-id="<%= ship.id %>">
-                  <%= image_tag ship.image_url, class: "img-responsive img-thumbnail" %>
-                </a>
-              </div>
-            <% end %>
-          </div>
+    <% Item.TYPES.each do |type| %>
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h4><%= type %></h4>
         </div>
-      </div>
-    </div>
-
-    <div id="drones" class="panel panel-default">
-      <div class="panel-heading text-center">
-        <h4>Drones</h4>
-      </div>
-      <div class="panel-body">
-        <div class="container-fluid">
-          <div class="row">
-            <% @drones.each do |drone| %>
-              <div class="col-md-2">
-                <h4><%= drone.name %></h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= image_tag drone.image_url, class: "img-responsive img-thumbnail" %>
-                  </div>
-                  <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" value="0" data-drone-id="<%= drone.id %>">
+        <div class="panel-body">
+          <div class="container-fluid">
+            <div class="row">
+              <% @items.select{|i|i.type == type.to_s}.each do |item| %>
+                <div class="item-container col-xs-6 col-sm-4 col-md-2" data-item-id="<%= item.id %>">
+                  <h4><%= item.name %></h4>
+                  <a class="item-thumb">
+                    <%= image_tag item.image_url, class: "img-responsive img-thumbnail" %>
+                  </a>
+                  <div class="form-group">
+                    <label for="quantity-item-<%=item.id%>">Quantity</label>
+                    <input id="quantity-item-<%=item.id%>" class="form-control quantity" type="number" min="0" value="0">
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="panel">
       <div class="panel-body">
