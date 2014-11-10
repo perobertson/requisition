@@ -8,9 +8,11 @@ $(document).on "page:change", ->
 
     $("input.quantity").change ->
       self = $(this)
+      img = self.parents(".item-container").find("img")
       if parseInt(self.val()) < 1
-        img = self.parents(".item-container").find("img")
         img.removeClass "bg-primary"
+      else if !img.hasClass "bg-primary"
+        img.addClass "bg-primary"
 
     $(".item-thumb").click ->
       self = $(this)
