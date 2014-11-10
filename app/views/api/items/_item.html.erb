@@ -9,12 +9,20 @@
   </a>
   <br />
   <% if current_user.can_change_inventory? %>
+    <div class="form-group">
+      <label for="category-item-<%=item.id%>">Category</label>
+      <%= select_tag :type, options_for_select(Item.TYPES, item.type), { id: "category-item-#{item.id}", class: "form-control" } %>
+    </div>
     <% if item.for_sale? %>
-      <input type="checkbox" checked data-on-text="Y" data-off-text="N">
+      <input type="checkbox" data-on-text="Y" data-off-text="N" checked>
     <% else %>
       <input type="checkbox" data-on-text="Y" data-off-text="N">
     <% end %>
   <% else %>
+    <div class="form-group">
+      <label>Category</label>
+      <input class="form-control" type="text" disabled value="<%=item.type%>">
+    </div>
     <% if item.for_sale? %>
       <span class="text-success">For Sale</span>
     <% else %>

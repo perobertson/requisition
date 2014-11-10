@@ -12,6 +12,15 @@ $(document).on "page:change", ->
         msg = jqXHR.getResponseHeader("X-Message")
         new Requisition.FlashMessage(msg, "alert-danger") if msg?
 
+    $(".items-container").on 'change', 'select', (event) ->
+      self = $(this)
+      item_id = self.parents(".item-container").data "item-id"
+      type = self.val()
+      $.ajax "/api/items/#{item_id}",
+        type: "put"
+        contentType: "application/json"
+        data: JSON.stringify item: type: type
+
     $("#new-item").on "ajax:success", (event, data, status, xhr) ->
       $.ajax "/api/items/#{data.id}.html",
         contentType: "html"

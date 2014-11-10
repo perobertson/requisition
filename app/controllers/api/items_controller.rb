@@ -54,7 +54,7 @@ class Api::ItemsController < Api::BaseApiController
   end
 
   def permitted_update_params
-    params.require(:item).permit(:for_sale)
+    params.require(:item).permit(:type, :for_sale)
   end
 
 end
