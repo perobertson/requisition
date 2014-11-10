@@ -1,11 +1,11 @@
 class UserAbility < ActiveRecord::Base
-  # Associations
-  belongs_to :user
-  belongs_to :ability
-
   # Scopes
   scope :deleted,      -> { where.not(deleted_at: nil) }
   scope :not_deleted,  -> { where(deleted_at: nil) }
+
+  # Associations
+  belongs_to :user
+  belongs_to :ability
 
   # Validations
   validates :user,      presence: true

@@ -1,41 +1,49 @@
 # Ships
 revelation:
   type: "Ship"
+  category: category_ship
   type_id: 19720
   name: "Revelation"
   for_sale: true
 naglfar:
   type: "Ship"
+  category: category_ship
   type_id: 19722
   name: "Naglfar"
   for_sale: true
 moros:
   type: "Ship"
+  category: category_ship
   type_id: 19724
   name: "Moros"
   for_sale: true
 fenrir:
   type: "Ship"
+  category: category_ship
   type_id: 20189
   name: "Fenrir"
   for_sale: true
 archon:
   type: "Ship"
+  category: category_ship
   type_id: 23757
   name: "Archon"
   for_sale: true
 thanatos:
   type: "Ship"
+  category: category_ship
   type_id: 23911
   name: "Thanatos"
   for_sale: true
 chimera:
   type: "Ship"
+  category: category_ship
   type_id: 23915
   name: "Chimera"
   for_sale: true
 nidhoggur:
   type: "Ship"
+  category: category_ship
   type_id: 24483
   name: "Nidhoggur"
   for_sale: true
@@ -43,61 +51,73 @@ nidhoggur:
 # Drones
 hobgoblin_ii:
   type: "Drone"
+  category: category_drone
   type_id: 2456
   name: "Hobgoblin II"
   for_sale: true
 warrior_ii:
   type: "Drone"
+  category: category_drone
   type_id: 2488
   name: "Warrior II"
   for_sale: true
 hammerhead_ii:
   type: "Drone"
+  category: category_drone
   type_id: 2185
   name: "Hammerhead II"
   for_sale: true
 valkyrie_ii:
   type: "Drone"
+  category: category_drone
   type_id: 21640
   name: "Valkyrie II"
   for_sale: true
 ogre_ii:
   type: "Drone"
+  category: category_drone
   type_id: 2446
   name: "Ogre II"
   for_sale: true
 berserker_ii:
   type: "Drone"
+  category: category_drone
   type_id: 2478
   name: "Berserker II"
   for_sale: true
 garde_ii:
   type: "Drone"
+  category: category_drone
   type_id: 28211
   name: "Garde II"
   for_sale: true
 bouncer_ii:
   type: "Drone"
+  category: category_drone
   type_id: 28215
   name: "Bouncer II"
   for_sale: true
 dragonfly:
   type: "Drone"
+  category: category_drone
   type_id: 23057
   name: "Dragonfly"
   for_sale: true
 eingerji:
   type: "Drone"
+  category: category_drone
   type_id: 23061
   name: "Eingerji"
   for_sale: true
 firbolg:
   type: "Drone"
+  category: category_drone
   type_id: 23059
   name: "Firbolg"
   for_sale: true
 templar:
   type: "Drone"
+  category: category_drone
   type_id: 23055
   name: "Templar"
   for_sale: true
