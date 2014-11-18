@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141110031600) do
 
   add_index "abilities", ["kind"], name: "index_abilities_on_kind", unique: true, using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

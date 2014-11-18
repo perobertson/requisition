@@ -6,15 +6,15 @@
 
   <form id="purchase-form" role="form">
 
-    <% Item.TYPES.each do |type| %>
+    <% Category.names.each do |category_name| %>
       <div class="panel panel-default">
         <div class="panel-heading text-center">
-          <h4><%= type %></h4>
+          <h4><%= category_name %></h4>
         </div>
         <div class="panel-body">
           <div class="container-fluid">
             <div class="row">
-              <% @items.select{|i|i.type == type.to_s}.each do |item| %>
+              <% @items.select{|i|i.category.name == category_name}.each do |item| %>
                 <div class="item-container col-xs-6 col-sm-4 col-md-2" data-item-id="<%= item.id %>">
                   <h4><%= item.name %></h4>
                   <a class="item-thumb">
