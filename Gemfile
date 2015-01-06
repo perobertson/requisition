@@ -15,6 +15,11 @@ group :production do
   gem 'rollbar'
 end
 
+group :development do
+  # Add consoles to pages for debugging
+  gem 'web-console', '~> 2.0'
+end
+
 group :development, :test do
   # Lets you go back and forth in time virtually
   gem 'timecop'

@@ -34,6 +34,7 @@ Rails.application.configure do
   ActionMailer::Base.default from: "EVE Requisition <#{ENV['REQUISITION_MAILER_ACCOUNT']}>"
   # for devise
   config.action_mailer.default_url_options = { host: 'localhost' }
+
   # Randomize the order test cases are executed.
   config.active_support.test_order = :random
 
