@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # language and framework version
-ruby '2.1.5'
+ruby '2.2.0'
 gem 'rails', '4.2.0.beta4'
 
 group :production do

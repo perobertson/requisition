@@ -84,7 +84,7 @@ GEM
       warden (~> 1.2.3)
     docile (1.1.5)
     erubis (2.7.0)
-    eventmachine (1.0.3)
+    eventmachine (1.0.4)
     excon (0.41.0)
     execjs (2.2.2)
     fastercsv (1.5.5)
