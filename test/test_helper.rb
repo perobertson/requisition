@@ -1,4 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV['REQUISITION_MAILER_ACCOUNT'] ||= "public.relations@email.com"
+ENV['REQUISITION_BUILDER_EMAIL']  ||= "ship.builder@email.com"
 
 require 'simplecov'
 SimpleCov.start
