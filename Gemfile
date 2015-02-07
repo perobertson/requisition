@@ -47,6 +47,8 @@ group :test do
   gem 'simplecov'
   # JS engine for testing
   gem 'therubyracer'
+  # For test status
+  gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
 end
 
 group :doc do
