@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/perobertson/requisition.svg?style=svg)](https://circleci.com/gh/perobertson/requisition)
+
 ## Dependencies
 
 ```bash
