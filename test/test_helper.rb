@@ -2,8 +2,28 @@ ENV['RAILS_ENV'] ||= 'test'
 ENV['REQUISITION_MAILER_ACCOUNT'] ||= "public.relations@email.com"
 ENV['REQUISITION_BUILDER_EMAIL']  ||= "ship.builder@email.com"
 
-require 'simplecov'
-SimpleCov.start
+if ENV["NO_COVERAGE"] != "1"
+  require 'simplecov'
+  SimpleCov.start do
+    add_group "Models", "app/models"
+    add_group "Controllers", "app/controllers"
+    add_group "Helpers", "app/helpers"
+    add_group "Policies", "app/policies"
+    add_group "Configuration", "config/"
+    add_group "Libraries", "lib/"
+    add_group "Test Files", "test/"
+
+    add_group "Long files" do |src_file|
+      src_file.lines.count > 250
+    end
+
+    # get rid of bundled rails/ruby code
+    add_filter "vendor/bundle"
+
+    # make sure we get all results since our tests can take a while
+    merge_timeout 60 * 30
+  end
+end
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
