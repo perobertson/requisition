@@ -4,13 +4,17 @@ ENV['REQUISITION_BUILDER_EMAIL']  ||= "ship.builder@email.com"
 
 if ENV["NO_COVERAGE"] != "1"
   require 'simplecov'
+  require 'coveralls'
 
   if ENV['CIRCLE_ARTIFACTS']
     dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
     SimpleCov.coverage_dir(dir)
   end
 
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   SimpleCov.start do
+    command_name "requisition_#{ENV['CIRCLE_BUILD_NUM']}_#{ENV['CIRCLE_NODE_INDEX']}"
+
     add_group "Models", "app/models"
     add_group "Controllers", "app/controllers"
     add_group "Helpers", "app/helpers"

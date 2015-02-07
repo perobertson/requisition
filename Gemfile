@@ -49,6 +49,8 @@ group :test do
   gem 'therubyracer'
   # For test status
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
+  # For code coverage
+  gem 'coveralls'
 end
 
 group :doc do

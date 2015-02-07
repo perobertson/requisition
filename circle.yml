@@ -13,3 +13,5 @@ test:
         parallel: true
         files:
           - test/**/*_test.rb
+  post:
+    - bundle exec rake coverage:notify
