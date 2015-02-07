@@ -1,7 +1,3 @@
-general:
-  artifacts:
-    - "coverage"
-
 machine:
   environment:
     RAILS_ENV: test
