@@ -51,6 +51,8 @@ group :test do
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
   # For code coverage
   gem 'coveralls'
+  # Static analysis against the ruby style guide
+  gem 'rubocop'
 end
 
 group :doc do
