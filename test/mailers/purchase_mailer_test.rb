@@ -1,15 +1,15 @@
 require 'test_helper'
 
 describe PurchaseMailer do
-  describe "purchase email" do
-    it "must send purchase mail" do
+  describe 'purchase email' do
+    it 'must send purchase mail' do
       order = orders(:order_mailer_test)
 
       PurchaseMailer.purchase_order(order).deliver_now
 
       mail = ActionMailer::Base.deliveries.last
       mail.wont_be_nil
-      mail.subject.must_include "Order Placed"
+      mail.subject.must_include 'Order Placed'
       mail.encoded.must_include order.character_name
       order.order_items.each do |order_item|
         mail.encoded.must_include order_item.item.name

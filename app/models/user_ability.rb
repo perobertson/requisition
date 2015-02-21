@@ -1,5 +1,4 @@
 class UserAbility < ActiveRecord::Base
-
   # Associations
   belongs_to :user
   belongs_to :ability

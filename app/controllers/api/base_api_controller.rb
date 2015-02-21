@@ -1,5 +1,4 @@
 class Api::BaseApiController < ApplicationController
-
   layout false
 
   # Callbacks

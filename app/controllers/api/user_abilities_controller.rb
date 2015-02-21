@@ -1,8 +1,7 @@
 class Api::UserAbilitiesController < Api::BaseApiController
-
   def create
     unless current_user.can_change_user?
-      flash[:danger] = "You are not authorized to perform this action"
+      flash[:danger] = 'You are not authorized to perform this action'
       return render_nothing :unauthorized
     end
 
@@ -15,7 +14,7 @@ class Api::UserAbilitiesController < Api::BaseApiController
     end
 
     if @user_ability.save
-      flash[:success] = "Ability added"
+      flash[:success] = 'Ability added'
       return render status: :created
     end
     render status: :unprocessable_entity
@@ -23,7 +22,7 @@ class Api::UserAbilitiesController < Api::BaseApiController
 
   def destroy
     unless current_user.can_change_user?
-      flash[:danger] = "You are not authorized to perform this action"
+      flash[:danger] = 'You are not authorized to perform this action'
       return render_nothing :unauthorized
     end
 
@@ -33,7 +32,7 @@ class Api::UserAbilitiesController < Api::BaseApiController
 
     @user_ability.deleted_at = Time.current
     if @user_ability.save
-      flash[:success] = "Ability removed"
+      flash[:success] = 'Ability removed'
       return render_nothing :no_content
     end
 

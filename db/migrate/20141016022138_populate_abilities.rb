@@ -12,12 +12,8 @@ class PopulateAbilities < ActiveRecord::Migration
   end
 
   def down
-    UserAbility.all.each do |user_ability|
-      user_ability.destroy!
-    end
+    UserAbility.all.each(&:destroy!)
 
-    Ability.all.each do |ability|
-      ability.destroy!
-    end
+    Ability.all.each(&:destroy!)
   end
 end

@@ -1,6 +1,6 @@
 class RemoveShips < ActiveRecord::Migration
   def change
-    Order.all.each { |o| o.destroy! }
+    Order.all.each(&:destroy!)
     remove_column :orders, :ship_id
     drop_table :ships
 

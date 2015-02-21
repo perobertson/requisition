@@ -1,14 +1,13 @@
 class Api::OrdersController < Api::BaseApiController
-
   def create
-    if !current_user.can_place_order?
-      flash[:danger] = "You are not allowed to place orders"
+    unless current_user.can_place_order?
+      flash[:danger] = 'You are not allowed to place orders'
       return render_nothing :unauthorized
     end
 
     @order = Order.new(permitted_params)
     if @order.save
-      flash[:success] = "Order placed"
+      flash[:success] = 'Order placed'
       return render status: :created
     end
 
@@ -20,5 +19,4 @@ class Api::OrdersController < Api::BaseApiController
   def permitted_params
     params.require(:order).permit(:character_name, order_items_attributes: [:item_id, :quantity])
   end
-
 end

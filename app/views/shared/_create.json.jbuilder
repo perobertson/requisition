@@ -1,5 +1,5 @@
 if resource.errors.blank?
-  json.(resource, :id)
+  json.call(resource, :id)
 else
   json.partial! 'shared/errors', resource: resource
 end

@@ -7,10 +7,10 @@ class CreateOrderItems < ActiveRecord::Migration
       t.integer :item_id,       null: false
       t.integer :quantity,      null: false
 
-      t.index       :order_id
+      t.index :order_id
       t.foreign_key :orders
 
-      t.index       :item_id
+      t.index :item_id
       t.foreign_key :items
     end
   end

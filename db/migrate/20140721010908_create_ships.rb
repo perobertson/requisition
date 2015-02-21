@@ -6,6 +6,7 @@ class CreateShips < ActiveRecord::Migration
       t.text :description,  null: false
     end
   end
+
   def down
     drop_table :ships
   end

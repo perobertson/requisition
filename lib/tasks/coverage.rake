@@ -1,14 +1,14 @@
 namespace :coverage do
   task :notify do
     unless Rails.env.test?
-      puts "This task is only to be run in test."
+      puts 'This task is only to be run in test.'
       next # Exit early
     end
 
     json = {
       payload: {
         build_num: ENV['CIRCLE_BUILD_NUM'].to_i,
-        status: "done"
+        status: 'done'
       }
     }.to_json
 

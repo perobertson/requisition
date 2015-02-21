@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'inventory/index'
   get 'permissions/index'
 
-  namespace :api, defaults: {format: 'json'} do
+  namespace :api, defaults: { format: 'json' } do
     resources :orders,      only: [:create]
     resources :items,       only: [:index, :create, :show, :update]
     resources :users,       only: [:index, :show, :update] do
@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     resources :user_abilities,      only: [:destroy]
   end
 
-  match "*path", to: "errors#catch_404", via: :all
+  match '*path', to: 'errors#catch_404', via: :all
 end

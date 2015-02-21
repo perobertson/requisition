@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
   def error_render_method
     respond_to do |format|
       format.html { render file: 'public/404.html', status: :not_found, layout: false }
-      format.json { render json: { errors: "Method not found." }, status: :not_found }
+      format.json { render json: { errors: 'Method not found.' }, status: :not_found }
     end
     true
   end
 
   def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
+    flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || root_path, status: :see_other)
   end
 
@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
     message = flash_message
     type = flash_type
 
-    response.headers['X-Message']      = message   || ""
-    response.headers["X-Message-Type"] = type.to_s || ""
+    response.headers['X-Message']      = message   || ''
+    response.headers['X-Message-Type'] = type.to_s || ''
 
     flash.discard # don't want the flash to appear when you reload page
   end

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :user_abilities
 
   def has_ability?(kind)
-    user_abilities.not_deleted.joins(:ability).where(abilities: {kind: kind}).any?
+    user_abilities.not_deleted.joins(:ability).where(abilities: { kind: kind }).any?
   end
 
   # Ability helper methods 'can_ability_kind?'

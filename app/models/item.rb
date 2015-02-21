@@ -1,5 +1,4 @@
 class Item < ActiveRecord::Base
-
   # Constants
   @@TYPES = [:Ship, :Drone].freeze
   cattr_reader :TYPES
@@ -19,7 +18,7 @@ class Item < ActiveRecord::Base
   validates :type_id,   uniqueness: true
   validates :name,      presence: true
   validates :name,      uniqueness: true
-  validates :for_sale,  inclusion: [ true, false ]
+  validates :for_sale,  inclusion: [true, false]
 
   # Callbacks
 
@@ -27,5 +26,4 @@ class Item < ActiveRecord::Base
     # TODO validate the size choices (Not sure whats valid)
     "https://image.eveonline.com/Render/#{type_id}_#{size}.png"
   end
-
 end

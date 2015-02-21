@@ -67,7 +67,7 @@ Rails.application.configure do
   ActionMailer::Base.default from: "EVE Requisition <#{ENV['REQUISITION_MAILER_ACCOUNT']}>"
 
   config.action_mailer.smtp_settings = {
-    address:                "smtp.mandrillapp.com",
+    address:                'smtp.mandrillapp.com',
     port:                   587,                      # ports 587 and 2525 are also supported with STARTTLS
     enable_starttls_auto:   true,                     # detects and uses STARTTLS
     authentication:         'login',                  # Mandrill supports 'plain' or 'login'
@@ -98,7 +98,7 @@ Rails.application.configure do
   # This makes sure that request params get dumped into the same single line that lograge outputs
   # See ActionController's append_info_to_payload() function for other things we're adding
   config.lograge.custom_options = lambda do |event|
-    payload = { "params" => event.payload[:params].except('controller', 'action') }
-    payload.merge(event.payload.select { |k,v| [:ip].include?(k) && v.present? })
+    payload = { 'params' => event.payload[:params].except('controller', 'action') }
+    payload.merge(event.payload.select { |k, v| [:ip].include?(k) && v.present? })
   end
 end

@@ -1,5 +1,4 @@
 class Order < ActiveRecord::Base
-
   include NotificationHelper
 
   before_validation :initialize_order_items, if: :new_record?
@@ -22,5 +21,4 @@ class Order < ActiveRecord::Base
   def initialize_order_items
     order_items.each { |order_item| order_item.order = self }
   end
-
 end

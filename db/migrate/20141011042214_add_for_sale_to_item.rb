@@ -8,6 +8,7 @@ class AddForSaleToItem < ActiveRecord::Migration
       change_column_null :items, :for_sale, false
     end
   end
+
   def down
     remove_column :items, :for_sale
   end
