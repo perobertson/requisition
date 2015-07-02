@@ -1,2 +1,6 @@
+AllCops:
+  Exclude:
+    - 'bin/spring'
+
 Metrics/LineLength:
   Max: 120
