@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141016022138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "abilities", force: true do |t|
+  create_table "abilities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141016022138) do
 
   add_index "abilities", ["kind"], name: "index_abilities_on_kind", unique: true, using: :btree
 
-  create_table "items", force: true do |t|
+  create_table "items", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20141016022138) do
   add_index "items", ["name"], name: "index_items_on_name", unique: true, using: :btree
   add_index "items", ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
 
-  create_table "order_items", force: true do |t|
+  create_table "order_items", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -50,14 +50,14 @@ ActiveRecord::Schema.define(version: 20141016022138) do
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
-  create_table "orders", force: true do |t|
+  create_table "orders", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.string   "character_name", null: false
   end
 
-  create_table "user_abilities", force: true do |t|
+  create_table "user_abilities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20141016022138) do
 
   add_index "user_abilities", ["user_id", "ability_id", "deleted_at"], name: "index_user_abilities_on_user_id_and_ability_id_and_deleted_at", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
