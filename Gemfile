@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # language and framework version
 ruby '2.2.1'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.3'
 
 group :production do
   # For heroku logging and static assets
