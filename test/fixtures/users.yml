@@ -7,3 +7,8 @@ user2:
   email: "user2@gmail.com"
   confirmed_at: "2014-01-01"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+user_jimmy:
+  email: "jimmy123@gmail.com"
+  confirmed_at: "2014-01-01"
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>

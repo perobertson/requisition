@@ -5,7 +5,7 @@ user_ability_user1_place_order:
 user_ability_user1_place_order_deleted:
   user: user1
   ability: ability_place_order
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user1_view_inventory:
   user: user1
@@ -14,7 +14,7 @@ user_ability_user1_view_inventory:
 user_ability_user1_view_inventory_deleted:
   user: user1
   ability: ability_view_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user1_change_inventory:
   user: user1
@@ -23,7 +23,7 @@ user_ability_user1_change_inventory:
 user_ability_user1_change_inventory_deleted:
   user: user1
   ability: ability_change_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user1_add_inventory:
   user: user1
@@ -32,7 +32,7 @@ user_ability_user1_add_inventory:
 user_ability_user1_add_inventory_deleted:
   user: user1
   ability: ability_add_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user1_view_users:
   user: user1
@@ -41,7 +41,7 @@ user_ability_user1_view_users:
 user_ability_user1_view_users_deleted:
   user: user1
   ability: ability_view_users
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user1_change_user:
   user: user1
@@ -50,7 +50,7 @@ user_ability_user1_change_user:
 user_ability_user1_change_user_deleted:
   user: user1
   ability: ability_change_user
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_place_order:
   user: user2
@@ -59,7 +59,7 @@ user_ability_user2_place_order:
 user_ability_user2_place_order_deleted:
   user: user2
   ability: ability_place_order
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_view_inventory:
   user: user2
@@ -68,7 +68,7 @@ user_ability_user2_view_inventory:
 user_ability_user2_view_inventory_deleted:
   user: user2
   ability: ability_view_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_change_inventory:
   user: user2
@@ -77,7 +77,7 @@ user_ability_user2_change_inventory:
 user_ability_user2_change_inventory_deleted:
   user: user2
   ability: ability_change_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_add_inventory:
   user: user2
@@ -86,7 +86,7 @@ user_ability_user2_add_inventory:
 user_ability_user2_add_inventory_deleted:
   user: user2
   ability: ability_add_inventory
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_view_users:
   user: user2
@@ -95,7 +95,7 @@ user_ability_user2_view_users:
 user_ability_user2_view_users_deleted:
   user: user2
   ability: ability_view_users
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
 
 user_ability_user2_change_user:
   user: user2
@@ -104,4 +104,8 @@ user_ability_user2_change_user:
 user_ability_user2_change_user_deleted:
   user: user2
   ability: ability_change_user
-  deleted_at: <%= DateTime.now %>
+  deleted_at: <%= Time.current %>
+
+user_ability_user_jimmy_place_order:
+  user: user_jimmy
+  ability: ability_place_order

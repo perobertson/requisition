@@ -6,7 +6,9 @@ class Api::UserAbilitiesController < Api::BaseApiController
     end
 
     @user_ability = UserAbility.new permitted_create_params
-    @user_ability.user_id = params[:user_id] if params[:user_id]
+    if params[:user_id].present?
+      @user_ability.user_id = params[:user_id]
+    end
 
     if params[:user_ability] && !@user_ability.ability_id
       ability = Ability.find_by_kind params[:user_ability][:kind]
@@ -39,7 +41,7 @@ class Api::UserAbilitiesController < Api::BaseApiController
     render_nothing :unprocessable_entity
   end
 
-  private
+private
 
   def set_resource
     @user_ability = UserAbility.find params[:id]
