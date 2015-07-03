@@ -26,7 +26,6 @@ module Api
         item = Item.find response_body['id']
 
         item.category_id.must_equal request_body[:item][:category_id]
-        item.type.wont_be_nil
         item.type_id.must_equal request_body[:item][:type_id]
         item.name.must_equal request_body[:item][:name]
         item.for_sale.must_equal false
