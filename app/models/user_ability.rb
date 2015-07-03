@@ -1,10 +1,8 @@
 class UserAbility < ActiveRecord::Base
-  # Scopes
-  scope :deleted,      -> { where.not(deleted_at: nil) }
-  scope :not_deleted,  -> { where(deleted_at: nil) }
+  include SoftDeletable
 
   # Associations
-  belongs_to :user
+  belongs_to :user, inverse_of: :user_abilities
   belongs_to :ability
 
   # Validations
