@@ -21,7 +21,7 @@
   <% else %>
     <div class="form-group">
       <label>Category</label>
-      <input class="form-control" type="text" disabled value="<%=item.type%>">
+      <input class="form-control" type="text" disabled value="<%=item.category.name%>">
     </div>
     <% if item.for_sale? %>
       <span class="text-success">For Sale</span>
