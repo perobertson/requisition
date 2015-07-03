@@ -104,8 +104,6 @@ GEM
     excon (0.41.0)
     execjs (2.2.2)
     fastercsv (1.5.5)
-    foreigner (1.6.1)
-      activerecord (>= 3.0.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     gon (5.2.3)
@@ -289,7 +287,6 @@ DEPENDENCIES
   coffee-rails
   coveralls
   devise
-  foreigner
   gon
   jbuilder (~> 2.2)
   jquery-rails

@@ -69,8 +69,6 @@ gem 'mandrill-api'
 gem 'lograge'
 # Postgres database
 gem 'pg'
-# Foreign key support
-gem 'foreigner'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta'
 # Use YUI as compressor for JavaScript assets
