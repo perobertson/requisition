@@ -1,5 +1,4 @@
 class Category < ActiveRecord::Base
-
   # Scopes
   scope :deleted,      -> { where.not(deleted_at: nil) }
   scope :not_deleted,  -> { where(deleted_at: nil) }
@@ -13,5 +12,9 @@ class Category < ActiveRecord::Base
 
   def self.names
     Category.not_deleted.pluck(:name)
+  end
+
+  def self.names_for_select
+    Category.not_deleted.pluck(:name, :id)
   end
 end

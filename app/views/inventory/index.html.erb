@@ -18,8 +18,8 @@
               <%= f.number_field :type_id, class: "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :type %>
-              <%= f.select :type, options_for_select(Category.names), {include_blank: "Select a type"}, { class: "form-control" } %>
+              <%= f.label :category_id %>
+              <%= f.select :category_id, options_for_select(Category.names_for_select), {include_blank: "Select a category"}, { class: "form-control" } %>
             </div>
             <div class="form-group">
               <%= f.label :for_sale %>

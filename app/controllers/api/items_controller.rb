@@ -42,17 +42,17 @@ class Api::ItemsController < Api::BaseApiController
     render_nothing :unprocessable_entity
   end
 
-  private
+private
 
   def set_resource
     @item = Item.find params[:id]
   end
 
   def permitted_create_params
-    params.require(:item).permit(:type, :type_id, :name, :for_sale)
+    params.require(:item).permit(:category_id, :type_id, :name, :for_sale)
   end
 
   def permitted_update_params
-    params.require(:item).permit(:type, :for_sale)
+    params.require(:item).permit(:category_id, :for_sale)
   end
 end
