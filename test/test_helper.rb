@@ -46,6 +46,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def setup
+    Rails.cache.clear
+  end
 end
 
 class ActionController::TestCase

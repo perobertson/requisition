@@ -15,11 +15,11 @@ $(document).on "page:change", ->
     $(".items-container").on 'change', 'select', (event) ->
       self = $(this)
       item_id = self.parents(".item-container").data "item-id"
-      type = self.val()
+      categoryId = self.val()
       $.ajax "/api/items/#{item_id}",
         type: "put"
         contentType: "application/json"
-        data: JSON.stringify item: type: type
+        data: JSON.stringify item: category_id: categoryId
 
     $("#new-item").on "ajax:success", (event, data, status, xhr) ->
       $.ajax "/api/items/#{data.id}.html",

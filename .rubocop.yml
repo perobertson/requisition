@@ -1,2 +1,6 @@
 Metrics/LineLength:
   Max: 120
+
+# Force public/protected/private keyword to be indented at the same level as the def keyword.
+Style/AccessModifierIndentation:
+  EnforcedStyle: outdent
