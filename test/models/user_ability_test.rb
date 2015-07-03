@@ -40,7 +40,7 @@ describe UserAbility do
       user_ability = UserAbility.create valid_user_ability
       user_ability.valid?.must_equal true, user_ability.errors.messages
 
-      for i in (0..1)
+      2.times do
         user_ability = UserAbility.create valid_user_ability.merge! deleted_at: Time.current
         user_ability.valid?.must_equal true, user_ability.errors.messages
       end
