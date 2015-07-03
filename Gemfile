@@ -70,7 +70,7 @@ gem 'lograge'
 # Postgres database
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0.beta'
+gem 'sass-rails'
 # Use YUI as compressor for JavaScript assets
 gem 'yui-compressor'
 # Use CoffeeScript for .js.coffee assets and views
