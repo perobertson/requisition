@@ -70,7 +70,7 @@ class ActionController::TestCase
     sign_out @current_user if @current_user.present?
     @current_user = user
     if @current_user
-      @current_user.confirm!
+      @current_user.confirm
       sign_in @current_user
     end
   end
