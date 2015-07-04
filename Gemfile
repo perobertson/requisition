@@ -7,12 +7,14 @@ gem 'rails', '4.2.3'
 group :production do
   # For heroku logging and static assets
   gem 'rails_12factor'
-  # Unicorn web server
-  gem 'unicorn'
+  # Puma web server
+  gem 'puma'
   # App stats
   gem 'newrelic_rpm'
   # Error reporting
   gem 'rollbar'
+  # For killing long running connections
+  gem "rack-timeout"
 end
 
 group :development do
