@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::RoutingError, with: :error_render_method
 
-  after_filter :flash_to_headers
+  after_action :flash_to_headers
 
 protected
 

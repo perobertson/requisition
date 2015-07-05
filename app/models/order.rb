@@ -8,8 +8,8 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_items
 
-  validates :character_name, presence: true
-  validates_presence_of :order_items
+  validates :character_name,  presence: true
+  validates :order_items,     presence: true
   validates_associated :order_items
 
 private

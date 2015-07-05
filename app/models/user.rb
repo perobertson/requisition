@@ -28,7 +28,7 @@ private
 
   def set_defaults
     if user_abilities.empty?
-      place_order = Ability.not_deleted.where(kind: :place_order).first
+      place_order = Ability.not_deleted.find_by(kind: :place_order)
       if place_order.present?
         user_abilities.new ability: place_order
       end

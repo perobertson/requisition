@@ -2,8 +2,8 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :item
 
-  validates_presence_of :order
-  validates_presence_of :item
+  validates :order,     presence: true
+  validates :item,      presence: true
   validates :item,      uniqueness: { scope: :order }
   validates :quantity,  presence: true
   validates :quantity,  numericality: { only_integer: true, greater_than: 0 }
