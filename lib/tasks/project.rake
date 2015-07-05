@@ -2,8 +2,7 @@ namespace :project do
   desc 'Sets up the project by creating a file you can source to customize the environment'
   task :setup do
     unless Rails.env.development?
-      puts 'This task is only to be run in development.'.red
-      next # Exit early
+      abort 'This task is only to be run in development.'.red
     end
 
     unless Dir.exist?(File.join(Dir.home, '.projects'))
