@@ -25,7 +25,7 @@ module Api
         order.wont_be_nil
         order.character_name.must_equal request_body[:order][:character_name]
         order.order_items.count.must_equal request_body[:order][:order_items_attributes].count
-        # TODO check each item
+        # TODO: check each item
       end
     end
   end

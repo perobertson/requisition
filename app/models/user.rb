@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # Validations / Callbacks
   after_initialize :set_defaults, if: :new_record?
 
-  def has_ability?(kind)
+  def has_ability? kind
     user_abilities.not_deleted.joins(:ability).where(abilities: { kind: kind }).any?
   end
 

@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :order_items
   validates_associated :order_items
 
-  private
+private
 
   def send_order_notification
     send_notification self

@@ -82,7 +82,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  def valid_user(attributes_to_delete = nil)
+  def valid_user attributes_to_delete = nil
     {
       email: 'new_user@gmail.com',
       password: 'password10'

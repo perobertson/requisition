@@ -32,14 +32,14 @@ class ItemTest < ActiveSupport::TestCase
       not_valid_check :for_sale
     end
 
-    def not_valid_check(attribute)
+    def not_valid_check attribute
       ship = Item.new valid_ship attribute
       ship.valid?.must_equal false
       ship.errors[attribute].present?.must_equal true
     end
   end
 
-  def valid_ship(attributes_to_delete = nil)
+  def valid_ship attributes_to_delete = nil
     {
       type_id: 1,
       name: 'Test ship',

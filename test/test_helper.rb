@@ -69,7 +69,7 @@ module ActionController
       super
     end
 
-    def switch_login(user)
+    def switch_login user
       sign_out @current_user if @current_user.present?
       @current_user = user
       if @current_user

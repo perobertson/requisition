@@ -1,6 +1,5 @@
 class InitSchema < ActiveRecord::Migration
   def up
-
     # These are extensions that must be enabled in order to support this database
     enable_extension 'plpgsql'
 
@@ -91,10 +90,9 @@ class InitSchema < ActiveRecord::Migration
     add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
     add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
     add_index 'users', ['unlock_token'], name: 'index_users_on_unlock_token', unique: true, using: :btree
-
   end
 
   def down
-    raise 'Can not revert initial migration'
+    fail 'Can not revert initial migration'
   end
 end

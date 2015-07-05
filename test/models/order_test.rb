@@ -29,7 +29,7 @@ class OrderTest < ActiveSupport::TestCase
     end
   end
 
-  private
+private
 
   def valid_order
     {

@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
   after_filter :flash_to_headers
 
-  protected
+protected
 
-  def append_info_to_payload(payload)
+  def append_info_to_payload payload
     # this adds a few things to logging payload
     super
     payload[:ip] = request.remote_ip
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     flash.discard # don't want the flash to appear when you reload page
   end
 
-  private
+private
 
   def flash_message
     [:danger, :warning, :info, :success].each do |type|

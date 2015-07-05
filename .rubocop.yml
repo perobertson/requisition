@@ -1,9 +1,17 @@
 Metrics/LineLength:
   Max: 120
 
+# Disable this cop so we can get better code coverage.
+Style/IfUnlessModifier:
+  Enabled: false
+
 # Force public/protected/private keyword to be indented at the same level as the def keyword.
 Style/AccessModifierIndentation:
   EnforcedStyle: outdent
+
+# Dont require parentheses at the def block
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
 
 # Ignore the schema
 Style/EmptyLinesAroundBlockBody:
