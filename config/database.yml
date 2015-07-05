@@ -1,5 +1,3 @@
-# Note: you don't need to specify production
-# because Heroku overwrites your database.yml for you
 default: &default
   adapter: postgresql
   pool: 5
