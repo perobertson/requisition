@@ -20,6 +20,8 @@ end
 group :development do
   # Add consoles to pages for debugging
   gem 'web-console', '~> 2.0'
+  # Colorize the console
+  gem 'colorize'
 end
 
 group :development, :test do

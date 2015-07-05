@@ -1,7 +1,8 @@
 namespace :project do
+  desc 'Sets up the project by creating a file you can source to customize the environment'
   task :setup do
     unless Rails.env.development?
-      puts 'This task is only to be run in development.'
+      puts 'This task is only to be run in development.'.red
       next # Exit early
     end
 
@@ -30,7 +31,7 @@ namespace :project do
       end
     end
 
-    puts "cat '~/.projects/requisition'"
+    puts "cat '~/.projects/requisition'".yellow
     puts `cat ~/.projects/requisition`
     puts "\n"
   end
