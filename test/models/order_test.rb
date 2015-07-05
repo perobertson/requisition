@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe Order do
+class OrderTest < ActiveSupport::TestCase
   describe 'Sanity' do
     it 'must start with valid fixtures' do
       Order.all.each do |ability|

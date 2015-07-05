@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe Api::PermissionsController do
+class PermissionsControllerTest < ActionController::TestCase
   describe 'unauthenticated' do
     describe 'index' do
       it 'must be redirected to login' do

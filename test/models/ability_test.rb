@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe Ability do
+class AbilityTest < ActiveSupport::TestCase
   describe 'Sanity' do
     it 'must start with valid fixtures' do
       Ability.all.each do |ability|

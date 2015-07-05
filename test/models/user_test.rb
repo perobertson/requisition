@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe User do
+class UserTest < ActiveSupport::TestCase
   subject { user }
   let(:user) { users(:user_no_abilities) }
   let(:ability_place_order) { abilities(:ability_place_order) }

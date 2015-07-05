@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe UserAbility do
+class UserAbilityTest < ActiveSupport::TestCase
   describe 'Sanity' do
     it 'must start with valid fixtures' do
       UserAbility.all.each do |user_ability|

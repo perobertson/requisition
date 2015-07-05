@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe PurchaseMailer do
+class PurchaseMailerTest < ActionMailer::TestCase
   describe 'purchase email' do
     it 'must send purchase mail' do
       order = orders(:order_mailer_test)

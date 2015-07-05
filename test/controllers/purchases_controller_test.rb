@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe PurchasesController do
+class PurchasesControllerTest < ActionController::TestCase
 
   describe "unauthenticated" do
     describe "index" do

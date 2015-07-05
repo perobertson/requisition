@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe Item do
+class ItemTest < ActiveSupport::TestCase
   describe 'Sanity' do
     it 'must start with valid fixtures' do
       Item.all.each do |item|
