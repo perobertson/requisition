@@ -20,8 +20,6 @@ end
 group :development do
   # Add consoles to pages for debugging
   gem 'web-console', '~> 2.0'
-  # Colorize the console
-  gem 'colorize'
 end
 
 group :development, :test do
@@ -103,3 +101,6 @@ gem 'bootstrap-switch-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Colorize the terminal
+gem 'colorize', require: false
