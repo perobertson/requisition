@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 ENV['REQUISITION_MAILER_ACCOUNT'] ||= 'public.relations@email.com'
-ENV['REQUISITION_BUILDER_EMAIL']  ||= 'ship.builder@email.com'
+ENV['REQUISITION_BUILDER_EMAIL'] ||= 'ship.builder@email.com'
 
 if ENV['CI'] == 'true'
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new

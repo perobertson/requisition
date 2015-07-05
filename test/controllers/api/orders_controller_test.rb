@@ -2,7 +2,6 @@ require 'test_helper'
 
 module Api
   class OrdersControllerTest < ActionController::TestCase
-
     describe 'order api tests' do
       before do
         switch_login users(:user1)

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PurchasesControllerTest < ActionController::TestCase
-
   describe 'unauthenticated' do
     describe 'index' do
       it 'must get the main page' do
@@ -39,5 +38,4 @@ class PurchasesControllerTest < ActionController::TestCase
       end
     end
   end
-
 end

@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     message = flash_message
     type = flash_type
 
-    response.headers['X-Message']      = message   || ''
+    response.headers['X-Message']      = message || ''
     response.headers['X-Message-Type'] = type.to_s || ''
 
     flash.discard # don't want the flash to appear when you reload page
