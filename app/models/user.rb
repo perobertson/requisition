@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :user_abilities, inverse_of: :user
+  has_many :orders, inverse_of: :user
 
   accepts_nested_attributes_for :user_abilities
 

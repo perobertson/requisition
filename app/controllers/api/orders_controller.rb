@@ -6,7 +6,7 @@ module Api
         return render_nothing :unauthorized
       end
 
-      @order = Order.new(permitted_params)
+      @order = current_user.orders.new permitted_params
       if @order.save
         flash[:success] = 'Order placed'
         return render status: :created

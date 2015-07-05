@@ -1,16 +1,21 @@
 class Order < ActiveRecord::Base
   include NotificationHelper
 
-  before_validation :initialize_order_items, if: :new_record?
-  after_save :send_order_notification
-
+  # Associations
   has_many :order_items
+  belongs_to :user
 
   accepts_nested_attributes_for :order_items
 
+  # Callbacks / Validations
+  before_validation :initialize_order_items, if: :new_record?
+
+  validates :user,            presence: true
   validates :character_name,  presence: true
   validates :order_items,     presence: true
   validates_associated :order_items
+
+  after_save :send_order_notification
 
 private
 

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :items,       only: [:index, :create, :show, :update]
     resources :users,       only: [:index, :show, :update] do
       resources :user_abilities,    only: [:create]
+      resources :orders,            only: [:index]
     end
     resources :user_abilities,      only: [:destroy]
   end
