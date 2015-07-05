@@ -14,7 +14,7 @@ group :production do
   # Error reporting
   gem 'rollbar'
   # For killing long running connections
-  gem "rack-timeout"
+  gem 'rack-timeout'
 end
 
 group :development do

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # rubocop:disable Lint/HandleExceptions
 begin
-  load File.expand_path("../spring", __FILE__)
+  load File.expand_path('../spring', __FILE__)
 rescue LoadError
 end
 # rubocop:enable Lint/HandleExceptions

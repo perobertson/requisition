@@ -4,3 +4,26 @@ Metrics/LineLength:
 # Force public/protected/private keyword to be indented at the same level as the def keyword.
 Style/AccessModifierIndentation:
   EnforcedStyle: outdent
+
+# Ignore the schema
+Style/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Style/SingleSpaceBeforeFirstArg:
+  Exclude:
+    - 'db/schema.rb'
+Style/SpaceAroundOperators:
+  Exclude:
+    - 'db/schema.rb'
+Style/SpaceInsideHashLiteralBraces:
+  Exclude:
+    - 'db/schema.rb'
+Style/StringLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Style/WordArray:
+  Exclude:
+    - 'db/schema.rb'
