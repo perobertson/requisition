@@ -7,9 +7,10 @@
   <form id="purchase-form" role="form">
 
     <% @items.keys.each do |category_name| %>
+      <% next if @items[category_name].empty? %>
       <div class="panel panel-default">
         <div class="panel-heading text-center">
-          <h4><%= category_name %></h4>
+          <h4><%= category_name.to_s.pluralize %></h4>
         </div>
         <div class="panel-body">
           <div class="container-fluid">
@@ -41,7 +42,7 @@
           </div>
           <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
         <% else %>
-          <h4>You need to sign in before placing an order</h4>
+          <h4>You need to log in before placing an order</h4>
           <div class="form-group">
             <%= link_to "Sign up", new_registration_path(:user), class: "btn btn-primary" %>
             <%= link_to "Log in", new_session_path(:user), class: "btn btn-default" %>
