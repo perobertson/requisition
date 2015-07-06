@@ -6,4 +6,8 @@ class PurchasesController < ApplicationController
       @items[name.to_sym] = for_sale.where categories: { name: name }
     end
   end
+
+  def history
+    @orders = current_user.orders.eager_load(order_items: :item).order created_at: :desc
+  end
 end

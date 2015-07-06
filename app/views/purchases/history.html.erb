@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+    <h4>Past Orders</h4>
+  </div>
+  <br />
+
+  <div class="container-fluid">
+    <div class="row">
+      <% @orders.each do |order| %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>Order Date: <%= order.created_at.to_date.iso8601 %></h4>
+            </div>
+
+            <div class="row">
+              <% order.order_items.each do |order_item| %>
+                <% item = order_item.item %>
+                  <div class="order-item-container
+                    col-xs-6
+                    col-sm-4
+                    col-md-3
+                    col-lg-2">
+                    <h4><%= item.name %></h4>
+                    <p>
+                      <label>Quantity: </label><%= order_item.quantity %>
+                    </p>
+                    <a class="item-thumb">
+                      <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
+                    </a>
+                  </div>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
