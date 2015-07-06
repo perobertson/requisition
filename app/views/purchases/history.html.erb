@@ -6,16 +6,22 @@
 
   <div class="container-fluid">
     <div class="row">
-      <% @orders.each do |order| %>
-        <div class="col-xs-12 col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Order Date: <%= order.created_at.to_date.iso8601 %></h4>
-            </div>
+      <% if @orders.empty? %>
+        <h4 class="text-center">No orders found</h4>
+        <p class="text-center">
+          Click <%= link_to('here', root_path) %> to make one.
+        </p>
+      <%else %>
+        <% @orders.each do |order| %>
+          <div class="col-xs-12 col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Order Date: <%= order.created_at.to_date.iso8601 %></h4>
+              </div>
 
-            <div class="row">
-              <% order.order_items.each do |order_item| %>
-                <% item = order_item.item %>
+              <div class="row">
+                <% order.order_items.each do |order_item| %>
+                  <% item = order_item.item %>
                   <div class="order-item-container
                     col-xs-6
                     col-sm-4
@@ -29,12 +35,14 @@
                       <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
                     </a>
                   </div>
-
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
+
+        <% end %>
       <% end %>
     </div>
   </div>
+
 </div>
