@@ -1,17 +1,4 @@
-ability_place_order:
-  kind: 'place_order'
-
-ability_view_inventory:
-  kind: 'view_inventory'
-
-ability_change_inventory:
-  kind: 'change_inventory'
-
-ability_add_inventory:
-  kind: 'add_inventory'
-
-ability_view_users:
-  kind: 'view_users'
-
-ability_change_user:
-  kind: 'change_user'
+<% Ability.KINDS.map(&:to_s).each do |ability| %>
+<%= "ability_#{ability}:" %>
+<%= "  kind: '#{ability}'" %>
+<% end %>
