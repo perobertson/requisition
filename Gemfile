@@ -7,8 +7,6 @@ gem 'rails', '4.2.3'
 group :production do
   # For heroku logging and static assets
   gem 'rails_12factor'
-  # Puma web server
-  gem 'puma'
   # App stats
   gem 'newrelic_rpm'
   # Error reporting
@@ -33,8 +31,6 @@ group :development, :test do
   gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  # Thin web server
-  gem 'thin'
   # Squelch the logging of asset retrieval
   gem 'quiet_assets'
   # For finding security vulnerabilities
@@ -63,6 +59,9 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+# Puma web server
+gem 'puma'
 
 # Auth
 gem 'devise'
