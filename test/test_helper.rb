@@ -2,6 +2,8 @@ ENV['RAILS_ENV'] ||= 'test'
 ENV['REQUISITION_MAILER_ACCOUNT'] ||= 'public.relations@email.com'
 ENV['REQUISITION_BUILDER_EMAIL'] ||= 'ship.builder@email.com'
 
+require File.expand_path('../../config/environment', __FILE__)
+
 if ENV['CI'] == 'true'
   Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 else
@@ -41,7 +43,6 @@ if ENV['NO_COVERAGE'] != '1'
   end
 end
 
-require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 module ActiveSupport
