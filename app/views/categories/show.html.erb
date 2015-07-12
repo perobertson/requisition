@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h1><%= @category.name.pluralize %>
+    <% if @category.deleted_at.present? %>
+      <small>Deleted at: <%= @category.deleted_at.iso8601 %></small>
+    <% end %>
+  </h1>
+</div>
+
+<div class='panel'>
+  <div class='panel-body'>
+    <% if @category.items.empty? %>
+      There are no items in this category
+    <% else %>
+      <% @category.items.order(:name).each do |item| %>
+        <div data-item-id="<%= item.id %>" class="item-container
+            col-xs-6
+            col-sm-4
+            col-md-3
+            col-lg-2">
+          <h4><%= item.name %></h4>
+          <a class="item-thumb">
+            <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
+          </a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class='panel'>
+  <div class='panel-body'>
+    <%= link_to 'Edit', edit_category_path(@category) %> |
+    <%= link_to 'Back', categories_path %>
+  </div>
+</div>

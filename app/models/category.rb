@@ -1,7 +1,5 @@
 class Category < ActiveRecord::Base
-  # Scopes
-  scope :deleted,      -> { where.not(deleted_at: nil) }
-  scope :not_deleted,  -> { where(deleted_at: nil) }
+  include SoftDeletable
 
   # Associations
   has_many :items
@@ -9,12 +7,26 @@ class Category < ActiveRecord::Base
   # Validations
   validates :name,      presence: true
   validates :name,      uniqueness: true
+  validate :validate_category
 
   def self.names
-    Category.not_deleted.pluck(:name)
+    Category.not_deleted.order(:name).pluck(:name)
   end
 
   def self.names_for_select
-    Category.not_deleted.pluck(:name, :id)
+    Category.not_deleted.order(:name).pluck(:name, :id)
+  end
+
+private
+
+  def validate_category
+    if errors.any?
+      return false
+    end
+
+    if deleted_at.present? && !items.empty?
+      errors.add :deleted_at, 'cannot be present while category has items in it'
+      return false
+    end
   end
 end
