@@ -1,1 +1,2 @@
+https://github.com/perobertson/nginx-buildpack.git#develop
 https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/ruby.tgz
