@@ -33,3 +33,12 @@ body {
 a {
   cursor: pointer;
 }
+
+.item-container {
+  .form-group {
+    margin-top: 10px;
+    label {
+      margin: 5px;
+    }
+  }
+}
