@@ -1,41 +1,40 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12">
-      <h2>Log in</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12
+  <div class='row'>
+    <div class='col-xs-12
       col-sm-offset-2 col-sm-8
       col-md-offset-3 col-md-6
-      col-lg-offset-4 col-lg-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, class: "form-control" %>
-        </div>
+      col-lg-offset-4 col-lg-4'>
+      <div class='panel panel-default'>
+        <div class='panel-heading text-center'>Log In</div>
+        <div class='panel-body'>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, class: "form-control" %>
+            </div>
 
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-        </div>
+            <div class="form-group">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+            </div>
 
-        <% if devise_mapping.rememberable? -%>
-          <div class="checkbox">
-            <label>
-              <%= f.check_box :remember_me %> Remember me
-            </label>
-          </div>
-        <% end -%>
+            <% if devise_mapping.rememberable? -%>
+              <div class="checkbox">
+                <label>
+                  <%= f.check_box :remember_me %> Remember me
+                </label>
+              </div>
+            <% end -%>
 
-        <div>
-          <%= f.submit "Log in", class: "btn btn-primary" %>
+            <div>
+              <%= f.submit "Log in", class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 
-  <%= render "devise/shared/links" %>
+  <%= render "users/shared/links" %>
 
 </div>
