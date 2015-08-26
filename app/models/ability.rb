@@ -5,7 +5,8 @@ class Ability < ActiveRecord::Base
   @@KINDS = [
     :place_order,
     :view_inventory, :change_inventory, :add_inventory,
-    :view_users, :change_user
+    :view_users, :change_user,
+    :view_category, :change_category, :add_category
   ].freeze
   cattr_reader :KINDS
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'purchases/history'
   get 'inventory/index'
   get 'permissions/index'
+  resources :categories
 
   namespace :api, defaults: { format: 'json' } do
     resources :orders,      only: [:create]

@@ -3,3 +3,6 @@ category_ship:
 
 category_drone:
   name: "Drone"
+
+category_empty:
+  name: "Empty"

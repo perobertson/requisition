@@ -40,6 +40,9 @@
             <% if current_user.can_view_inventory? %>
               <li><%= link_to('Inventory', inventory_index_path) %></li>
             <% end %>
+            <% if current_user.can_view_category? %>
+              <li><%= link_to('Categories', categories_path) %></li>
+            <% end %>
             <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
           <% else %>
             <li><%= link_to('Login', new_user_session_path) %></li>
