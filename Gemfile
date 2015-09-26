@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # language and framework version
 ruby '2.2.3'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.4', group: [:default, :deploy]
 
 group :production do
   # For heroku logging and static assets
@@ -55,10 +55,13 @@ group :test do
   gem 'rubocop'
 end
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+group :deploy do
+  gem 'platform-api', require: false
+  gem 'rendezvous', require: false
 end
+
+# Colorize the terminal
+gem 'colorize', require: false, group: [:default, :deploy]
 
 # Puma web server
 gem 'puma'
@@ -100,6 +103,3 @@ gem 'bootstrap-switch-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Colorize the terminal
-gem 'colorize', require: false

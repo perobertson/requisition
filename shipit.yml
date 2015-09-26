@@ -1,13 +1,16 @@
+machine:
+  environment:
+    APP_PRODUCTION: space-dolphins
+    APP_STAGING: space-dolphins-staging
+
 tasks:
   restart:
-    action: "Restart Application"
-    description: "Sometimes needed if you the application to restart but don't want to ship any new code."
+    action: "Restart"
+    description: "Sometimes needed if you want the application to restart but don't want to ship any new code."
     steps:
-      - heroku ps:restart --app space-dolphins
-
-review:
-  checks:
-    - heroku status
+      - bundle exec rake shipit:restart
 
 deploy:
-  override: []
+  override:
+    - bundle exec rake shipit:deploy
+
