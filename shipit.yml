@@ -5,3 +5,6 @@ tasks:
     steps:
       - heroku ps:restart --app space-dolphins
 
+review:
+  checks:
+    - heroku status
