@@ -8,3 +8,6 @@ tasks:
 review:
   checks:
     - heroku status
+
+deploy:
+  override: []
