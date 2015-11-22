@@ -10,6 +10,9 @@ tasks:
     steps:
       - bundle exec rake shipit:restart
 
+fetch:
+  - bundle exec rake shipit:version
+
 deploy:
   override:
     - bundle exec rake shipit:deploy
