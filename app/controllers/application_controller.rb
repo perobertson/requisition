@@ -12,7 +12,8 @@ protected
   def append_info_to_payload payload
     # this adds a few things to logging payload
     super
-    payload[:ip] = request.remote_ip
+    payload[:user_ip] = request.remote_ip
+    payload[:user_agent] = "'#{request.user_agent}'"
   end
 
   def error_render_method

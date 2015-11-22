@@ -13,22 +13,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # make the mailer raise errors if it fails so we can diagnose in debug
-  config.action_mailer.raise_delivery_errors = true
-
-  ActionMailer::Base.default from: "EVE Requisition <#{ENV['REQUISITION_MAILER_ACCOUNT']}>"
-
-  config.action_mailer.smtp_settings = {
-    address:                'smtp.mandrillapp.com',
-    port:                   587,                      # ports 587 and 2525 are also supported with STARTTLS
-    enable_starttls_auto:   true,                     # detects and uses STARTTLS
-    authentication:         'login',                  # Mandrill supports 'plain' or 'login'
-    user_name:              ENV['REQUISITION_MANDRILL_USERNAME'],
-    password:               ENV['REQUISITION_MANDRILL_APIKEY'],  # SMTP password is any valid API key
-    domain:                 ENV['REQUISITION_MAILER_DOMAIN'],     # your domain to identify your server when connecting
-  }
-  # for devise
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -52,14 +39,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Use lograge for many wins
-  config.lograge.enabled = true
-
-  # This makes sure that request params get dumped into the same single line that lograge outputs
-  # See ActionController's append_info_to_payload() function for other things we're adding
-  config.lograge.custom_options = lambda do |event|
-    payload = { 'params' => event.payload[:params].except('controller', 'action') }
-    payload.merge(event.payload.select { |k, v| [:ip].include?(k) && v.present? })
-  end
 end
