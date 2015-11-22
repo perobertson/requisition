@@ -1,5 +1,6 @@
 require 'rake'
-require 'platform-api'
+require 'heroku_helper'
+require 'colorize'
 
 namespace :shipit do
   task :restart do
@@ -8,17 +9,20 @@ namespace :shipit do
   namespace :restart do
     desc 'Restart production'
     task :production do
-      puts restart ENV['APP_PRODUCTION']
+      restart 'space-dolphins'
     end
 
     desc 'Restart staging'
     task :staging do
-      puts restart ENV['APP_STAGING']
+      restart 'space-dolphins-staging'
     end
 
     def restart app_name
-      heroku = PlatformAPI.connect_oauth ENV['HEROKU_API_KEY']
-      heroku.dyno.restart_all app_name
+      key = ENV['HEROKU_API_KEY']
+      abort 'HEROKU_API_KEY is required'.red if key.blank?
+
+      app = HerokuHelper::App.new(key, app_name)
+      app.restart
     end
   end
 end
