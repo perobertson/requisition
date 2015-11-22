@@ -5,14 +5,6 @@ GIT
     minitest-ci (3.0.4.pre)
       minitest (~> 5.0, >= 5.0.6)
 
-GIT
-  remote: https://github.com/perobertson/heroku-platform-helper.git
-  revision: b2d8c6473b7a39ab9ca44934fb5e921a198bb1d3
-  specs:
-    heroku-platform-helper (0.0.1)
-      platform-api (~> 0.3)
-      rendezvous (~> 0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -125,6 +117,10 @@ GEM
       moneta
       multi_json (>= 1.9.2)
       netrc
+    heroku-platform-helper (0.0.1)
+      colorize
+      platform-api (~> 0.3)
+      rendezvous (~> 0.1)
     highline (1.6.21)
     i18n (0.7.0)
     jbuilder (2.3.1)
@@ -290,7 +286,7 @@ DEPENDENCIES
   coveralls
   devise
   gon
-  heroku-platform-helper!
+  heroku-platform-helper
   jbuilder (~> 2.2)
   jquery-rails
   lograge
