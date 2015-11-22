@@ -17,7 +17,7 @@ namespace :shipit do
       if ENV['SHIPIT'] == '1'
         branch = 'HEAD'
       else
-        branch = 'production'
+        branch = 'master'
       end
       app.deploy branch: branch
     end
@@ -32,7 +32,7 @@ namespace :shipit do
       if ENV['SHIPIT'] == '1'
         branch = 'HEAD'
       else
-        branch = 'staging'
+        branch = 'develop'
       end
       app.deploy branch: branch
     end
