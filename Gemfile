@@ -37,6 +37,8 @@ group :development, :test do
   gem 'brakeman'
   # Gives you spec syntax like Rspec but for minitest
   gem 'minitest-spec-rails'
+  # For custom environment variables
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -98,8 +100,3 @@ gem 'bootstrap-sass'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
