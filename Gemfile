@@ -48,7 +48,7 @@ group :test do
   # for other reporters
   gem 'minitest-reporters'
   # JS engine for testing
-  gem 'therubyracer'
+  gem 'therubyracer',  platforms: :ruby
   # For test status
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
   # For code coverage
@@ -70,6 +70,8 @@ gem 'puma'
 
 # Auth
 gem 'devise'
+gem 'omniauth-eveonline'
+
 # Mailer
 gem 'mandrill-api'
 # Logging add-on that compresses Rails multi-line output
@@ -83,9 +85,6 @@ gem 'sass-rails'
 gem 'yui-compressor'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
