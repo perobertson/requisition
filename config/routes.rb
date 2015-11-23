@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   devise_for :users, controllers: {
-    confirmations: 'users/confirmations',
     omniauth_callbacks: 'users/omniauth_callbacks',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations',
-    sessions: 'users/sessions',
-    unlocks: 'users/unlocks'
+    confirmations: 'users/confirmations'
+    # passwords: 'users/passwords',
+    # registrations: 'users/registrations',
+    # sessions: 'users/sessions',
+    # unlocks: 'users/unlocks'
   }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
