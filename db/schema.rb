@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20151123033103) do
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "identities", force: :cascade do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id"
     t.string   "provider",   null: false
     t.string   "uid",        null: false
     t.datetime "created_at", null: false
