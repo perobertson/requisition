@@ -1,5 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
-ENV['REQUISITION_MAILER_ACCOUNT'] ||= 'public.relations@email.com'
+ENV['MAILER_FROM_EMAIL'] ||= 'public.relations@email.com'
 ENV['REQUISITION_BUILDER_EMAIL'] ||= 'ship.builder@email.com'
 
 require File.expand_path('../../config/environment', __FILE__)

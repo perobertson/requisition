@@ -18,12 +18,14 @@ namespace :project do
         # For Postgres
         file.write "export REQUISITION_PG_USERNAME=#{user_name}"
 
-        # For Mandril
-        file.write "export REQUISITION_MAILER_ACCOUNT=\n"
-        file.write "export REQUISITION_MANDRILL_USERNAME=\n"
-        file.write "export REQUISITION_MANDRILL_APIKEY=\n"
-        file.write "export REQUISITION_MAILER_DOMAIN=\n"
-        file.write "export REQUISITION_MAILER_HOST=\n"
+        # For Mailers
+        file.write "export MAILER_DOMAIN=\n"
+        file.write "export MAILER_HOST=\n"
+        file.write "export MAILER_FROM_EMAIL=\n"
+        file.write "export SPARKPOST_SMTP_HOST=\n"
+        file.write "export SPARKPOST_SMTP_PORT=\n"
+        file.write "export SPARKPOST_SMTP_USERNAME=\n"
+        file.write "export SPARKPOST_SMTP_PASSWORD=\n"
 
         # For the project
         file.write "export REQUISITION_BUILDER_EMAIL=\n"
