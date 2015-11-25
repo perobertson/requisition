@@ -44,8 +44,9 @@
         <% else %>
           <h4>You need to log in before placing an order</h4>
           <div class="form-group">
-            <%= link_to "Sign up", new_registration_path(:user), class: "btn btn-primary" %>
-            <%= link_to "Log in", new_session_path(:user), class: "btn btn-default" %>
+            <a href="<%= user_omniauth_authorize_url(:eve_online) %>" style='display: inline;'>
+              <%= image_tag 'https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45' %>
+            </a>
           </div>
         <% end %>
       </div>
