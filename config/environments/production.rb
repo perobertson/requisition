@@ -64,20 +64,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
 
-  ActionMailer::Base.default from: "EVE Requisition <#{ENV['REQUISITION_MAILER_ACCOUNT']}>"
+  ActionMailer::Base.default from: "EVE Requisition <#{ENV['MAILER_FROM_EMAIL']}>"
 
   config.action_mailer.smtp_settings = {
-    address:                'smtp.mandrillapp.com',
-    port:                   587,                      # ports 587 and 2525 are also supported with STARTTLS
-    enable_starttls_auto:   true,                     # detects and uses STARTTLS
-    authentication:         'login',                  # Mandrill supports 'plain' or 'login'
-    user_name:              ENV['REQUISITION_MANDRILL_USERNAME'],
-    password:               ENV['REQUISITION_MANDRILL_APIKEY'],  # SMTP password is any valid API key
-    domain:                 ENV['REQUISITION_MAILER_DOMAIN'],     # your domain to identify your server when connecting
+    domain: ENV['MAILER_DOMAIN'],
+    address: ENV['SPARKPOST_SMTP_HOST'],
+    port: ENV['SPARKPOST_SMTP_PORT'],
+    user_name: ENV['SPARKPOST_SMTP_USERNAME'],
+    password: ENV['SPARKPOST_SMTP_PASSWORD']
   }
-  config.action_mailer.default_url_options = {
-    host:                   ENV['REQUISITION_MAILER_HOST']
-  }
+  config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
