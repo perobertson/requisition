@@ -84,6 +84,7 @@ class UserTest < ActiveSupport::TestCase
 
   def valid_user attributes_to_delete = nil
     {
+      name: 'New User',
       email: 'new_user@gmail.com',
       password: 'password10'
     }.except!(*attributes_to_delete)

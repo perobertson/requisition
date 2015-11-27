@@ -37,6 +37,8 @@ group :development, :test do
   gem 'brakeman'
   # Gives you spec syntax like Rspec but for minitest
   gem 'minitest-spec-rails'
+  # For custom environment variables
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -46,7 +48,7 @@ group :test do
   # for other reporters
   gem 'minitest-reporters'
   # JS engine for testing
-  gem 'therubyracer'
+  gem 'therubyracer',  platforms: :ruby
   # For test status
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
   # For code coverage
@@ -68,8 +70,8 @@ gem 'puma'
 
 # Auth
 gem 'devise'
-# Mailer
-gem 'mandrill-api'
+gem 'omniauth-eveonline'
+
 # Logging add-on that compresses Rails multi-line output
 # so that it doesn't get mixed up with other requests in parallel
 gem 'lograge'
@@ -81,9 +83,6 @@ gem 'sass-rails'
 gem 'yui-compressor'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -98,8 +97,3 @@ gem 'bootstrap-sass'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
