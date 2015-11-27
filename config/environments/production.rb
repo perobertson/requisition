@@ -68,10 +68,10 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     domain: ENV['MAILER_DOMAIN'],
-    address: ENV['SPARKPOST_SMTP_HOST'],
-    port: ENV['SPARKPOST_SMTP_PORT'],
-    user_name: ENV['SPARKPOST_SMTP_USERNAME'],
-    password: ENV['SPARKPOST_SMTP_PASSWORD']
+    address: ENV['SMTP_HOST'],
+    port: ENV['SMTP_PORT'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD']
   }
   config.action_mailer.default_url_options = { host: ENV['MAILER_HOST'] }
 
