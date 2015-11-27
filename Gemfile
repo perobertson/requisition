@@ -72,8 +72,6 @@ gem 'puma'
 gem 'devise'
 gem 'omniauth-eveonline'
 
-# Mailer
-gem 'mandrill-api'
 # Logging add-on that compresses Rails multi-line output
 # so that it doesn't get mixed up with other requests in parallel
 gem 'lograge'
