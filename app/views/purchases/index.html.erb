@@ -36,10 +36,6 @@
     <div class="panel">
       <div class="panel-body">
         <% if user_signed_in? %>
-          <div class="form-group">
-            <label for="character-name">EVE Character Name</label>
-            <input type="text" class="form-control" id="character-name" placeholder="Your character name">
-          </div>
           <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
         <% else %>
           <h4>You need to log in before placing an order</h4>

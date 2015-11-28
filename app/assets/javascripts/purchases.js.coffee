@@ -32,7 +32,6 @@ $(document).on "page:change", ->
 
       $.post "/api/orders",
         order:
-          character_name: $("#character-name").val()
           order_items_attributes: order_items
       .done ->
         new Requisition.FlashMessage "Order placed", "alert-success"

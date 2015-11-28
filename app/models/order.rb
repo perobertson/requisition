@@ -11,7 +11,6 @@ class Order < ActiveRecord::Base
   before_validation :initialize_order_items, if: :new_record?
 
   validates :user,            presence: true
-  validates :character_name,  presence: true
   validates :order_items,     presence: true
   validates_associated :order_items
 

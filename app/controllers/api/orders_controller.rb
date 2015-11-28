@@ -18,7 +18,7 @@ module Api
   private
 
     def permitted_params
-      params.require(:order).permit(:character_name, order_items_attributes: [:item_id, :quantity])
+      params.require(:order).permit(order_items_attributes: [:item_id, :quantity])
     end
   end
 end

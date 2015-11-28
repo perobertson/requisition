@@ -10,7 +10,7 @@ class PurchaseMailerTest < ActionMailer::TestCase
       mail = ActionMailer::Base.deliveries.last
       mail.wont_be_nil
       mail.subject.must_include 'Order Placed'
-      mail.encoded.must_include order.character_name
+      mail.encoded.must_include order.user.name
       order.order_items.each do |order_item|
         mail.encoded.must_include order_item.item.name
         mail.encoded.must_include order_item.quantity.to_s
