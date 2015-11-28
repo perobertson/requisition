@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128161803) do
+ActiveRecord::Schema.define(version: 20151128164707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20151128161803) do
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.datetime "deleted_at"
     t.integer  "type_id",     null: false
     t.string   "name",        null: false
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20151128161803) do
   add_index "items", ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
 
   create_table "order_items", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.integer  "order_id",   null: false
     t.integer  "item_id",    null: false
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20151128161803) do
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.integer  "user_id",    null: false
   end
