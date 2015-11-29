@@ -1,7 +1,7 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    def self.provides_callback_for(provider)
-      class_eval %Q{
+    def self.provides_callback_for provider
+      class_eval %{
         def #{provider}
           @user = User.find_for_oauth(env["omniauth.auth"], current_user)
 
@@ -20,7 +20,7 @@ module Users
       provides_callback_for provider
     end
 
-    def after_sign_in_path_for(resource)
+    def after_sign_in_path_for resource
       if resource.email_verified?
         super resource
       else
