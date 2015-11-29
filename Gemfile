@@ -48,7 +48,7 @@ group :test do
   # for other reporters
   gem 'minitest-reporters'
   # JS engine for testing
-  gem 'therubyracer',  platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
   # For test status
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
   # For code coverage
@@ -96,4 +96,3 @@ gem 'gon'
 gem 'bootstrap-sass'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails'
-

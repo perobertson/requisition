@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :user_abilities,    only: [:create]
       resources :orders,            only: [:index]
     end
-    resources :user_abilities,      only: [:destroy]
+    resources :user_abilities, only: [:destroy]
   end
 
   match '*path', to: 'errors#catch_404', via: :all

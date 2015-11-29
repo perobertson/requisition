@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
+  def self.find_for_oauth auth, signed_in_resource = nil
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
 
@@ -53,15 +53,15 @@ class User < ActiveRecord::Base
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(:email => email).first if email
+      user = User.where(email: email).first if email
 
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
           name: auth.info.character_name,
-          #username: auth.info.nickname || auth.uid,
+          # username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20]
+          password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation!
         user.save!
@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   end
 
   def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
+    email && email !~ TEMP_EMAIL_REGEX
   end
 
 private
