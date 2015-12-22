@@ -9,10 +9,6 @@ group :production do
   gem 'rails_12factor'
   # App stats
   gem 'newrelic_rpm'
-  # Error reporting
-  gem 'rollbar'
-  # For killing long running connections
-  gem 'rack-timeout'
 end
 
 group :development do
@@ -64,6 +60,11 @@ end
 
 # Colorize the terminal
 gem 'colorize', require: false, group: [:default, :deploy]
+
+# Error reporting
+gem 'rollbar'
+# For killing long running connections
+gem 'rack-timeout'
 
 # Puma web server
 gem 'puma'

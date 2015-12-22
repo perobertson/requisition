@@ -4,6 +4,8 @@ machine:
     RACK_ENV: test
 
 dependencies:
+  bundler:
+    without: [production, development]
   post:
     - rake assets:precompile
 
