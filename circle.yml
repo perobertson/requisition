@@ -7,7 +7,7 @@ dependencies:
   bundler:
     without: [production, development]
   post:
-    - rake assets:precompile
+    - bundle exec rake assets:precompile
 
 test:
   override:
