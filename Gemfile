@@ -55,7 +55,7 @@ end
 
 group :deploy do
   # A wrapper library around the heroku platform api for easy app management
-  gem 'heroku-platform-helper', require: false
+  gem 'heroku-platform-helper', require: false, git: 'https://github.com/perobertson/heroku-platform-helper.git'
 end
 
 # Colorize the terminal
