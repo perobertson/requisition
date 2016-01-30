@@ -5,16 +5,6 @@ GIT
     minitest-ci (3.0.4.pre)
       minitest (~> 5.0, >= 5.0.6)
 
-GIT
-  remote: https://github.com/perobertson/heroku-platform-helper.git
-  revision: ace006c1415c409acef467c4eb8dccde1eb2b36a
-  branch: deploy-logging
-  specs:
-    heroku-platform-helper (0.1.0)
-      git (>= 1.2.6)
-      platform-api (~> 0.3)
-      rendezvous (~> 0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -141,6 +131,10 @@ GEM
       moneta
       multi_json (>= 1.9.2)
       netrc
+    heroku-platform-helper (0.2.0)
+      git (>= 1.2.6)
+      platform-api (~> 0.3)
+      rendezvous (~> 0.1)
     highline (1.7.8)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -334,7 +328,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   gon
-  heroku-platform-helper!
+  heroku-platform-helper
   jbuilder (~> 2.2)
   jquery-rails
   lograge
