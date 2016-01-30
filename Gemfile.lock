@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/perobertson/heroku-platform-helper.git
-  revision: 1b04e8d2d023f3c801bf5b451876f8dee2df4ea3
+  revision: 28ffa227e89ad74c9ed16b11956a9b7b334bc075
   branch: deploy-logging
   specs:
     heroku-platform-helper (0.1.0)
