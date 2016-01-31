@@ -13,7 +13,7 @@ end
 
 group :development do
   # Add consoles to pages for debugging
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
 end
 
 group :development, :test do

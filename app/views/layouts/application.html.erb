@@ -64,5 +64,11 @@
     <%= yield %>
   </div>
 
+  <% if Rails.env.development? %>
+    <div style='height: 200px;'>
+      <%# so the console doesnt cover up the bottom of the page %>
+    </div>
+    <% console %>
+  <% end %>
 </body>
 </html>
