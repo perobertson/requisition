@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :user_abilities, inverse_of: :user
   has_many :orders, inverse_of: :user
+  has_many :identities, inverse_of: :user
 
   accepts_nested_attributes_for :user_abilities
 
@@ -78,6 +79,16 @@ class User < ActiveRecord::Base
 
   def email_verified?
     email && email !~ TEMP_EMAIL_REGEX
+  end
+
+  def image_url size = 32
+    character_id = identities.where(provider: :eve_online).first.try :uid
+    if character_id
+      # TODO: validate the size choices (Not sure whats valid)
+      "https://image.eveonline.com/Character/#{character_id}_#{size}.jpg"
+    else
+      # TODO: make a not found image
+    end
   end
 
 private

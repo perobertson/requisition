@@ -45,7 +45,14 @@
             <% if current_user.can_view_category? %>
               <li><%= link_to('Categories', categories_path) %></li>
             <% end %>
-            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+            <li role="presentation" class="avatar dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag current_user.image_url, class: "img-responsive img-rounded" %>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              </ul>
+            </li>
           <% else %>
             <li>
               <a href="<%= user_omniauth_authorize_url(:eve_online) %>" style='display: inline;'>
