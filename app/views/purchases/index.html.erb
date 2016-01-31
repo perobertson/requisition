@@ -8,43 +8,55 @@
 
     <% @items.keys.each do |category_name| %>
       <% next if @items[category_name].empty? %>
-      <div class="panel panel-default">
-        <div class="panel-heading text-center">
-          <h4><%= category_name.to_s.pluralize %></h4>
-        </div>
-        <div class="panel-body">
-          <div class="container-fluid">
-            <div class="row">
-              <% @items[category_name].each do |item| %>
-                <div class="item-container col-xs-6 col-sm-4 col-md-2" data-item-id="<%= item.id %>">
-                  <h4><%= item.name %></h4>
-                  <a class="item-thumb">
-                    <%= image_tag item.image_url, class: "img-responsive img-thumbnail" %>
-                  </a>
-                  <div class="form-group">
-                    <label for="quantity-item-<%=item.id%>">Quantity</label>
-                    <input id="quantity-item-<%=item.id%>" class="form-control quantity" type="number" min="0" value="0">
-                  </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="panel panel-default col-sm-offset-1 col-sm-10">
+            <div class="panel-heading text-center">
+              <h4><%= category_name.to_s.pluralize %></h4>
+            </div>
+            <div class="panel-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <% @items[category_name].each do |item| %>
+                    <div class="item-container col-xs-6 col-sm-4 col-md-2" data-item-id="<%= item.id %>">
+                      <h4><%= item.name %></h4>
+                      <a class="item-thumb">
+                        <%= image_tag item.image_url, class: "img-responsive img-thumbnail" %>
+                      </a>
+                      <div class="form-group">
+                        <label for="quantity-item-<%=item.id%>">Quantity</label>
+                        <input id="quantity-item-<%=item.id%>" class="form-control quantity" type="number" min="0" value="0">
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
-              <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     <% end %>
 
-    <div class="panel">
-      <div class="panel-body">
-        <% if user_signed_in? %>
-          <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
-        <% else %>
-          <h4>You need to log in before placing an order</h4>
-          <div class="form-group">
-            <a href="<%= user_omniauth_authorize_url(:eve_online) %>" style='display: inline;'>
-              <%= image_tag 'https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45' %>
-            </a>
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="panel col-sm-offset-1 col-sm-10">
+          <div class="panel-body">
+            <% if user_signed_in? %>
+              <button id="submit-order" type="submit" class="btn btn-primary">Place Order</button>
+            <% else %>
+              <h4>You need to log in before placing an order</h4>
+              <div class="form-group">
+                <a href="<%= user_omniauth_authorize_url(:eve_online) %>" style='display: inline;'>
+                  <%= image_tag 'https://images.contentful.com/idjq7aai9ylm/4fSjj56uD6CYwYyus4KmES/4f6385c91e6de56274d99496e6adebab/EVE_SSO_Login_Buttons_Large_Black.png?w=270&h=45' %>
+                </a>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
       </div>
     </div>
   </form>

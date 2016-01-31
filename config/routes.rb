@@ -14,9 +14,13 @@ Rails.application.routes.draw do
 
   root 'purchases#index'
 
+  get 'purchases/index'
   get 'purchases/history'
+
   get 'inventory/index'
+
   get 'permissions/index'
+
   resources :categories
 
   namespace :api, defaults: { format: 'json' } do

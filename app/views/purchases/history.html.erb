@@ -1,48 +1,54 @@
-<div class="panel panel-default">
-  <div class="panel-heading text-center">
-    <h4>Past Orders</h4>
-  </div>
-  <br />
+<div class="container-fluid">
+  <div class="row">
 
-  <div class="container-fluid">
-    <div class="row">
-      <% if @orders.empty? %>
-        <h4 class="text-center">No orders found</h4>
-        <p class="text-center">
-          Click <%= link_to('here', root_path) %> to make one.
-        </p>
-      <%else %>
-        <% @orders.each do |order| %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4>Order Date: <%= order.created_at.to_date.iso8601 %></h4>
-              </div>
+    <div class="panel panel-default col-sm-offset-1 col-sm-10">
+      <div class="panel-heading text-center">
+        <h4>Past Orders</h4>
+      </div>
+      <br />
 
-              <div class="row">
-                <% order.order_items.each do |order_item| %>
-                  <% item = order_item.item %>
-                  <div class="order-item-container
-                    col-xs-6
-                    col-sm-4
-                    col-md-3
-                    col-lg-2">
-                    <h4><%= item.name %></h4>
-                    <p>
-                      <label>Quantity: </label><%= order_item.quantity %>
-                    </p>
-                    <a class="item-thumb">
-                      <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
-                    </a>
+      <div class="container-fluid">
+        <div class="row">
+          <% if @orders.empty? %>
+            <h4 class="text-center">No orders found</h4>
+            <p class="text-center">
+              Click <%= link_to('here', root_path) %> to make one.
+            </p>
+          <%else %>
+            <% @orders.each do |order| %>
+              <div class="col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4>Order Date: <%= order.created_at.to_date.iso8601 %></h4>
                   </div>
-                <% end %>
+
+                  <div class="row">
+                    <% order.order_items.each do |order_item| %>
+                      <% item = order_item.item %>
+                      <div class="order-item-container
+                        col-xs-6
+                        col-sm-4
+                        col-md-3
+                        col-lg-2">
+                        <h4><%= item.name %></h4>
+                        <p>
+                          <label>Quantity: </label><%= order_item.quantity %>
+                        </p>
+                        <a class="item-thumb">
+                          <%= image_tag item.image_url, class: "img-responsive img-thumbnail", alt: "Image of #{item.name}" %>
+                        </a>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-        <% end %>
-      <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-  </div>
 
+  </div>
 </div>
