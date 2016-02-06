@@ -2,4 +2,8 @@
 #
 # To ban all spiders from the entire site uncomment the next two lines:
 User-agent: *
+<% if ENV['ALLOW_ROBOTS'] %>
+Disallow:
+<% else %>
 Disallow: /
+<% end %>

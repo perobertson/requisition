@@ -33,4 +33,5 @@ Rails.application.routes.draw do
     resources :user_abilities, only: [:destroy]
   end
 
+  get 'robot', to: 'robot#show'
 end
