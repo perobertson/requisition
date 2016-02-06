@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  TEMP_EMAIL_PREFIX = 'change@me'
+  TEMP_EMAIL_PREFIX = 'change@me'.freeze
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   # Include default devise modules. Others available are:

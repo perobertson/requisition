@@ -14,11 +14,11 @@ namespace :shipit do
       abort 'HEROKU_API_KEY is required'.red if key.blank?
 
       app = HerokuHelper::App.new(key, app_name)
-      if ENV['SHIPIT'] == '1'
-        branch = 'HEAD'
-      else
-        branch = 'master'
-      end
+      branch = if ENV['SHIPIT'] == '1'
+                 'HEAD'
+               else
+                 'master'
+               end
       app.deploy branch: branch
     end
 
@@ -29,11 +29,11 @@ namespace :shipit do
       abort 'HEROKU_API_KEY is required'.red if key.blank?
 
       app = HerokuHelper::App.new(key, app_name)
-      if ENV['SHIPIT'] == '1'
-        branch = 'HEAD'
-      else
-        branch = 'develop'
-      end
+      branch = if ENV['SHIPIT'] == '1'
+                 'HEAD'
+               else
+                 'develop'
+               end
       app.deploy branch: branch
     end
   end

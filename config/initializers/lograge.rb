@@ -7,7 +7,7 @@ Rails.application.config.lograge.custom_options = lambda do |event|
   white_list = [:user_ip, :user_id]
   white_list.each do |key|
     if event.payload.key? key
-      payload.merge!(key => event.payload[key])
+      payload[key] = event.payload[key]
     end
   end
   payload

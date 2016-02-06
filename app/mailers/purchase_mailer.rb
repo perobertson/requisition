@@ -1,5 +1,4 @@
 class PurchaseMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,6 +6,6 @@ class PurchaseMailer < ApplicationMailer
   #
   def purchase_order order
     @order = order
-    mail to: "#{ENV['REQUISITION_BUILDER_EMAIL']}"
+    mail to: ENV['REQUISITION_BUILDER_EMAIL']
   end
 end
