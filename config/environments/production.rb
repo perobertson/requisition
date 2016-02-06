@@ -63,9 +63,6 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-
-  ActionMailer::Base.default from: "EVE Requisition <#{ENV['MAILER_FROM_EMAIL']}>"
-
   config.action_mailer.smtp_settings = {
     domain: ENV['MAILER_DOMAIN'],
     address: ENV['SMTP_HOST'],

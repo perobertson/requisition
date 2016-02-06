@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>A user has placed an order</h1>
-    <p>
-      <strong><%= @order.user.name %></strong> has placed an order for:
+<h1>A user has placed an order</h1>
+<p>
+  <strong><%= @order.user.name %></strong> has placed an order for:
 
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @order.order_items.each do |order_item| %>
-            <tr>
-              <td><%= order_item.item.name %></td>
-              <td><%= order_item.quantity %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </p>
-  </body>
-</html>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.item.name %></td>
+          <td><%= order_item.quantity %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>

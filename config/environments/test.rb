@@ -31,7 +31,6 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  ActionMailer::Base.default from: "EVE Requisition <#{ENV['MAILER_FROM_EMAIL']}>"
   # for devise
   config.action_mailer.default_url_options = { host: 'localhost' }
 

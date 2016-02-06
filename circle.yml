@@ -4,10 +4,19 @@ machine:
     RACK_ENV: test
 
 dependencies:
+  pre:
+    - ruby -v
+    - gem install bundler
   bundler:
-    without: [production, development]
+    without: [production, development, doc]
   post:
     - bundle exec rake assets:precompile
+
+database:
+  override:
+    - bundle exec rake db:create db:migrate
+  post:
+    - git status --short && test "$(git status --short)" = "?? public/assets/"
 
 test:
   override:

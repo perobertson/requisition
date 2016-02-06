@@ -16,6 +16,7 @@ class UserTest < ActiveSupport::TestCase
 
     it 'must create a valid user' do
       subject.valid?.must_equal true, subject.errors.messages
+      subject.skip_confirmation!
       subject.save!
     end
   end
@@ -23,6 +24,7 @@ class UserTest < ActiveSupport::TestCase
   describe 'defaults' do
     it 'must grant new users the place order ability' do
       user = User.new valid_user
+      user.skip_confirmation!
       user.user_abilities.wont_be_empty
       abilities = user.user_abilities.select { |user_ability| user_ability.ability == ability_place_order }
       abilities.length.must_equal 1
