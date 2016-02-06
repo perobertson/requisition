@@ -1,5 +1,5 @@
 <div data-user-id="<%= user.id %>" class="user-container">
-  <h4><%= user.email %></h4>
+  <h4><%= user.name %></h4>
   <% Ability.KINDS.each do |kind| %>
     <div class="ability-container" data-ability-kind="<%= kind %>">
       <% if current_user.can_change_user? %>
