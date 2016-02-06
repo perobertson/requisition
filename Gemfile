@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 # language and framework version
 ruby '2.3.0'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1', group: [:default, :deploy]
 
 group :production do
@@ -12,23 +14,22 @@ group :production do
 end
 
 group :development do
-  # Add consoles to pages for debugging
+  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
 end
 
 group :development, :test do
   # Lets you go back and forth in time virtually
   gem 'timecop'
-  # Byebug is a simple to use, feature rich debugger for Ruby 2
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Trust me, better errors
   gem 'better_errors'
   # Debug console on error page
   gem 'binding_of_caller'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  # Squelch the logging of asset retrieval
-  gem 'quiet_assets'
   # For finding security vulnerabilities
   gem 'brakeman'
   # Gives you spec syntax like Rspec but for minitest
@@ -43,8 +44,6 @@ group :test do
   gem 'simplecov'
   # for other reporters
   gem 'minitest-reporters'
-  # JS engine for testing
-  gem 'therubyracer', platforms: :ruby
   # For test status
   gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
   # For code coverage
@@ -84,6 +83,9 @@ gem 'sass-rails'
 gem 'yui-compressor'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

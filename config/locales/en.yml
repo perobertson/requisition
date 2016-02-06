@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  purchase_mailer:
+    purchase_order:
+      subject: "[TEST] Order Placed"
