@@ -1,0 +1,30 @@
+image: ruby:2.3
+services:
+  - postgres:latest
+
+variables:
+  RAILS_ENV: test
+  RACK_ENV: test
+  PG_HOST: postgres
+  PG_USER: postgres
+  PG_PASSWORD: ""
+
+test_job:
+  stage: test
+  tags:
+    - ruby
+    - postgres
+  artifacts:
+    paths:
+      - rubocop.html
+  script:
+    - mkdir -p /cache/bundle
+    - ls -lAh /cache/bundle
+    - bundle check --path=/cache/bundle || bundle install --path /cache/bundle --without=production,development,deploy,doc
+    - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
+    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
+    - bundle exec rake db:create
+    - bundle exec rake db:migrate
+    - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
+    - bundle exec rake assets:precompile
+    - bundle exec rake test

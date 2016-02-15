@@ -45,7 +45,7 @@ group :test do
   # for other reporters
   gem 'minitest-reporters'
   # For test status
-  gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
+  gem 'minitest-ci', git: 'https://github.com/circleci/minitest-ci.git'
   # For code coverage
   gem 'coveralls'
   # Static analysis against the ruby style guide

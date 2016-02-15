@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:circleci/minitest-ci.git
+  remote: https://github.com/circleci/minitest-ci.git
   revision: e98c99797b683013e5507602999a2ca5c1e4b607
   specs:
     minitest-ci (3.0.4.pre)
