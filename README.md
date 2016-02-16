@@ -12,7 +12,8 @@ Players can fill out an order and we will follow up with you in game to work out
 - Inventory management
 - Custom categories
 
-Check out the [issue list](https://github.com/perobertson/requisition/issues) to see whats coming up.
+Check out the [issue list](https://gitlab.com/perobertson/requisition/issues) to see whats coming up.
+
 
 ## Code Status
 
@@ -24,8 +25,9 @@ Check out the [issue list](https://github.com/perobertson/requisition/issues) to
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/perobertson/requisition.
+Bug reports and pull requests are welcome on GitLab at https://gitlab.com/perobertson/requisition.
 
+I mainly work out of GitLab and sync my branches over to GitHub from time to time since lots of services rely on GitHub.
 
 ## License
 
