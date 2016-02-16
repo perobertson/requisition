@@ -5,9 +5,9 @@ services:
 variables:
   RAILS_ENV: test
   RACK_ENV: test
-  PG_HOST: postgres
-  PG_USER: postgres
-  PG_PASSWORD: ""
+  DB_HOST: postgres
+  DB_USER: postgres
+  DB_PASSWORD: ""
 
 test_job:
   stage: test

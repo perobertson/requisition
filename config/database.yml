@@ -5,8 +5,10 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
   database: <%= Rails.root.basename.to_s + '_development' %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  user: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,13 +16,9 @@ development:
 test:
   <<: *default
   database: <%= Rails.root.basename.to_s + '_test' %>
-<% if ENV['CI'] %>
-  host: <%= ENV['PG_HOST'] %>
-  user: <%= ENV['PG_USER'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
-<% else %>
-  host: localhost
-<% end %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  user: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
