@@ -17,6 +17,7 @@ test_job:
   artifacts:
     paths:
       - rubocop.html
+      - coverage/
   script:
     - mkdir -p /cache/bundle
     - ls -lAh /cache/bundle

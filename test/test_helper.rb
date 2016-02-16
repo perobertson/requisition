@@ -10,37 +10,34 @@ else
   Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
 end
 
-if ENV['NO_COVERAGE'] != '1'
-  require 'simplecov'
-  require 'coveralls'
+require 'simplecov'
 
-  if ENV['CIRCLE_ARTIFACTS']
-    dir = File.join('..', '..', '..', ENV['CIRCLE_ARTIFACTS'], 'coverage')
-    SimpleCov.coverage_dir(dir)
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join('..', '..', '..', ENV['CIRCLE_ARTIFACTS'], 'coverage')
+  SimpleCov.coverage_dir(dir)
+end
+
+SimpleCov.start do
+  command_name "requisition_#{ENV['CIRCLE_BUILD_NUM']}_#{ENV['CIRCLE_NODE_INDEX']}"
+
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Policies', 'app/policies'
+  add_group 'Configuration', 'config/'
+  add_group 'Libraries', 'lib/'
+  add_group 'Test Files', 'test/'
+
+  add_group 'Long files' do |src_file|
+    src_file.lines.count > 250
   end
 
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-  SimpleCov.start do
-    command_name "requisition_#{ENV['CIRCLE_BUILD_NUM']}_#{ENV['CIRCLE_NODE_INDEX']}"
+  # get rid of bundled rails/ruby code
+  add_filter 'vendor/bundle'
 
-    add_group 'Models', 'app/models'
-    add_group 'Controllers', 'app/controllers'
-    add_group 'Helpers', 'app/helpers'
-    add_group 'Policies', 'app/policies'
-    add_group 'Configuration', 'config/'
-    add_group 'Libraries', 'lib/'
-    add_group 'Test Files', 'test/'
-
-    add_group 'Long files' do |src_file|
-      src_file.lines.count > 250
-    end
-
-    # get rid of bundled rails/ruby code
-    add_filter 'vendor/bundle'
-
-    # make sure we get all results since our tests can take a while
-    merge_timeout 60 * 30
-  end
+  # make sure we get all results since our tests can take a while
+  merge_timeout 60 * 30
 end
 
 require 'rails/test_help'
