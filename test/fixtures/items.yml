@@ -4,48 +4,56 @@ revelation:
   type_id: 19720
   name: "Revelation"
   for_sale: true
+  rendered: true
 
 naglfar:
   category: category_ship
   type_id: 19722
   name: "Naglfar"
   for_sale: true
+  rendered: true
 
 moros:
   category: category_ship
   type_id: 19724
   name: "Moros"
   for_sale: true
+  rendered: true
 
 fenrir:
   category: category_ship
   type_id: 20189
   name: "Fenrir"
   for_sale: true
+  rendered: true
 
 archon:
   category: category_ship
   type_id: 23757
   name: "Archon"
   for_sale: true
+  rendered: true
 
 thanatos:
   category: category_ship
   type_id: 23911
   name: "Thanatos"
   for_sale: true
+  rendered: true
 
 chimera:
   category: category_ship
   type_id: 23915
   name: "Chimera"
   for_sale: true
+  rendered: true
 
 nidhoggur:
   category: category_ship
   type_id: 24483
   name: "Nidhoggur"
   for_sale: true
+  rendered: true
 
 # Drones
 hobgoblin_ii:
@@ -53,69 +61,81 @@ hobgoblin_ii:
   type_id: 2456
   name: "Hobgoblin II"
   for_sale: true
+  rendered: true
 
 warrior_ii:
   category: category_drone
   type_id: 2488
   name: "Warrior II"
   for_sale: true
+  rendered: true
 
 hammerhead_ii:
   category: category_drone
   type_id: 2185
   name: "Hammerhead II"
   for_sale: true
+  rendered: true
 
 valkyrie_ii:
   category: category_drone
   type_id: 21640
   name: "Valkyrie II"
   for_sale: true
+  rendered: true
 
 ogre_ii:
   category: category_drone
   type_id: 2446
   name: "Ogre II"
   for_sale: true
+  rendered: true
 
 berserker_ii:
   category: category_drone
   type_id: 2478
   name: "Berserker II"
   for_sale: true
+  rendered: true
 
 garde_ii:
   category: category_drone
   type_id: 28211
   name: "Garde II"
   for_sale: true
+  rendered: true
 
 bouncer_ii:
   category: category_drone
   type_id: 28215
   name: "Bouncer II"
   for_sale: true
+  rendered: true
 
 dragonfly:
   category: category_drone
   type_id: 23057
   name: "Dragonfly"
   for_sale: true
+  rendered: true
 
 eingerji:
   category: category_drone
   type_id: 23061
   name: "Eingerji"
   for_sale: true
+  rendered: true
 
 firbolg:
   category: category_drone
   type_id: 23059
   name: "Firbolg"
   for_sale: true
+  rendered: true
 
 templar:
   category: category_drone
   type_id: 23055
   name: "Templar"
   for_sale: true
+  rendered: true

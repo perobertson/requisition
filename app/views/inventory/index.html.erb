@@ -26,6 +26,10 @@
               <%= f.check_box :for_sale, class: "form-control", "data-on-text"=>"Y", "data-off-text"=>"N" %>
             </div>
             <div class="form-group">
+              <%= f.label :rendered %>
+              <%= f.check_box :rendered, class: "form-control", "data-on-text"=>"Y", "data-off-text"=>"N" %>
+            </div>
+            <div class="form-group">
               <%= f.submit "Add Item", class: "btn btn-primary" %>
             </div>
           <% end %>

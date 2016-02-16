@@ -44,7 +44,8 @@ class ItemTest < ActiveSupport::TestCase
       type_id: 1,
       name: 'Test ship',
       for_sale: true,
-      category: categories(:category_ship)
+      category: categories(:category_ship),
+      rendered: true
     }.except!(*attributes_to_delete)
   end
 end

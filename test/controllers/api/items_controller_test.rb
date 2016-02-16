@@ -15,9 +15,10 @@ module Api
           format: :json,
           item: {
             category_id: category.id,
-            type_id: Random.rand(100),
+            type_id: Random.rand(100) + 1,
             name: 'New Item',
-            for_sale: 0
+            for_sale: 0,
+            rendered: true
           }
         }
         post :create, request_body

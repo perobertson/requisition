@@ -19,8 +19,14 @@ class Item < ActiveRecord::Base
   validates :type_id,   numericality: { only_integer: true, greater_than: 0 }
   validates :type_id,   uniqueness: true
 
-  def image_url size = 128
-    # TODO: validate the size choices (Not sure whats valid)
-    "https://image.eveonline.com/Render/#{type_id}_#{size}.png"
+  def image_url size = 64
+    # TODO: validate the size choices
+    if rendered?
+      # Inventory type icons are available in resolutions up to 512x512.
+      "https://image.eveonline.com/Render/#{type_id}_#{size}.png"
+    else
+      # Inventory type icons are only available in 64x64 and in 32x32.
+      "https://image.eveonline.com/Type/#{type_id}_#{size}.png"
+    end
   end
 end

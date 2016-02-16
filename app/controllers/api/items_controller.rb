@@ -50,11 +50,11 @@ module Api
     end
 
     def permitted_create_params
-      params.require(:item).permit(:category_id, :type_id, :name, :for_sale)
+      params.require(:item).permit(:category_id, :type_id, :name, :for_sale, :rendered)
     end
 
     def permitted_update_params
-      params.require(:item).permit(:category_id, :for_sale)
+      params.require(:item).permit(:category_id, :for_sale, :rendered)
     end
   end
 end

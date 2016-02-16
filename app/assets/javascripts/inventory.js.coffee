@@ -2,12 +2,22 @@ $(document).on "page:change", ->
   if $("body[data-controller=inventory][data-action=index]").get 0
     $("input[type='checkbox']").bootstrapSwitch()
 
-    $(".items-container").on 'switchChange.bootstrapSwitch', "input[type='checkbox']", (event, state) ->
+    $(".items-container").on 'switchChange.bootstrapSwitch', "input[type='checkbox'].attr-for_sale", (event, state) ->
       item_id = $(this).parents(".item-container").data "item-id"
       $.ajax "/api/items/#{item_id}",
         type: "put"
         contentType: "application/json"
         data: JSON.stringify item: for_sale: state
+      .fail (jqXHR, status, errorThrown) =>
+        msg = jqXHR.getResponseHeader("X-Message")
+        new Requisition.FlashMessage(msg, "alert-danger") if msg?
+
+    $(".items-container").on 'switchChange.bootstrapSwitch', "input[type='checkbox'].attr-rendered", (event, state) ->
+      item_id = $(this).parents(".item-container").data "item-id"
+      $.ajax "/api/items/#{item_id}",
+        type: "put"
+        contentType: "application/json"
+        data: JSON.stringify item: rendered: state
       .fail (jqXHR, status, errorThrown) =>
         msg = jqXHR.getResponseHeader("X-Message")
         new Requisition.FlashMessage(msg, "alert-danger") if msg?
