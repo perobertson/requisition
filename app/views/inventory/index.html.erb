@@ -1,12 +1,10 @@
 <div class="container-fluid">
   <% if current_user.can_add_inventory? %>
     <div class="row">
-      <div class="col-xs-12 ">
-        <p class="bg-info text-center">
-          Add new items to sell.
-        </p>
-      </div>
-      <div class="panel">
+      <div class="panel col-sm-offset-1 col-sm-10">
+        <div class="panel-heading">
+          <h4>Add new items to sell</h4>
+        </div>
         <div class="panel-body">
           <%= form_for @new_item, url: api_items_path, html: {id: "new-item", role: "form"}, remote: true do |f| %>
             <div class="form-group">
