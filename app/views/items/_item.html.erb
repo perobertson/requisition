@@ -13,19 +13,19 @@
       <label for="category-item-<%=item.id%>">Category</label>
       <%= select_tag :category_id, options_for_select(Category.names_for_select, item.category_id), { id: "category-item-#{item.id}", class: "form-control" } %>
     </div>
-    <label for="sale-item-<%=item.id%>">For Sale</label>
     <% if item.for_sale? %>
       <input id="sale-item-<%=item.id%>" class="attr-for_sale" type="checkbox" data-on-text="Y" data-off-text="N" checked>
     <% else %>
       <input id="sale-item-<%=item.id%>" class="attr-for_sale" type="checkbox" data-on-text="Y" data-off-text="N">
     <% end %>
-
-    <label for="rendered-item-<%=item.id%>">Rendered</label>
+    <label for="sale-item-<%=item.id%>">For Sale</label>
+    <br>
     <% if item.rendered? %>
       <input id="rendered-item-<%=item.id%>" class="attr-rendered" type="checkbox" data-on-text="Y" data-off-text="N" checked>
     <% else %>
       <input id="rendered-item-<%=item.id%>" class="attr-rendered" type="checkbox" data-on-text="Y" data-off-text="N">
     <% end %>
+    <label for="rendered-item-<%=item.id%>">Rendered</label>
   <% else %>
     <div class="form-group">
       <label>Category</label>

@@ -2,7 +2,7 @@
   <% if current_user.can_add_inventory? %>
     <div class="row">
       <div class="panel col-sm-offset-1 col-sm-10">
-        <div class="panel-heading">
+        <div class="panel-heading text-center">
           <h4>Add new items to sell</h4>
         </div>
         <div class="panel-body">
@@ -36,14 +36,18 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col-xs-12 ">
-      <p class="bg-info text-center">
-        Select the items that you want to sell.
-      </p>
-    </div>
-    <div class="items-container">
-      <% @items.each do |item| %>
-        <%= render "items/item", item: item %>
+    <div class="panel col-sm-offset-1 col-sm-10">
+      <% @categories.each do |category| %>
+        <div class="panel-heading text-center">
+          <h4><%= category.name.pluralize %></h4>
+        </div>
+        <div class="panel-body items-container">
+          <div class="row">
+            <% category.items.order(:name).each do |item| %>
+              <%= render "items/item", item: item %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
