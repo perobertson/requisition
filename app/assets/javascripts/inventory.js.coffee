@@ -32,14 +32,10 @@ $(document).on "page:change", ->
         data: JSON.stringify item: category_id: categoryId
 
     $("#new-item").on "ajax:success", (event, data, status, xhr) ->
-      $.ajax "/api/items/#{data.id}.html",
-        contentType: "html"
-      .done (html) ->
-        $(".items-container").append(html)
-        $(".item-container[data-item-id='#{data.id}'] input[type='checkbox']").bootstrapSwitch()
-        new Requisition.FlashMessage("Item added", "alert-success")
-      .fail ->
+      new Requisition.FlashMessage("Item added", "alert-success")
+      setTimeout ->
         window.location.reload()
+      , 2000
 
     $("#new-item").on "ajax:error", (event, jqXHR, errorThrown) ->
       msg = jqXHR.getResponseHeader("X-Message")
