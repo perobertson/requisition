@@ -18,6 +18,8 @@ $(document).on "page:change", ->
         type: "put"
         contentType: "application/json"
         data: JSON.stringify item: rendered: state
+      .done (data, textStatus, jqXHR) =>
+        window.location.reload()
       .fail (jqXHR, status, errorThrown) =>
         msg = jqXHR.getResponseHeader("X-Message")
         new Requisition.FlashMessage(msg, "alert-danger") if msg?
@@ -30,6 +32,8 @@ $(document).on "page:change", ->
         type: "put"
         contentType: "application/json"
         data: JSON.stringify item: category_id: categoryId
+      .done (data, textStatus, jqXHR) =>
+        window.location.reload()
 
     $("#new-item").on "ajax:success", (event, data, status, xhr) ->
       new Requisition.FlashMessage("Item added", "alert-success")
