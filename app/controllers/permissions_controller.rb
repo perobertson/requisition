@@ -4,6 +4,6 @@ class PermissionsController < ApplicationController
   def index
     return user_not_authorized unless current_user.can_view_users?
 
-    @users = User.all
+    @users = User.all.order(:name)
   end
 end

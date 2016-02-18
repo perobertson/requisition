@@ -1,7 +1,5 @@
-<div class="container-fluid users-container">
+<div class="container-fluid users-container col-sm-offset-1 col-sm-10">
   <% @users.each do |user| %>
-    <div class="row">
-      <%= render "users/user", user: user %>
-    </div>
+    <%= render "users/user", user: user %>
   <% end %>
 </div>
