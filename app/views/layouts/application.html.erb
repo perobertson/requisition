@@ -67,11 +67,15 @@
 
   <%= render 'shared/alerts' %>
 
-  <div>
+  <div class='main-content'>
     <%= yield %>
   </div>
 
-  <% if Rails.env.development? %>
+  <div id='footer'>
+    <%= render 'shared/footer' %>
+  </div>
+
+  <% if Rails.env.development? && ENV['WEB_CONSOLE'] %>
     <div style='height: 200px;'>
       <%# so the console doesnt cover up the bottom of the page %>
     </div>
