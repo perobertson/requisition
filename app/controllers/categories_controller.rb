@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   def index
     return user_not_authorized unless current_user.can_view_category?
 
-    @categories = Category.not_deleted.order :name
+    @categories = Category.order :name
   end
 
   # GET /categories/1
@@ -67,9 +67,8 @@ class CategoriesController < ApplicationController
   def destroy
     return user_not_authorized unless current_user.can_change_category?
 
-    @category.deleted_at = Time.current
     respond_to do |format|
-      if @category.save
+      if @category.destroy
         format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
         format.json { head :no_content }
       else

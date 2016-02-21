@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="page-header">
-  <h1><%= @category.name.pluralize %>
-    <% if @category.deleted_at.present? %>
-      <small>Deleted at: <%= @category.deleted_at.iso8601 %></small>
-    <% end %>
-  </h1>
+  <h1><%= @category.name.pluralize %></h1>
 </div>
 
 <div class='panel'>

@@ -104,7 +104,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
         it 'must destroy category' do
           category = categories :category_empty
-          assert_difference('Category.not_deleted.count', -1) do
+          assert_difference('Category.count', -1) do
             delete :destroy, id: category.id
           end
 

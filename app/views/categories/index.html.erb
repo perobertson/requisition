@@ -25,7 +25,7 @@
                 <% end %>
               </td>
               <td class='danger'>
-                <% if category.deleted_at.nil? && current_user.can_change_category? %>
+                <% if current_user.can_change_category? %>
                   <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% end %>
               </td>

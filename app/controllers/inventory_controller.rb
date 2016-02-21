@@ -4,7 +4,7 @@ class InventoryController < ApplicationController
   def index
     return user_not_authorized unless current_user.can_view_inventory?
 
-    @categories = Category.not_deleted.order(:name)
+    @categories = Category.order(:name)
     @new_item = Item.new
   end
 end

@@ -33,7 +33,7 @@ module Api
       end
 
       it 'must change the items category' do
-        category_id = Category.not_deleted.ids.delete_if { |id| id == item.category_id }.sample
+        category_id = Category.ids.delete_if { |id| id == item.category_id }.sample
 
         request_body = {
           format: :json,
