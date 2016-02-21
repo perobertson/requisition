@@ -7,7 +7,7 @@
       <div class="ability-container" data-ability-kind="<%= kind %>">
         <% if current_user.can_change_user? %>
           <% if user.has_ability? kind %>
-            <% user_ability = user.user_abilities.not_deleted.joins(:ability).where(abilities: {kind: kind}).first %>
+            <% user_ability = user.user_abilities.joins(:ability).where(abilities: {kind: kind}).first %>
             <input id="user-<%=user.id%>-ability-<%=kind%>" type="checkbox" checked
               data-on-text="Y"
               data-off-text="N"

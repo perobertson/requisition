@@ -29,7 +29,6 @@ class UserTest < ActiveSupport::TestCase
       abilities = user.user_abilities.select { |user_ability| user_ability.ability == ability_place_order }
       abilities.length.must_equal 1
       abilities.first.ability.must_equal ability_place_order
-      abilities.first.deleted_at.must_be_nil
       user.save!
       user.reload
       user.can_place_order?.must_equal true
@@ -50,14 +49,6 @@ class UserTest < ActiveSupport::TestCase
         subject.has_ability?(kind).must_equal false
       end
     end
-
-    it 'must return false if the user has the ability has been removed' do
-      Ability.KINDS.each do |kind|
-        ability = Ability.find_by_kind kind
-        subject.user_abilities.create! ability: ability, deleted_at: Time.current
-        subject.has_ability?(kind).must_equal false, "Failed on #{kind}"
-      end
-    end
   end
 
   describe 'dynamic helpers' do
@@ -71,14 +62,6 @@ class UserTest < ActiveSupport::TestCase
 
     it 'must return false if the user does not have the ability' do
       Ability.KINDS.each do |kind|
-        subject.send('can_' + kind.to_s + '?').must_equal false, "Failed on #{kind}"
-      end
-    end
-
-    it 'must return false if the user has the ability has been removed' do
-      Ability.KINDS.each do |kind|
-        ability = Ability.find_by_kind kind
-        subject.user_abilities.create! ability: ability, deleted_at: Time.current
         subject.send('can_' + kind.to_s + '?').must_equal false, "Failed on #{kind}"
       end
     end

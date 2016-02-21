@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
   def has_ability? kind
-    user_abilities.not_deleted.joins(:ability).where(abilities: { kind: kind }).any?
+    user_abilities.joins(:ability).where(abilities: { kind: kind }).any?
   end
 
   # Ability helper methods 'can_ability_kind?'

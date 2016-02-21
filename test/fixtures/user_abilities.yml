@@ -2,22 +2,11 @@
 <%= "user_ability_user1_#{ability}:" %>
 <%= '  user: user1' %>
 <%= "  ability: 'ability_#{ability}'" %>
-
-<%= "user_ability_user1_#{ability}_deleted:" %>
-<%= '  user: user1' %>
-<%= "  ability: ability_#{ability}" %>
-<%= "  deleted_at:  #{Time.current}" %>
 <% end %>
-
 
 user_ability_user2_place_order:
   user: user2
   ability: ability_place_order
-
-user_ability_user2_place_order_deleted:
-  user: user2
-  ability: ability_place_order
-  deleted_at: <%= Time.current %>
 
 user_ability_user_jimmy_place_order:
   user: user_jimmy

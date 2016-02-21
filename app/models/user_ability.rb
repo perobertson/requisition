@@ -1,6 +1,4 @@
 class UserAbility < ActiveRecord::Base
-  include SoftDeletable
-
   # Associations
   belongs_to :user, inverse_of: :user_abilities
   belongs_to :ability
@@ -9,5 +7,5 @@ class UserAbility < ActiveRecord::Base
   validates :user,      presence: true
   validates :ability,   presence: true
 
-  validates :ability,   uniqueness: { scope: [:user, :deleted_at] }
+  validates :ability,   uniqueness: { scope: [:user] }
 end

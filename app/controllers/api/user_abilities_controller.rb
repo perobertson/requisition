@@ -33,8 +33,7 @@ module Api
         return render_nothing :unauthorized
       end
 
-      @user_ability.deleted_at = Time.current
-      if @user_ability.save
+      if @user_ability.destroy
         flash[:success] = 'Ability removed'
         return render_nothing :no_content
       end

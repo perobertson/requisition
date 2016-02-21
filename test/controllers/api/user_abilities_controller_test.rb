@@ -43,7 +43,7 @@ module Api
       end
 
       it 'must remove an ability from a user' do
-        user_ability = user.user_abilities.not_deleted.where(ability: ability_place_order).first
+        user_ability = user.user_abilities.where(ability: ability_place_order).first
         user_ability.wont_be_nil
 
         request_body = {
@@ -53,9 +53,7 @@ module Api
         Timecop.freeze do
           delete :destroy, request_body
           response.status.must_equal 204, response.body
-
-          user_ability.reload
-          user_ability.deleted_at.to_i.must_equal Time.current.to_i
+          UserAbility.find_by_id(user_ability.id).must_be_nil
         end
       end
     end

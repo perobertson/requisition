@@ -14,7 +14,7 @@ class InventoryControllerTest < ActionController::TestCase
     describe 'unauthorized' do
       before do
         switch_login users(:user1)
-        @current_user.user_abilities.not_deleted.update_all deleted_at: Time.current
+        @current_user.user_abilities.destroy_all
       end
 
       describe 'index' do
