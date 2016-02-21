@@ -1,6 +1,4 @@
 class Ability < ActiveRecord::Base
-  include SoftDeletable
-
   # Constants
   @@KINDS = [
     :place_order,
