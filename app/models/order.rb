@@ -16,6 +16,8 @@ class Order < ActiveRecord::Base
 
   after_save :send_order_notification
 
+  before_destroy proc { false }
+
 private
 
   def send_order_notification

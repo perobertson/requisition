@@ -11,4 +11,6 @@ class OrderItem < ActiveRecord::Base
   # Do not uncomment. This will cause a circular validation
   # validates_associated :order
   validates_associated :item
+
+  before_destroy proc { false }
 end

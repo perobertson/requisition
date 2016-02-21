@@ -19,6 +19,8 @@ class Item < ActiveRecord::Base
   validates :type_id,   numericality: { only_integer: true, greater_than: 0 }
   validates :type_id,   uniqueness: true
 
+  before_destroy proc { false }
+
   def image_url size = 64
     # TODO: validate the size choices
     if rendered?
