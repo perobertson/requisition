@@ -141,7 +141,7 @@ GEM
       rendezvous (~> 0.1)
     highline (1.7.8)
     i18n (0.7.0)
-    jbuilder (2.4.0)
+    jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.0)
