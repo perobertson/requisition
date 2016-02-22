@@ -74,3 +74,14 @@ module ActionController
     end
   end
 end
+
+module Pundit
+  module TestHelpers
+    def user_with_abilities user, kinds
+      user.user_abilities.destroy_all
+      kinds.each do |kind|
+        user.user_abilities.create! ability: Ability.where(kind: kind).first
+      end
+    end
+  end
+end
