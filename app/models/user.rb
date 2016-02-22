@@ -95,9 +95,15 @@ private
 
   def set_defaults
     if user_abilities.empty?
-      place_order = Ability.find_by(kind: :place_order)
-      if place_order.present?
-        user_abilities.new ability: place_order
+      if User.any?
+        place_order = Ability.find_by(kind: :place_order)
+        if place_order.present?
+          user_abilities.new ability: place_order
+        end
+      else
+        Ability.all.each do |ability|
+          user_abilities.new ability: ability
+        end
       end
     end
   end

@@ -33,6 +33,24 @@ class UserTest < ActiveSupport::TestCase
       user.reload
       user.can_place_order?.must_equal true
     end
+
+    it 'must grant the first user all the abilities' do
+      OrderItem.all.delete_all
+      Order.all.delete_all
+      UserAbility.all.delete_all
+      User.all.delete_all
+
+      user = User.new valid_user
+      user.skip_confirmation!
+      user.user_abilities.wont_be_empty
+      user.user_abilities.length.must_equal Ability.count
+      user.save!
+      user.reload
+
+      Ability.all.each do |ability|
+        user.has_ability?(ability.kind).must_equal true
+      end
+    end
   end
 
   describe 'has_ability?' do
