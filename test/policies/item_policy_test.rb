@@ -6,6 +6,7 @@ class ItemPolicyTest < ActiveSupport::TestCase
   subject { ItemPolicy.new user, item }
 
   let(:user) { users(:user_no_abilities) }
+  let(:item) { Item.new }
 
   def test_scope
     ItemPolicy::Scope.new(user, Item).resolve.count.must_equal Item.for_sale.count
@@ -15,8 +16,6 @@ class ItemPolicyTest < ActiveSupport::TestCase
   end
 
   describe 'no ability' do
-    let(:item) { Item.new }
-
     it 'must allow show for all for sale items' do
       item = Item.new for_sale: true
       subject = ItemPolicy.new user, item
@@ -43,8 +42,6 @@ class ItemPolicyTest < ActiveSupport::TestCase
   end
 
   describe 'has ability' do
-    let(:item) { Item.new }
-
     it 'must allow show for all for sale items' do
       item = Item.new for_sale: true
       subject = ItemPolicy.new user, item

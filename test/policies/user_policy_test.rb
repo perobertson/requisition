@@ -1,18 +1,18 @@
 require 'test_helper'
 
-class AbilityPolicyTest < ActiveSupport::TestCase
+class UserPolicyTest < ActiveSupport::TestCase
   include Pundit::TestHelpers
 
-  subject { AbilityPolicy.new user, ability }
+  subject { UserPolicy.new user, other_user }
 
   let(:user) { users(:user_no_abilities) }
-  let(:ability) { Ability.new }
+  let(:other_user) { User.new }
 
   def test_scope
-    AbilityPolicy::Scope.new(user, Ability).resolve.count.must_equal Ability.none.count
+    UserPolicy::Scope.new(user, User).resolve.count.must_equal User.none.count
 
     user_with_abilities user, %i(view_users)
-    AbilityPolicy::Scope.new(user, Ability).resolve.count.must_equal Ability.all.count
+    UserPolicy::Scope.new(user, User).resolve.count.must_equal User.all.count
   end
 
   describe 'no ability' do
@@ -39,15 +39,23 @@ class AbilityPolicyTest < ActiveSupport::TestCase
       subject.show?.must_equal true
     end
 
-    it 'must allow create' do
+    it 'must not allow create' do
+      user_with_abilities user, Ability.KINDS
       subject.create?.must_equal false
     end
 
-    it 'must allow update' do
+    it 'must not allow update' do
+      user_with_abilities user, Ability.KINDS
       subject.update?.must_equal false
     end
 
+    it 'must allow self update' do
+      subject = UserPolicy.new user, user
+      subject.update?.must_equal true
+    end
+
     it 'must not allow destroy' do
+      user_with_abilities user, Ability.KINDS
       subject.destroy?.must_equal false
     end
   end
