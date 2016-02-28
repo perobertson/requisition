@@ -87,23 +87,24 @@ class User < ActiveRecord::Base
       # TODO: validate the size choices (Not sure whats valid)
       "https://image.eveonline.com/Character/#{character_id}_#{size}.jpg"
     else
-      # TODO: make a not found image
+      "https://image.eveonline.com/Character/1_#{size}.jpg"
     end
   end
 
 private
 
   def set_defaults
-    if user_abilities.empty?
-      if User.any?
-        place_order = Ability.find_by(kind: :place_order)
-        if place_order.present?
-          user_abilities.new ability: place_order
-        end
-      else
-        Ability.all.each do |ability|
-          user_abilities.new ability: ability
-        end
+    unless user_abilities.empty?
+      return
+    end
+    if User.any?
+      place_order = Ability.find_by(kind: :place_order)
+      if place_order
+        user_abilities.new ability: place_order
+      end
+    else
+      Ability.all.each do |ability|
+        user_abilities.new ability: ability
       end
     end
   end

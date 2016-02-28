@@ -18,9 +18,10 @@ class Category < ActiveRecord::Base
 private
 
   def check_for_items
-    if !items.empty?
-      errors.add :base, 'cannot be destroyed while category has items in it'
-      return false
+    if items.empty?
+      return
     end
+    errors.add :base, 'cannot be destroyed while category has items in it'
+    false
   end
 end

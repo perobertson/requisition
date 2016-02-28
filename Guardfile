@@ -21,7 +21,7 @@ guard :minitest, spring: true, all_on_start: false do
   watch(%r{^Gemfile*}) { 'test' }
   watch('test/test_helper.rb') { 'test' }
   watch(%r{^test/fixtures/(.*?)\.yml$}) { 'test' }
-  watch('config/routes.rb')    { integration_tests }
+  watch('config/routes.rb') { integration_tests }
   watch(%r{^app/models/(.*?)\.rb$}) do |matches|
     "test/models/#{matches[1]}_test.rb"
   end
