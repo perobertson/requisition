@@ -10,6 +10,17 @@ module Api
         switch_login users(:user1)
       end
 
+      it 'must list the items' do
+        expected_keys = %w(id created_at updated_at deleted_at type_id name for_sale category_id rendered).sort
+
+        get :index, format: :json
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body['items'].length.must_equal Item.all.count
+        response_body['items'].first.keys.sort.must_equal expected_keys
+      end
+
       it 'must create a new item' do
         request_body = {
           format: :json,

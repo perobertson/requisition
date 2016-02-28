@@ -1,3 +1,3 @@
 json.partial! 'shared/resource', resource: item
 
-json.call(item, :type, :type_id, :name, :for_sale)
+json.call(item, :type_id, :name, :for_sale, :category_id, :rendered)

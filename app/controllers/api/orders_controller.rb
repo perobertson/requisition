@@ -7,6 +7,7 @@ module Api
       end
 
       @order = current_user.orders.new permitted_params
+      authorize @order
       if @order.save
         flash[:success] = 'Order placed'
         return render status: :created

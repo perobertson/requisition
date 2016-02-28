@@ -6,7 +6,7 @@ module Api
         return render_nothing :unauthorized
       end
 
-      @items = Item.all
+      @items = policy_scope Item.all
     end
 
     def create
@@ -16,6 +16,7 @@ module Api
       end
 
       @item = Item.new permitted_create_params
+      authorize @item
       if @item.save
         flash[:success] = 'Item created'
         return render status: :created
@@ -36,6 +37,7 @@ module Api
         return render_nothing :unauthorized
       end
 
+      authorize @item
       if @item.update permitted_update_params
         flash[:success] = 'Item saved'
         return render_nothing :no_content

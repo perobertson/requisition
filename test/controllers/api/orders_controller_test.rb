@@ -24,9 +24,9 @@ module Api
         order = Order.find response_body['id']
         order.user.must_equal @current_user
         order.order_items.count.must_equal request_body[:order][:order_items_attributes].count
-        order.order_items.first.item do |item|
-          item.must_equal naglfar
-          item.quantity.must_equal 1
+        order.order_items.each do |order_item|
+          order_item.item.must_equal naglfar
+          order_item.quantity.must_equal 1
         end
       end
     end

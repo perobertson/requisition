@@ -16,6 +16,7 @@ module Api
         @user_ability.ability = ability
       end
 
+      authorize @user_ability
       if @user_ability.save
         flash[:success] = 'Ability added'
         return render status: :created
@@ -33,6 +34,7 @@ module Api
         return render_nothing :unauthorized
       end
 
+      authorize @user_ability
       if @user_ability.destroy
         flash[:success] = 'Ability removed'
         return render_nothing :no_content
