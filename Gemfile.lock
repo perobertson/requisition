@@ -213,6 +213,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (2.16.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -347,6 +349,7 @@ DEPENDENCIES
   omniauth-eveonline
   pg
   puma
+  pundit
   rack-timeout
   rails (= 4.2.5.1)
   rails_12factor
