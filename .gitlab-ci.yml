@@ -2,12 +2,32 @@ image: ruby:2.3
 services:
   - postgres:latest
 
+stages:
+  - lint
+  - test
+
+before_script:
+  - mkdir -p /cache/bundle
+  - ls -lAh /cache/bundle
+  - bundle check --path=/cache/bundle || bundle install --path=/cache/bundle --without=production,development,deploy,doc
+  - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
+
 variables:
   RAILS_ENV: test
   RACK_ENV: test
   DB_HOST: postgres
   DB_USER: postgres
   DB_PASSWORD: ""
+
+lint_job:
+  stage: lint
+  tags:
+    - ruby
+  artifacts:
+    paths:
+      - rubocop.html
+  script:
+    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
 
 test_job:
   stage: test
@@ -16,14 +36,8 @@ test_job:
     - postgres
   artifacts:
     paths:
-      - rubocop.html
       - coverage/
   script:
-    - mkdir -p /cache/bundle
-    - ls -lAh /cache/bundle
-    - bundle check --path=/cache/bundle || bundle install --path /cache/bundle --without=production,development,deploy,doc
-    - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
-    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
     - bundle exec rake db:create
     - bundle exec rake db:migrate
     - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
