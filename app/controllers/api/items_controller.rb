@@ -19,7 +19,7 @@ module Api
       authorize @item
       if @item.save
         flash[:success] = 'Item created'
-        return render status: :created
+        return render :show, status: :created
       end
       render status: :unprocessable_entity
     end
@@ -37,7 +37,6 @@ module Api
         return render_nothing :unauthorized
       end
 
-      authorize @item
       if @item.update permitted_update_params
         flash[:success] = 'Item saved'
         return render_nothing :no_content
@@ -49,6 +48,7 @@ module Api
 
     def set_resource
       @item = Item.find params[:id]
+      authorize @item
     end
 
     def permitted_create_params

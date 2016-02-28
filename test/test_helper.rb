@@ -72,6 +72,21 @@ module ActionController
         sign_in @current_user
       end
     end
+
+    def verify_json table, json, expected_keys
+      json.keys.sort.must_equal expected_keys
+      resource = table.find json['id']
+      json.keys.each do |key|
+        json[key].must_equal resource[key]
+      end
+    end
+
+    def verify_json_create table, request, id
+      resource = table.find id
+      request.keys.each do |key|
+        resource[key].must_equal request[key]
+      end
+    end
   end
 end
 
