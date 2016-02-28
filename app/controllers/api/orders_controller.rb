@@ -14,13 +14,21 @@ module Api
       authorize @order
       if @order.save
         flash[:success] = 'Order placed'
-        return render status: :created
+        return render :show, status: :created
       end
 
       render status: :unprocessable_entity
     end
 
+    def show
+    end
+
   private
+
+    def set_resource
+      @order = Order.find params[:id]
+      authorize @order
+    end
 
     def permitted_params
       params.require(:order).permit(order_items_attributes: [:item_id, :quantity])

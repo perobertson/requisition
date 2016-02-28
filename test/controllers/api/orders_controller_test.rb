@@ -33,9 +33,10 @@ module Api
             ]
           }
         }
-        post :create, request_body, format: :json
+        post :create, request_body
         response.status.must_equal 201
-        response_body = JSON.parse(response.body)
+        response_body = JSON.parse response.body
+
         order = Order.find response_body['id']
         order.user.must_equal @current_user
         order.order_items.count.must_equal request_body[:order][:order_items_attributes].count
@@ -43,6 +44,11 @@ module Api
           order_item.item.must_equal naglfar
           order_item.quantity.must_equal 1
         end
+
+        get :show, format: :json, id: response_body['id']
+        response.status.must_equal 200
+        show_body = JSON.parse response.body
+        response_body.must_equal show_body
       end
     end
   end
