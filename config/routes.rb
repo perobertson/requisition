@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :categories
 
   namespace :api, defaults: { format: 'json' } do
-    resources :orders,      only: [:create]
+    resources :orders,      only: [:index, :create]
     resources :items,       only: [:index, :create, :show, :update]
     resources :users,       only: [:index, :show, :update] do
       resources :user_abilities,    only: [:create]

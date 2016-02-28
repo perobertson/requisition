@@ -1,5 +1,9 @@
 module Api
   class OrdersController < Api::BaseApiController
+    def index
+      @orders = policy_scope Order.all
+    end
+
     def create
       unless current_user.can_place_order?
         flash[:danger] = 'You are not allowed to place orders'

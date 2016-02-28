@@ -4,8 +4,23 @@ module Api
   class OrdersControllerTest < ActionController::TestCase
     describe 'order api tests' do
       let(:naglfar) { items(:naglfar) }
+      let(:expected_keys) { %w(id created_at updated_at user_id).sort }
+
       before do
         switch_login users(:user1)
+      end
+
+      it 'must list the orders' do
+        get :index, format: :json
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body['orders'].length.must_equal @current_user.orders.count
+        response_body['orders'].first.keys.sort.must_equal expected_keys
+
+        response_body['orders'].each do |order_json|
+          verify_json Order, order_json, expected_keys
+        end
       end
 
       it 'must create orders' do

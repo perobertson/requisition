@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Api
   class ItemsControllerTest < ActionController::TestCase
-    describe 'order api tests' do
+    describe 'item api tests' do
       let(:category) { categories(:category_drone) }
       let(:item) { items(:naglfar) }
       let(:expected_keys) { %w(id created_at updated_at deleted_at type_id name for_sale category_id rendered).sort }
