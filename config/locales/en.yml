@@ -24,4 +24,4 @@ en:
 
   purchase_mailer:
     purchase_order:
-      subject: "[TEST] Order Placed"
+      subject: "EVE Requisition - Order Placed"

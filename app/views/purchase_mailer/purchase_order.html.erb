@@ -1,19 +1,22 @@
-<h1>A user has placed an order</h1>
 <p>
+  <img style='vertical-align: middle;' src="<%= @order.user.image_url 64 %>" alt="<%= @order.user.name %>">
   <strong><%= @order.user.name %></strong> has placed an order for:
-
+</p>
+<p>
   <table>
     <thead>
       <tr>
-        <th>Item</th>
+        <th></th>
+        <th style='min-width: 150px;'>Item</th>
         <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
       <% @order.order_items.each do |order_item| %>
         <tr>
+          <td><img src="<%= order_item.item.image_url %>" alt="<%= order_item.item.name %>"></td>
           <td><%= order_item.item.name %></td>
-          <td><%= order_item.quantity %></td>
+          <td style='text-align: right;'><%= order_item.quantity %></td>
         </tr>
       <% end %>
     </tbody>
