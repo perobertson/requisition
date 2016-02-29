@@ -2,9 +2,10 @@ require 'test_helper'
 
 module Api
   class OrdersControllerTest < ActionController::TestCase
+    let(:expected_keys) { %w(id created_at updated_at user_id).sort }
+
     describe 'order api tests' do
       let(:naglfar) { items(:naglfar) }
-      let(:expected_keys) { %w(id created_at updated_at user_id).sort }
 
       before do
         switch_login users(:user1)
@@ -49,6 +50,50 @@ module Api
         response.status.must_equal 200
         show_body = JSON.parse response.body
         response_body.must_equal show_body
+      end
+    end
+
+    describe 'no abilities' do
+      before do
+        switch_login users(:UserBanned)
+      end
+
+      it 'must be able to list their orders' do
+        get :index, format: :json
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body['orders'].length.must_equal @current_user.orders.count
+        response_body['orders'].first.keys.sort.must_equal expected_keys
+
+        response_body['orders'].each do |order_json|
+          verify_json Order, order_json, expected_keys
+        end
+      end
+
+      it 'must be able to show one of their orders' do
+        get :show, format: :json, id: @current_user.orders.first.id
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body.keys.sort.must_equal expected_keys
+        verify_json Order, response_body, expected_keys
+      end
+
+      it 'must not be able to show an order for someone else' do
+        get :show, format: :json, id: Order.where.not(user: @current_user).first.id
+        response.status.must_equal 404
+      end
+
+      it 'must not be able to create an order' do
+        post :create, format: :json, order: { order_items_attributes: [{ quantity: 1 }] }
+        response.status.must_equal 403
+      end
+
+      it 'must not be able to update an order' do
+        skip 'there is no update order yet'
+        patch :update, format: :json, id: @current_user.orders.first.id, user_id: User.all.sample.id
+        response.status.must_equal 404
       end
     end
   end

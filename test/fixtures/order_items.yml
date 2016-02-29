@@ -7,3 +7,8 @@ order_items_mailer_test_2:
   order: order_mailer_test
   item: chimera
   quantity: 2
+
+OrderItems_Order_UserBanned:
+  order: Order_UserBanned
+  item: naglfar
+  quantity: 1

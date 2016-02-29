@@ -5,15 +5,9 @@ module Api
     end
 
     def create
-      unless current_user.can_place_order?
-        flash[:danger] = 'You are not allowed to place orders'
-        return render_nothing :unauthorized
-      end
-
       @order = current_user.orders.new permitted_params
       authorize @order
       if @order.save
-        flash[:success] = 'Order placed'
         return render :show, status: :created
       end
 
