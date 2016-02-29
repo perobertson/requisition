@@ -2,10 +2,11 @@ require 'test_helper'
 
 module Api
   class ItemsControllerTest < ActionController::TestCase
+    let(:expected_keys) { %w(id created_at updated_at deleted_at type_id name for_sale category_id rendered).sort }
+
     describe 'item api tests' do
       let(:category) { categories(:category_drone) }
       let(:item) { items(:naglfar) }
-      let(:expected_keys) { %w(id created_at updated_at deleted_at type_id name for_sale category_id rendered).sort }
 
       before do
         switch_login users(:user1)
@@ -25,7 +26,7 @@ module Api
       end
 
       it 'must show an item' do
-        get :show, format: :json, id: Item.for_sale.first.id
+        get :show, format: :json, id: Item.not_for_sale.first.id
         response.status.must_equal 200
         response_body = JSON.parse response.body
 
@@ -87,6 +88,49 @@ module Api
 
         item.reload
         item.for_sale.must_equal(request_body[:item][:for_sale] == 1)
+      end
+    end
+
+    describe 'no abilities' do
+      before do
+        switch_login users(:user_no_abilities)
+      end
+
+      it 'must be able to list items for sale' do
+        get :index, format: :json
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body['items'].length.must_equal Item.for_sale.count
+        response_body['items'].first.keys.sort.must_equal expected_keys
+
+        response_body['items'].each do |item_json|
+          verify_json Item, item_json, expected_keys
+        end
+      end
+
+      it 'must be able to show an item that is for sale' do
+        get :show, format: :json, id: Item.for_sale.first.id
+        response.status.must_equal 200
+        response_body = JSON.parse response.body
+
+        response_body.keys.sort.must_equal expected_keys
+        verify_json Item, response_body, expected_keys
+      end
+
+      it 'must not be able to show an item that is not for sale' do
+        get :show, format: :json, id: Item.not_for_sale.first.id
+        response.status.must_equal 404
+      end
+
+      it 'must not be able to create an item' do
+        post :create, format: :json, item: { name: 'test' }
+        response.status.must_equal 403
+      end
+
+      it 'must not be able to update an item' do
+        patch :update, format: :json, id: Item.not_for_sale.first.id, name: 'test'
+        response.status.must_equal 404
       end
     end
   end

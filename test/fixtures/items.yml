@@ -55,6 +55,13 @@ nidhoggur:
   for_sale: true
   rendered: true
 
+avatar:
+  category: category_ship
+  type_id: 11567
+  name: "Avatar"
+  for_sale: false
+  rendered: true
+
 # Drones
 hobgoblin_ii:
   category: category_drone
