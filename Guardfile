@@ -21,29 +21,50 @@ guard :minitest, spring: true, all_on_start: false do
   watch(%r{^Gemfile*}) { 'test' }
   watch('test/test_helper.rb') { 'test' }
   watch(%r{^test/fixtures/(.*?)\.yml$}) { 'test' }
-  watch('config/routes.rb') { integration_tests }
+
+  # Model tests
   watch(%r{^app/models/(.*?)\.rb$}) do |matches|
     "test/models/#{matches[1]}_test.rb"
   end
   watch(%r{^app/models/concerns/(.*?)\.rb$}) do
     Dir['test/models/*']
   end
+
+  # Policy tests
   watch(%r{^app/policies/(.*?)\.rb$}) do |matches|
     "test/policies/#{matches[1]}_test.rb"
   end
+
+  # Mailer tests
   watch(%r{^app/mailers/(.*?)\.rb$}) do |matches|
     "test/mailers/#{matches[1]}_test.rb"
   end
+
+  # Controller tests
   watch(%r{^app/controllers/(.*?)_controller\.rb$}) do |matches|
     resource_tests(matches[1])
   end
   watch('app/controllers/application_controller.rb') do
     Dir['test/controllers/*']
   end
+
+  # View tests
   watch(%r{^app/views/([^/]*?)/.*\.html\.erb$}) do |matches|
     ["test/controllers/#{matches[1]}_controller_test.rb"] +
       integration_tests(matches[1])
   end
+  watch(%r{^app/views/api/([^/]*?)/.*\.json\.jbuilder$}) do |matches|
+    ["test/controllers/api/#{matches[1]}_controller_test.rb"]
+  end
+  watch(%r{^app/views/shared/_(.*?)\.html\.erb$}) do
+    integration_tests
+  end
+  watch(%r{^app/views/shared/_(.*?)\.json\.jbuilder$}) do
+    Dir['test/controllers/*']
+  end
+
+  # Integration tests
+  watch('config/routes.rb') { integration_tests }
   watch(%r{^app/helpers/(.*?)_helper\.rb$}) do |matches|
     integration_tests(matches[1])
   end
@@ -60,6 +81,8 @@ guard :minitest, spring: true, all_on_start: false do
   watch('app/controllers/account_activations_controller.rb') do
     'test/integration/users_signup_test.rb'
   end
+
+  # Resource tests
   watch(%r{app/views/users/*}) do
     resource_tests('users')
   end
