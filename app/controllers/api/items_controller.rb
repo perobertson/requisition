@@ -25,6 +25,11 @@ module Api
 
   private
 
+    def set_resource
+      @resource = Item.find params[:id]
+      authorize @resource
+    end
+
     def permitted_create_params
       params.require(:item).permit(:category_id, :type_id, :name, :for_sale, :rendered)
     end

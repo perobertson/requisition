@@ -32,6 +32,11 @@ module Api
 
   private
 
+    def set_resource
+      @resource = UserAbility.find params[:id]
+      authorize @resource
+    end
+
     def permitted_create_params
       params.require(:user_ability).permit :user_id, :ability_id
     end

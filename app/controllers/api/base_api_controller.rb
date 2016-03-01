@@ -17,12 +17,6 @@ module Api
 
   private
 
-    def set_resource
-      table = params[:controller].classify.match(/^Api::(.*)/)[1].constantize
-      @resource = table.find params[:id]
-      authorize @resource
-    end
-
     def user_not_authorized
       if params[:action] == 'create'
         render_nothing :forbidden

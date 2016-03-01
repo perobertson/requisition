@@ -19,6 +19,11 @@ module Api
 
   private
 
+    def set_resource
+      @resource = Order.find params[:id]
+      authorize @resource
+    end
+
     def permitted_params
       params.require(:order).permit(order_items_attributes: [:item_id, :quantity])
     end
