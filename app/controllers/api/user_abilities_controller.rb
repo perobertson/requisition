@@ -1,11 +1,6 @@
 module Api
   class UserAbilitiesController < Api::BaseApiController
     def create
-      unless current_user.can_change_user?
-        flash[:danger] = 'You are not authorized to perform this action'
-        return render_nothing :unauthorized
-      end
-
       @user_ability = UserAbility.new permitted_create_params
       if params[:user_id].present?
         @user_ability.user_id = params[:user_id]
@@ -18,25 +13,17 @@ module Api
 
       authorize @user_ability
       if @user_ability.save
-        flash[:success] = 'Ability added'
         return render status: :created
       end
       render status: :unprocessable_entity
     end
 
     def destroy
-      unless current_user.can_change_user?
-        flash[:danger] = 'You are not authorized to perform this action'
-        return render_nothing :unauthorized
-      end
-
       if @user_ability.ability.kind == :change_user.to_s
         return render_nothing :unauthorized
       end
 
-      authorize @user_ability
       if @user_ability.destroy
-        flash[:success] = 'Ability removed'
         return render_nothing :no_content
       end
 
@@ -47,6 +34,7 @@ module Api
 
     def set_resource
       @user_ability = UserAbility.find params[:id]
+      authorize @user_ability
     end
 
     def permitted_create_params

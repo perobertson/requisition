@@ -57,5 +57,25 @@ module Api
         end
       end
     end
+
+    describe 'no abilities' do
+      before do
+        switch_login users(:user_no_abilities)
+      end
+
+      it 'must not be able to list abilities for a user' do
+        skip 'no route to list abilities on a user'
+      end
+
+      it 'must not be able to create a user ability' do
+        post :create, format: :json, user_id: @current_user.id, user_ability: { kind: 'change_user' }
+        response.status.must_equal 403
+      end
+
+      it 'must not be able to destroy a user ability' do
+        delete :destroy, format: :json, id: UserAbility.first.id
+        response.status.must_equal 404
+      end
+    end
   end
 end
