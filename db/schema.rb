@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221045649) do
+ActiveRecord::Schema.define(version: 20160301011537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160221045649) do
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["for_sale"], name: "index_items_on_for_sale", using: :btree
   add_index "items", ["name"], name: "index_items_on_name", unique: true, using: :btree
   add_index "items", ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
 
@@ -74,12 +75,17 @@ ActiveRecord::Schema.define(version: 20160221045649) do
     t.integer  "user_id",    null: false
   end
 
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
   create_table "user_abilities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id",    null: false
     t.integer  "ability_id", null: false
   end
+
+  add_index "user_abilities", ["ability_id"], name: "index_user_abilities_on_ability_id", using: :btree
+  add_index "user_abilities", ["user_id"], name: "index_user_abilities_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                default: "", null: false
