@@ -1,1 +1,1 @@
-json.partial! 'item', item: @item
+json.partial! 'item', item: @resource

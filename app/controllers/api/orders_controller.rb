@@ -5,9 +5,9 @@ module Api
     end
 
     def create
-      @order = current_user.orders.new permitted_params
-      authorize @order
-      if @order.save
+      @resource = current_user.orders.new permitted_params
+      authorize @resource
+      if @resource.save
         return render :show, status: :created
       end
 
@@ -18,11 +18,6 @@ module Api
     end
 
   private
-
-    def set_resource
-      @order = Order.find params[:id]
-      authorize @order
-    end
 
     def permitted_params
       params.require(:order).permit(order_items_attributes: [:item_id, :quantity])

@@ -1,1 +1,1 @@
-json.partial! 'shared/create', resource: @user_ability
+json.partial! 'shared/create', resource: @resource
