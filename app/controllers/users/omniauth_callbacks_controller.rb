@@ -1,27 +1,20 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    def self.provides_callback_for provider
-      class_eval %{
-        def #{provider}
-          @user = User.find_for_oauth(env["omniauth.auth"], current_user)
+    def eve_online
+      @user = User.find_for_oauth(env['omniauth.auth'], current_user)
 
-          if @user.persisted?
-            sign_in_and_redirect @user, event: :authentication
-            set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-          else
-            session["devise.#{provider}_data"] = env["omniauth.auth"]
-            redirect_to new_user_registration_url
-          end
-        end
-      }
-    end
-
-    [:eve_online].each do |provider|
-      provides_callback_for provider
+      if @user.persisted?
+        sign_in_and_redirect @user, event: :authentication
+        set_flash_message(:notice, :success, kind: 'EVE Online') if is_navigational_format?
+      else
+        session["devise.#{provider}_data"] = env['omniauth.auth']
+        redirect_to new_user_registration_url
+      end
     end
 
     def after_sign_in_path_for resource
-      if resource.email_verified?
+      place_order_ability = Ability.find_by_kind! :place_order
+      if resource.user_abilities.where.not(ability: place_order_ability).empty? || resource.email_verified?
         super resource
       else
         finish_signup_path(resource)
