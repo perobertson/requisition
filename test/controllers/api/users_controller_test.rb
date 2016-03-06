@@ -42,6 +42,7 @@ module Api
         put :update, request_body
         response.status.must_equal 204, response.body
 
+        @current_user.reload
         @current_user.unconfirmed_email.must_equal request_body[:user][:email]
       end
     end
