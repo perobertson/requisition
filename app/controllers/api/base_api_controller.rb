@@ -1,5 +1,7 @@
 module Api
   class BaseApiController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
     layout false
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
