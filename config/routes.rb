@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     # registrations: 'users/registrations',
     # unlocks: 'users/unlocks'
   }
-  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  match '/users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
   root 'purchases#index'
 

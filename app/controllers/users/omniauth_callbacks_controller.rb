@@ -17,7 +17,7 @@ module Users
       if resource.user_abilities.where.not(ability: place_order_ability).empty? || resource.email_verified?
         super resource
       else
-        finish_signup_path(resource)
+        finish_signup_path
       end
     end
 
