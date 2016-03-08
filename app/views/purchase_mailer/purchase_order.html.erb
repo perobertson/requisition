@@ -14,7 +14,7 @@
     <tbody>
       <% @order.order_items.each do |order_item| %>
         <tr>
-          <td><img src="<%= order_item.item.image_url %>" alt="<%= order_item.item.name %>"></td>
+          <td><%= image_tag order_item.item.image_url, alt: order_item.item.name %></td>
           <td><%= order_item.item.name %></td>
           <td style='text-align: right;'><%= order_item.quantity %></td>
         </tr>
