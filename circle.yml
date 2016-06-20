@@ -19,10 +19,10 @@ database:
     - git status --short && test "$(git status --short)" = "?? public/assets/"
 
 test:
+  pre:
+    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="$CIRCLE_ARTIFACTS/rubocop.html"
   override:
     - bundle exec rake test TESTOPTS="--ci-dir=$CIRCLE_TEST_REPORTS":
         parallel: true
         files:
           - test/**/*_test.rb
-  post:
-    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="$CIRCLE_ARTIFACTS/rubocop.html"
