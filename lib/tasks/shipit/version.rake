@@ -21,8 +21,16 @@ namespace :shipit do
       key = ENV['HEROKU_API_KEY']
       abort 'HEROKU_API_KEY is required'.red if key.blank?
 
-      app = HerokuHelper::App.new(key, app_name)
-      app.version
+      # Silence any logs so shipit can fetch the version
+      initial = HerokuHelper.logger
+      HerokuHelper.logger = Logger.new('/dev/null')
+
+      begin
+        app = HerokuHelper::App.new(key, app_name)
+        return app.version
+      ensure
+        HerokuHelper.logger = initial
+      end
     end
   end
 end
