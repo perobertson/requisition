@@ -23,8 +23,9 @@ dependencies:
       - staging
       - benchmark
       - debug
+  pre:
+    - gem install bundler
 
 deploy:
   override:
-    - ls -R /app/data/bundler | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
     - bundle exec rake shipit:deploy --trace
