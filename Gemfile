@@ -53,13 +53,12 @@ group :test do
   gem 'rubocop'
 end
 
-group :deploy do
+group :default, :deploy do
   # A wrapper library around the heroku platform api for easy app management
-  gem 'heroku-platform-helper'
+  gem 'heroku-platform-helper', require: false
+  # Colorize the terminal
+  gem 'colorize', require: false
 end
-
-# Colorize the terminal
-gem 'colorize', require: false, group: [:default, :deploy]
 
 # Error reporting
 gem 'rollbar'

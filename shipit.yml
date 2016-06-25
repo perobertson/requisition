@@ -13,6 +13,17 @@ tasks:
 fetch:
   - bundle exec rake shipit:version
 
+dependencies:
+  bundler:
+    without:
+      - default
+      - production
+      - development
+      - test
+      - staging
+      - benchmark
+      - debug
+
 deploy:
   override:
     - ls -R /app/data/bundler | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
