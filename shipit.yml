@@ -14,15 +14,6 @@ fetch:
   - bundle exec rake shipit:version
 
 dependencies:
-  bundler:
-    without:
-      - default
-      - production
-      - development
-      - test
-      - staging
-      - benchmark
-      - debug
   pre:
     - gem install bundler
 
