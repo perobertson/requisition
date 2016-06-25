@@ -100,6 +100,3 @@ gem 'gon'
 gem 'bootstrap-sass'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails'
-
-# locked to fix deploy issues
-gem 'rake', '~> 10.0'

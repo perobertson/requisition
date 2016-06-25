@@ -353,7 +353,6 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.2.6)
   rails_12factor
-  rake (~> 10.0)
   rollbar
   rubocop
   sass-rails
