@@ -2,10 +2,6 @@ image: ruby:2.3.3
 services:
   - postgres:latest
 
-stages:
-  - lint
-  - test
-
 before_script:
   - mkdir -p /cache/bundle
   - ls -lAh /cache/bundle
@@ -19,8 +15,8 @@ variables:
   DB_USER: postgres
   DB_PASSWORD: ""
 
-lint_job:
-  stage: lint
+lint:
+  stage: test
   tags:
     - ruby
   artifacts:
@@ -29,7 +25,7 @@ lint_job:
   script:
     - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
 
-test_job:
+test:
   stage: test
   tags:
     - ruby
