@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/circleci/minitest-ci.git
-  revision: 9ab0f71b0c3d683c3dcb94ba053358e04f134d8d
+  revision: bd608f37e663c6e314a1590e04b560242bed0607
   specs:
-    minitest-ci (3.0.4.pre)
-      minitest (~> 5.0, >= 5.0.6)
+    minitest-ci (3.1.0)
+      minitest (>= 5.0.6)
 
 GEM
   remote: https://rubygems.org/
