@@ -190,7 +190,7 @@ GEM
     orm_adapter (0.5.0)
     parser (2.4.0.0)
       ast (~> 2.2)
-    pg (0.18.4)
+    pg (0.19.0)
     platform-api (0.8.0)
       heroics (~> 0.0.17)
     powerpack (0.1.1)
