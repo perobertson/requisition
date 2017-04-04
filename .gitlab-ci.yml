@@ -50,3 +50,14 @@ staging:
     name: staging
   only:
     - develop
+
+production:
+  stage: deploy
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_PRODUCTION_APP_NAME --api-key=$HEROKU_API_KEY
+    - "curl -n -X POST https://api.heroku.com/apps/$HEROKU_PRODUCTION_APP_NAME/ps -H \"Accept: application/json\" -H \"Authorization: Bearer ${HEROKU_API_KEY}\" -d \"command=bundle exec rake db:migrate\""
+  environment:
+    name: production
+  only:
+    - master
