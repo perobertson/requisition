@@ -3,6 +3,7 @@ services:
   - postgres:latest
 
 cache:
+  key: "$CI_COMMIT_REF_NAME"
   paths:
     - vendor/bundle/
 
