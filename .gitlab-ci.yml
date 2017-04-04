@@ -16,13 +16,10 @@ variables:
 
 .dependencies: &dependencies
   before_script:
-    - mkdir -p vendor/bundle
-    - ls -lAh vendor/bundle
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without=production,development,deploy,doc
+    - mkdir -p /cache/bundle
+    - ls -lAh /cache/bundle
+    - bundle check --path=/cache/bundle || bundle install --path=/cache/bundle --without=production,development,deploy,doc
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
-  cache:
-    paths:
-      - vendor/bundle/
 
 lint:
   <<: *dependencies
@@ -53,6 +50,8 @@ test:
 
 staging:
   stage: deploy
+  tags:
+    - ruby
   script:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_STAGING_APP_NAME --api-key=$HEROKU_API_KEY
@@ -64,6 +63,8 @@ staging:
 
 production:
   stage: deploy
+  tags:
+    - ruby
   script:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_PRODUCTION_APP_NAME --api-key=$HEROKU_API_KEY
