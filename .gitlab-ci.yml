@@ -14,21 +14,18 @@ variables:
   DB_USER: postgres
   DB_PASSWORD: ""
 
-dependencies:
-  stage: dependencies
-  tags:
-    - ruby
-  script:
-    - mkdir -p vendor/bundle/
-    - ls -lAh vendor/bundle/
-    - bundle check --path=vendor/bundle/ || bundle install --path=vendor/bundle/ --without=production,development,deploy,doc
+.dependencies: &dependencies
+  before_script:
+    - mkdir -p vendor/bundle
+    - ls -lAh vendor/bundle
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without=production,development,deploy,doc
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
-  artifacts:
-    expire_in: 31d
+  cache:
     paths:
       - vendor/bundle/
 
 lint:
+  <<: *dependencies
   stage: test
   tags:
     - ruby
@@ -39,6 +36,7 @@ lint:
     - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
 
 test:
+  <<: *dependencies
   stage: test
   tags:
     - ruby
