@@ -2,10 +2,14 @@ image: ruby:2.4.1
 services:
   - postgres:latest
 
+cache:
+  paths:
+    - vendor/bundle/
+
 before_script:
-  - mkdir -p /cache/bundle
-  - ls -lAh /cache/bundle
-  - bundle check --path=/cache/bundle || bundle install --path=/cache/bundle --without=production,development,deploy,doc
+  - mkdir -p vendor/bundle/
+  - ls -lAh vendor/bundle/
+  - bundle check --path=vendor/bundle/ || bundle install --path=vendor/bundle/ --without=production,development,deploy,doc
   - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
 
 variables:
