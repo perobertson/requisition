@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   end
 
   get 'robots', to: 'robot#show'
+  get 'robot', to: 'robot#show'
 end
