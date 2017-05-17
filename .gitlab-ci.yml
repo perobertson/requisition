@@ -1,4 +1,4 @@
-image: ruby:2.4.1-alpine
+image: ruby:2.4.1
 services:
   - postgres:latest
 
@@ -34,7 +34,6 @@ lint:
 
 test:
   <<: *dependencies
-  image: ruby:2.4.1
   stage: test
   tags:
     - ruby
