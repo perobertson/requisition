@@ -39,6 +39,30 @@ class ItemTest < ActiveSupport::TestCase
     end
   end
 
+  describe 'scopes' do
+    it 'can filter by for_sale' do
+      ship = Item.new valid_ship
+      ship.for_sale = true
+      ship.save!
+      Item.for_sale.must_include ship
+
+      ship.for_sale = false
+      ship.save!
+      Item.for_sale.wont_include ship
+    end
+
+    it 'can filter by not_for_sale' do
+      ship = Item.new valid_ship
+      ship.for_sale = false
+      ship.save!
+      Item.not_for_sale.must_include ship
+
+      ship.for_sale = true
+      ship.save!
+      Item.not_for_sale.wont_include ship
+    end
+  end
+
   def valid_ship attributes_to_delete = nil
     {
       type_id: 1,
