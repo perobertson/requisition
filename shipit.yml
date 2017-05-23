@@ -18,5 +18,7 @@ dependencies:
     - gem install bundler
 
 deploy:
-  override:
-    - rake shipit:deploy --trace
+  override: |
+    if [ ENVIRONMENT == 'production' ]; then APP_NAME=$APP_PRODUCTION; else APP_NAME=$APP_STAGING; fi
+    bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
+    curl -n -X POST "https://api.heroku.com/apps/$APP_NAME/ps" -H "Accept: application/json" -H "Authorization: Bearer ${HEROKU_API_KEY}" -d "command=bundle exec rake db:migrate"

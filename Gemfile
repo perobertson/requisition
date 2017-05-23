@@ -55,7 +55,7 @@ group :default, :deploy do
   gem 'heroku-platform-helper', require: false
   # Colorize the terminal
   gem 'colorize', require: false
-  gem 'rake', require: false
+  gem 'dpl', require: false
 end
 
 # Error reporting
