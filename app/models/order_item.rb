@@ -12,5 +12,5 @@ class OrderItem < ActiveRecord::Base
   # validates_associated :order
   validates_associated :item
 
-  before_destroy proc { false }
+  before_destroy(proc { false })
 end
