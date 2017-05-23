@@ -19,4 +19,4 @@ dependencies:
 
 deploy:
   override:
-    - bundle exec rake shipit:deploy --trace
+    - rake shipit:deploy --trace
