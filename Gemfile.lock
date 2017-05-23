@@ -292,10 +292,6 @@ GEM
     unicode-display_width (1.2.1)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (3.3.0)
-      activemodel (>= 4.2)
-      debug_inspector
-      railties (>= 4.2)
     yui-compressor (0.12.0)
 
 PLATFORMS
@@ -338,7 +334,6 @@ DEPENDENCIES
   therubyracer
   timecop
   turbolinks
-  web-console (~> 3.0)
   yui-compressor
 
 RUBY VERSION
