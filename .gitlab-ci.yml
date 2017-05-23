@@ -59,7 +59,7 @@ staging:
   environment:
     name: staging
   only:
-    - develop
+    - master
 
 production:
   stage: deploy
@@ -73,3 +73,4 @@ production:
     name: production
   only:
     - master
+  when: manual
