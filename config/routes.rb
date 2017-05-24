@@ -41,4 +41,9 @@ Rails.application.routes.draw do
   match 'wp-includes/*other', to: redirect('/'), via: :all
   match 'wp-admin/*other', to: redirect('/'), via: :all
   match 'wp-login', to: redirect('/'), via: :all
+  match 'wordpress/*other', to: redirect('/'), via: :all
+  match 'test/wp-admin/*other', to: redirect('/'), via: :all
+  match 'old/wp-admin/*other', to: redirect('/'), via: :all
+  match 'wp/wp-admin/*other', to: redirect('/'), via: :all
+  match 'blog/wp-admin/*other', to: redirect('/'), via: :all
 end
