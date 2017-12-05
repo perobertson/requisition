@@ -1,6 +1,6 @@
 image: ruby:2.4.1
 services:
-  - postgres:latest
+  - postgres:9-alpine
 
 stages:
   - dependencies
