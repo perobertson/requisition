@@ -35,15 +35,4 @@ Rails.application.routes.draw do
 
   get 'robots', to: 'robot#show'
   get 'robot', to: 'robot#show'
-
-  # annoying bots
-  match 'wp-content/*other', to: redirect('/'), via: :all
-  match 'wp-includes/*other', to: redirect('/'), via: :all
-  match 'wp-admin/*other', to: redirect('/'), via: :all
-  match 'wp-login', to: redirect('/'), via: :all
-  match 'wordpress/*other', to: redirect('/'), via: :all
-  match 'test/wp-admin/*other', to: redirect('/'), via: :all
-  match 'old/wp-admin/*other', to: redirect('/'), via: :all
-  match 'wp/wp-admin/*other', to: redirect('/'), via: :all
-  match 'blog/wp-admin/*other', to: redirect('/'), via: :all
 end
