@@ -9,6 +9,11 @@ else
 fi
 
 bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
-curl -n -X POST "https://api.heroku.com/apps/$APP_NAME/ps" \
+curl -n -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
   -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer ${HEROKU_API_KEY}" \
-  -d "command=bundle exec rake db:migrate";
+  -H "Content-Type: application/json" \
+  -d '{
+    "attach": true,
+    "command": "bundle exec rake db:migrate",
+    "type": "run"
+  }';
