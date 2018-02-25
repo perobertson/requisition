@@ -53,8 +53,6 @@ staging:
   tags:
     - ruby
   script:
-    - gem install dpl
-    - dpl --provider=heroku --app=$APP_STAGING --api-key=$HEROKU_API_KEY
     - ENVIRONMENT=staging ./bin/deploy
   environment:
     name: staging
@@ -66,8 +64,6 @@ production:
   tags:
     - ruby
   script:
-    - gem install dpl
-    - dpl --provider=heroku --app=$APP_PRODUCTION --api-key=$HEROKU_API_KEY
     - ENVIRONMENT=production ./bin/deploy
   environment:
     name: production
