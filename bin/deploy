@@ -9,7 +9,13 @@ else
 fi
 
 bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
-curl -n -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
+# TODO: handle bad exit here
+
+logfile="tmp/deploy_$(date --iso-8601=seconds)"
+status=$(curl -s \
+  -o "$logfile" \
+  -w "%{http_code}" \
+  -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
   -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer ${HEROKU_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
@@ -17,3 +23,7 @@ curl -n -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
     "command": "bundle exec rake db:migrate",
     "type": "run"
   }';
+)
+
+cat $logfile
+exit $status
