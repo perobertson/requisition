@@ -55,7 +55,7 @@ staging:
   script:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_STAGING_APP_NAME --api-key=$HEROKU_API_KEY
-    - "curl -n -X POST https://api.heroku.com/apps/$HEROKU_STAGING_APP_NAME/ps -H \"Accept: application/json\" -H \"Authorization: Bearer ${HEROKU_API_KEY}\" -d \"command=bundle exec rake db:migrate\""
+    - "curl -n -X POST https://api.heroku.com/apps/$HEROKU_STAGING_APP_NAME/ps -H \"Accept: application/vnd.heroku+json; version=3\" -H \"Authorization: Bearer ${HEROKU_API_KEY}\" -d \"command=bundle exec rake db:migrate\""
   environment:
     name: staging
   only:
@@ -68,7 +68,7 @@ production:
   script:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_PRODUCTION_APP_NAME --api-key=$HEROKU_API_KEY
-    - "curl -n -X POST https://api.heroku.com/apps/$HEROKU_PRODUCTION_APP_NAME/ps -H \"Accept: application/json\" -H \"Authorization: Bearer ${HEROKU_API_KEY}\" -d \"command=bundle exec rake db:migrate\""
+    - "curl -n -X POST https://api.heroku.com/apps/$HEROKU_PRODUCTION_APP_NAME/ps -H \"Accept: application/vnd.heroku+json; version=3\" -H \"Authorization: Bearer ${HEROKU_API_KEY}\" -d \"command=bundle exec rake db:migrate\""
   environment:
     name: production
   only:
