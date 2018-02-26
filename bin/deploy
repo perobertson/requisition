@@ -36,6 +36,6 @@ status=$(curl -s \
 )
 
 cat $logfile
-if [ "$status" != '201 ']; then
+if [ "$status" != '201' ]; then
   exit $status
 fi
