@@ -11,7 +11,7 @@ fi
 if [ ! -x dpl ]; then
   gem install dpl
 fi
-bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
+dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
 status=$?
 if [ $status -ne 0 ]; then
   exit $status
