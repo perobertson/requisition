@@ -8,10 +8,13 @@ else
   APP_NAME="$APP_STAGING";
 fi
 
-if [ ! -x dpl ]; then
-  gem install dpl
+bundle install --with=deploy
+status=$?
+if [ $status -ne 0 ]; then
+  exit $status
 fi
-dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
+
+bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
 status=$?
 if [ $status -ne 0 ]; then
   exit $status
@@ -33,6 +36,6 @@ status=$(curl -s \
 )
 
 cat $logfile
-if [ "$status" != '201 '];
+if [ "$status" != '201 ']; then
   exit $status
 fi
