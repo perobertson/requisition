@@ -12,10 +12,6 @@ Style/IfUnlessModifier:
 Style/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-# Dont require parentheses at the def block
-Style/MethodDefParentheses:
-  EnforcedStyle: require_no_parentheses
-
 # Ignore the schema
 Style/EmptyLinesAroundBlockBody:
   Exclude:

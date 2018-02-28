@@ -59,14 +59,14 @@ protected
 private
 
   def flash_message
-    [:danger, :warning, :info, :success].each do |type|
+    %i[danger warning info success].each do |type|
       return flash[type] unless flash[type].blank?
     end
     nil
   end
 
   def flash_type
-    [:danger, :warning, :info, :success].each do |type|
+    %i[danger warning info success].each do |type|
       return type unless flash[type].blank?
     end
     nil

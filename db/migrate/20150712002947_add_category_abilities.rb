@@ -6,7 +6,7 @@ class AddCategoryAbilities < ActiveRecord::Migration
   end
 
   def down
-    kinds = [:view_category, :change_category, :add_category]
+    kinds = %i[view_category change_category add_category]
     Ability.where(kind: kinds).each(&:destroy)
   end
 end

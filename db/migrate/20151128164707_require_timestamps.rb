@@ -1,6 +1,6 @@
 class RequireTimestamps < ActiveRecord::Migration
   def change
-    %w(Item OrderItem Order).map(&:constantize).each do |table|
+    %w[Item OrderItem Order].map(&:constantize).each do |table|
       table.where(created_at: nil).update_all created_at: Time.now
       table.where(updated_at: nil).update_all updated_at: Time.now
       symbol = table.name.pluralize.underscore.to_sym
