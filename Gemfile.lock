@@ -156,7 +156,7 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    minitest-reporters (1.1.14)
+    minitest-reporters (1.1.19)
       ansi
       builder
       minitest (>= 5.0)
@@ -268,11 +268,11 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     shellany (0.0.1)
-    simplecov (0.14.1)
+    simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.1)
+    simplecov-html (0.10.2)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
