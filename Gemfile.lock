@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/circleci/minitest-ci.git
-  revision: 8b72b0f32f154d91b53d63d1d0a8a8fb3b01d726
-  specs:
-    minitest-ci (3.4.0)
-      minitest (>= 5.0.6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -156,6 +149,8 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     minitest-reporters (1.1.19)
       ansi
       builder
@@ -170,7 +165,7 @@ GEM
     multipart-post (2.0.0)
     nenv (0.3.0)
     netrc (0.11.0)
-    newrelic_rpm (4.1.0.333)
+    newrelic_rpm (4.8.0.341)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
@@ -232,7 +227,7 @@ GEM
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.4)
+    rails_stdout_logging (0.0.5)
     railties (4.2.10)
       actionpack (= 4.2.10)
       activesupport (= 4.2.10)
@@ -303,44 +298,44 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
-  binding_of_caller
-  bootstrap-sass
-  bootstrap-switch-rails
-  brakeman
-  byebug
-  coffee-rails
-  colorize
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
+  bootstrap-sass (~> 3.3.7)
+  bootstrap-switch-rails (~> 3.3.3)
+  brakeman (~> 3.6.2)
+  byebug (~> 9.0.6)
+  coffee-rails (~> 4.2.2)
+  colorize (~> 0.8.1)
   devise (~> 3)
-  dotenv-rails
-  dpl
-  gon
-  guard
-  guard-minitest
-  heroku-platform-helper
+  dotenv-rails (~> 2.2.1)
+  dpl (~> 1.8.47)
+  gon (~> 6.1.0)
+  guard (~> 2.14.1)
+  guard-minitest (~> 2.4.6)
+  heroku-platform-helper (~> 0.2.1)
   jbuilder (~> 2.2)
-  jquery-rails
-  lograge
-  minitest-ci!
-  minitest-reporters
-  minitest-spec-rails
-  newrelic_rpm
-  omniauth-eveonline
-  pg
-  puma
-  pundit
-  rack-timeout
+  jquery-rails (~> 4.2.2)
+  lograge (~> 0.9.0)
+  minitest-ci (~> 3.4.0)
+  minitest-reporters (~> 1.1.19)
+  minitest-spec-rails (~> 5.4.0)
+  newrelic_rpm (~> 4.1)
+  omniauth-eveonline (~> 1.0.1)
+  pg (~> 0.20.0)
+  puma (~> 3.8.2)
+  pundit (~> 1.1.0)
+  rack-timeout (~> 0.4.2)
   rails (~> 4.2.8)
-  rails_12factor
-  rollbar
-  rubocop
-  sass-rails
-  simplecov
-  spring
-  therubyracer
-  timecop
+  rails_12factor (~> 0.0.3)
+  rollbar (~> 2.14.1)
+  rubocop (~> 0.52.1)
+  sass-rails (~> 5.0.6)
+  simplecov (~> 0.15.1)
+  spring (~> 2.0.2)
+  therubyracer (~> 0.12.3)
+  timecop (~> 0.8.1)
   turbolinks (~> 2.5)
-  yui-compressor
+  yui-compressor (~> 0.12.0)
 
 RUBY VERSION
    ruby 2.4.3p205
