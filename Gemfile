@@ -47,7 +47,7 @@ group :test do
   # For test status
   gem 'minitest-ci', '~> 3.4.0'
   # Static analysis against the ruby style guide
-  gem 'rubocop', '~> 0.52.1'
+  gem 'rubocop', '< 1.0'
 end
 
 group :default, :deploy do
