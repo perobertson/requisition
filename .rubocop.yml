@@ -9,23 +9,23 @@ Style/IfUnlessModifier:
   Enabled: false
 
 # Force public/protected/private keyword to be indented at the same level as the def keyword.
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
 # Ignore the schema
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
 Style/NumericLiterals:
   Exclude:
     - 'db/schema.rb'
-Style/SpaceBeforeFirstArg:
+Layout/SpaceBeforeFirstArg:
   Exclude:
     - 'db/schema.rb'
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Exclude:
     - 'db/schema.rb'
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Exclude:
     - 'db/schema.rb'
 Style/StringLiterals:
