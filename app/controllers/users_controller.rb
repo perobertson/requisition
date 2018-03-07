@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   # GET/PATCH /users/finish_signup
   def finish_signup
     unless user_signed_in?
-      return redirect_to user_omniauth_authorize_url(:eve_online)
+      return redirect_to user_eve_online_omniauth_authorize_path
     end
     @user = current_user
     authorize @user, :update?
 
     if request.patch? && params[:user] && params[:user][:email]
       if @user.update(user_params)
-        sign_in(@user, bypass: true)
+        bypass_sign_in(@user)
         redirect_to root_url, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true

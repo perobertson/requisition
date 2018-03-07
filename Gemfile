@@ -68,7 +68,7 @@ gem 'rack-timeout', '~> 0.4.2'
 gem 'puma', '~> 3.8.2'
 
 # Auth
-gem 'devise', '~> 3'
+gem 'devise', '~> 4.0'
 gem 'omniauth-eveonline', '~> 1.0.1'
 gem 'pundit', '~> 1.1.0'
 

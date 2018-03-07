@@ -19,7 +19,7 @@ class AccountsMailerTest < ActionMailer::TestCase
   it 'must generate password changed email' do
     mail = AccountsMailer.password_change user
 
-    mail.subject.must_equal 'Password changed'
+    mail.subject.must_equal 'Password Changed'
     mail.to.must_equal [user.email]
     mail.from.must_equal [from]
 

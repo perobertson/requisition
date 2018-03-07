@@ -56,7 +56,7 @@
           <% else %>
             <li><%= link_to('Sign up', eve_sign_up_url, target: '_blank') %></li>
             <li>
-              <a href="<%= user_omniauth_authorize_url(:eve_online) %>" class="eve-login">
+              <a href="<%= user_eve_online_omniauth_authorize_path %>" class="eve-login">
                 <%= image_tag eve_log_in_image_url, alt: 'eve online log in' %>
               </a>
             </li>

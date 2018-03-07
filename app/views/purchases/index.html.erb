@@ -49,7 +49,7 @@
             <% else %>
               <h4>You need to log in before placing an order</h4>
               <div class="form-group">
-                <a href="<%= user_omniauth_authorize_url(:eve_online) %>" style='display: inline;'>
+                <a href="<%= user_eve_online_omniauth_authorize_path %>" style='display: inline;'>
                   <%= image_tag eve_log_in_image_url %>
                 </a>
               </div>
