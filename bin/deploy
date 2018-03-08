@@ -30,7 +30,7 @@ status=$(curl -s \
   -H "Content-Type: application/json" \
   -d '{
     "attach": false,
-    "command": "bundle exec rake db:migrate",
+    "command": "bundle exec rails db:migrate",
     "type": "run"
   }';
 )
