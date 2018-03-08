@@ -1,4 +1,4 @@
-class UserAbility < ActiveRecord::Base
+class UserAbility < ApplicationRecord
   # Associations
   belongs_to :user, inverse_of: :user_abilities
   belongs_to :ability

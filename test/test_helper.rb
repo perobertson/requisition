@@ -4,12 +4,6 @@ ENV['REQUISITION_BUILDER_EMAIL'] ||= 'ship.builder@email.com'
 
 require File.expand_path('../../config/environment', __FILE__)
 
-if ENV['CI'] == 'true'
-  Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-else
-  Minitest::Reporters.use! Minitest::Reporters::ProgressReporter.new
-end
-
 require 'simplecov'
 
 if ENV['CIRCLE_ARTIFACTS']
@@ -64,7 +58,7 @@ module ActionController
       super
     end
 
-    def switch_login user
+    def switch_login(user)
       sign_out @current_user if @current_user.present?
       @current_user = user
       if @current_user
@@ -73,15 +67,21 @@ module ActionController
       end
     end
 
-    def verify_json table, json, expected_keys
+    def verify_json(table, json, expected_keys)
       json.keys.sort.must_equal expected_keys
       resource = table.find json['id']
       json.keys.each do |key|
-        json[key].must_equal resource[key]
+        if resource[key].nil?
+          json[key].must_be_nil
+        elsif resource[key].respond_to? :iso8601
+          json[key].must_equal resource[key].iso8601(3)
+        else
+          json[key].must_equal resource[key]
+        end
       end
     end
 
-    def verify_json_create table, request, id
+    def verify_json_create(table, request, id)
       resource = table.find id
       request.keys.each do |key|
         resource[key].must_equal request[key]
@@ -92,7 +92,7 @@ end
 
 module Pundit
   module TestHelpers
-    def user_with_abilities user, kinds
+    def user_with_abilities(user, kinds)
       user.user_abilities.destroy_all
       kinds.each do |kind|
         user.user_abilities.create! ability: Ability.where(kind: kind).first

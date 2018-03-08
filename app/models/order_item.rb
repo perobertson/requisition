@@ -1,4 +1,4 @@
-class OrderItem < ActiveRecord::Base
+class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
@@ -12,5 +12,5 @@ class OrderItem < ActiveRecord::Base
   # validates_associated :order
   validates_associated :item
 
-  before_destroy(proc { false })
+  before_destroy(proc { throw :abort })
 end

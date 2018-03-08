@@ -23,7 +23,7 @@ module Api
       end
 
       it 'must show a user' do
-        get :show, format: :json, id: User.first.id
+        get :show, params: { format: :json, id: User.first.id }
         response.status.must_equal 200
         response_body = JSON.parse response.body
 
@@ -39,7 +39,7 @@ module Api
             email: "#{SecureRandom.uuid}@email.com"
           }
         }
-        put :update, request_body
+        put :update, params: request_body
         response.status.must_equal 204, response.body
 
         @current_user.reload

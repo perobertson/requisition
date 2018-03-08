@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.8', group: [:default, :deploy]
+gem 'rails', '~> 5.0.0', group: [:default, :deploy]
 
 group :production do
   # For heroku logging and static assets
@@ -39,11 +39,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest', '~> 5.10.0'
   # Code coverage for Ruby 1.9+ with a powerful configuration library
   # and automatic merging of coverage across test suites
   gem 'simplecov', '~> 0.15.1'
-  # for other reporters
-  gem 'minitest-reporters', '~> 1.1.19'
   # For test status
   gem 'minitest-ci', '~> 3.4.0'
   # Static analysis against the ruby style guide
@@ -79,8 +78,8 @@ gem 'lograge', '~> 0.9.0'
 gem 'pg', '~> 0.20.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
-# Use YUI as compressor for JavaScript assets
-gem 'yui-compressor', '~> 0.12.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes

@@ -1,4 +1,4 @@
-class RemoveUnusedUserAttributes < ActiveRecord::Migration
+class RemoveUnusedUserAttributes < ActiveRecord::Migration[4.2]
   def up
     ## Recoverable
     remove_column :users, :reset_password_token, :string

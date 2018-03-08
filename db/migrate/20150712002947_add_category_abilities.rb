@@ -1,4 +1,4 @@
-class AddCategoryAbilities < ActiveRecord::Migration
+class AddCategoryAbilities < ActiveRecord::Migration[4.2]
   def up
     Ability.create! kind: :view_category
     Ability.create! kind: :change_category

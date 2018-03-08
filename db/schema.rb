@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,17 +19,15 @@ ActiveRecord::Schema.define(version: 20160301011537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "kind",       null: false
+    t.index ["kind"], name: "index_abilities_on_kind", unique: true, using: :btree
   end
-
-  add_index "abilities", ["kind"], name: "index_abilities_on_kind", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name",       null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
   end
-
-  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,9 +35,8 @@ ActiveRecord::Schema.define(version: 20160301011537) do
     t.string   "uid",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -51,12 +47,11 @@ ActiveRecord::Schema.define(version: 20160301011537) do
     t.boolean  "for_sale",    null: false
     t.integer  "category_id", null: false
     t.boolean  "rendered",    null: false
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["for_sale"], name: "index_items_on_for_sale", using: :btree
+    t.index ["name"], name: "index_items_on_name", unique: true, using: :btree
+    t.index ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
   end
-
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
-  add_index "items", ["for_sale"], name: "index_items_on_for_sale", using: :btree
-  add_index "items", ["name"], name: "index_items_on_name", unique: true, using: :btree
-  add_index "items", ["type_id"], name: "index_items_on_type_id", unique: true, using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -64,28 +59,25 @@ ActiveRecord::Schema.define(version: 20160301011537) do
     t.integer  "order_id",   null: false
     t.integer  "item_id",    null: false
     t.integer  "quantity",   null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
   end
-
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id",    null: false
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "user_abilities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id",    null: false
     t.integer  "ability_id", null: false
+    t.index ["ability_id"], name: "index_user_abilities_on_ability_id", using: :btree
+    t.index ["user_id"], name: "index_user_abilities_on_user_id", using: :btree
   end
-
-  add_index "user_abilities", ["ability_id"], name: "index_user_abilities_on_ability_id", using: :btree
-  add_index "user_abilities", ["user_id"], name: "index_user_abilities_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                default: "", null: false
@@ -97,10 +89,9 @@ ActiveRecord::Schema.define(version: 20160301011537) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
   add_foreign_key "items", "categories"

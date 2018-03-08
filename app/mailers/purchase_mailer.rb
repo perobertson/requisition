@@ -4,7 +4,7 @@ class PurchaseMailer < ApplicationMailer
   #
   #   en.purchase_mailer.purchase_order.subject
   #
-  def purchase_order order
+  def purchase_order(order)
     @order = order
     # TODO: need to manage builders through the UI and not environment variables
     mail to: ENV['REQUISITION_BUILDER_EMAIL']

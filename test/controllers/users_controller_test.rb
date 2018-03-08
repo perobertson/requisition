@@ -10,7 +10,7 @@ class UsersControllerTest < ActionController::TestCase
       end
 
       it 'must be redirected to login when updating' do
-        patch :finish_signup, user: { email: 'test@email.com' }
+        patch :finish_signup, params: { user: { email: 'test@email.com' } }
         response.status.must_equal 302
         response.redirect_url.must_equal user_eve_online_omniauth_authorize_url
       end
@@ -28,13 +28,13 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     it 'must be able to update the email and send a confirmation email' do
-      patch :finish_signup, user: { email: 'test@email.com' }
+      patch :finish_signup, params: { user: { email: 'test@email.com' } }
       response.status.must_equal 302
       response.redirect_url.must_equal root_url
 
       mail = ActionMailer::Base.deliveries.last
       mail.wont_be_nil
-      mail.subject.must_equal 'Email Changed'
+      mail.subject.must_equal 'Confirmation instructions'
     end
   end
 end

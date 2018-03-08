@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   include NotificationHelper
 
   # Associations
@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
 
   after_save :send_order_notification
 
-  before_destroy(proc { false })
+  before_destroy(proc { throw :abort })
 
 private
 

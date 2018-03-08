@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Api
   class ItemsControllerTest < ActionController::TestCase
-    let(:expected_keys) { %w(id created_at updated_at deleted_at type_id name for_sale category_id rendered).sort }
+    let(:expected_keys) { %w[id created_at updated_at deleted_at type_id name for_sale category_id rendered].sort }
 
     describe 'item api tests' do
       let(:category) { categories(:category_drone) }
@@ -26,7 +26,7 @@ module Api
       end
 
       it 'must show an item' do
-        get :show, format: :json, id: Item.not_for_sale.first.id
+        get :show, params: { format: :json, id: Item.not_for_sale.first.id }
         response.status.must_equal 200
         response_body = JSON.parse response.body
 
@@ -45,12 +45,12 @@ module Api
             rendered: true
           }
         }
-        post :create, request_body
+        post :create, params: request_body
         response.status.must_equal 201, response.body
         response_body = JSON.parse response.body
         verify_json_create Item, request_body[:item], response_body['id']
 
-        get :show, format: :json, id: response_body['id']
+        get :show, params: { format: :json, id: response_body['id'] }
         response.status.must_equal 200
         show_body = JSON.parse response.body
         response_body.must_equal show_body
@@ -66,7 +66,7 @@ module Api
             category_id: category_id
           }
         }
-        put :update, request_body
+        put :update, params: request_body
         response.status.must_equal 204, response.body
 
         updated_item = Item.find item.id
@@ -83,7 +83,7 @@ module Api
             for_sale: for_sale
           }
         }
-        put :update, request_body
+        put :update, params: request_body
         response.status.must_equal 204, response.body
 
         item.reload
@@ -110,7 +110,7 @@ module Api
       end
 
       it 'must be able to show an item that is for sale' do
-        get :show, format: :json, id: Item.for_sale.first.id
+        get :show, params: { format: :json, id: Item.for_sale.first.id }
         response.status.must_equal 200
         response_body = JSON.parse response.body
 
@@ -119,17 +119,17 @@ module Api
       end
 
       it 'must not be able to show an item that is not for sale' do
-        get :show, format: :json, id: Item.not_for_sale.first.id
+        get :show, params: { format: :json, id: Item.not_for_sale.first.id }
         response.status.must_equal 404
       end
 
       it 'must not be able to create an item' do
-        post :create, format: :json, item: { name: 'test' }
+        post :create, params: { format: :json, item: { name: 'test' } }
         response.status.must_equal 403
       end
 
       it 'must not be able to update an item' do
-        patch :update, format: :json, id: Item.not_for_sale.first.id, name: 'test'
+        patch :update, params: { format: :json, id: Item.not_for_sale.first.id, name: 'test' }
         response.status.must_equal 404
       end
     end

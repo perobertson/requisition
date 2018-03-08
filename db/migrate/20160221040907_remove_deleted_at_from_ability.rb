@@ -1,4 +1,4 @@
-class RemoveDeletedAtFromAbility < ActiveRecord::Migration
+class RemoveDeletedAtFromAbility < ActiveRecord::Migration[4.2]
   def up
     Ability.where.not(deleted_at: nil).destroy_all
     remove_column :abilities, :deleted_at

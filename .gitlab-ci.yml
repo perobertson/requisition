@@ -18,7 +18,7 @@ variables:
   before_script:
     - mkdir -p /cache/bundle
     - ls -lAh /cache/bundle
-    - bundle check --path=/cache/bundle || bundle install --path=/cache/bundle --without=production,development,deploy,doc
+    - bundle check || bundle install --without=production,development,deploy,doc
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
 
 lint:
@@ -42,11 +42,11 @@ test:
     paths:
       - coverage/
   script:
-    - bundle exec rake db:create
-    - bundle exec rake db:migrate
+    - bundle exec rails db:create
+    - bundle exec rails db:migrate
     - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
-    - bundle exec rake assets:precompile
-    - bundle exec rake test
+    - bundle exec rails assets:precompile
+    - bundle exec rails test
 
 staging:
   stage: deploy

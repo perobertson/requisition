@@ -12,7 +12,7 @@ module Users
       end
     end
 
-    def after_sign_in_path_for resource
+    def after_sign_in_path_for(resource)
       place_order_ability = Ability.find_by_kind! :place_order
       if resource.user_abilities.where.not(ability: place_order_ability).empty? || resource.email_verified?
         super resource

@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'change@me'.freeze
   TEMP_EMAIL_REGEX = /\Achange@me/
 
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   after_initialize :set_defaults, if: :new_record?
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
-  def has_ability? kind
+  def has_ability?(kind)
     user_abilities.joins(:ability).where(abilities: { kind: kind }).any?
   end
 
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_oauth auth, signed_in_resource = nil
+  def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
 
@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
     email && email !~ TEMP_EMAIL_REGEX
   end
 
-  def image_url size = 32
+  def image_url(size = 32)
     character_id = identities.where(provider: :eve_online).first.try :uid
     if character_id
       # TODO: validate the size choices (Not sure whats valid)

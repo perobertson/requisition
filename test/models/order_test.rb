@@ -12,8 +12,8 @@ class OrderTest < ActiveSupport::TestCase
 
   describe 'Sanity' do
     it 'must start with valid fixtures' do
-      Order.all.each do |ability|
-        ability.valid?.must_equal true, ability.errors.messages
+      Order.all.each do |record|
+        record.valid?.must_equal true, record.errors.messages
       end
     end
   end
@@ -36,6 +36,11 @@ class OrderTest < ActiveSupport::TestCase
     it 'must specify the user who created the order' do
       order.user = nil
       order.valid?.must_equal false, 'Order must have a user'
+    end
+
+    it 'must not be destroyed' do
+      order = Order.all.sample
+      -> { order.destroy! }.must_raise ActiveRecord::RecordNotDestroyed
     end
   end
 end

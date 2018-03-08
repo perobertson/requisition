@@ -1,4 +1,4 @@
-class ClearOldUsers < ActiveRecord::Migration
+class ClearOldUsers < ActiveRecord::Migration[4.2]
   def change
     UserAbility.all.delete_all
     OrderItem.all.delete_all

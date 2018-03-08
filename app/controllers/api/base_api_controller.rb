@@ -13,8 +13,8 @@ module Api
     after_action :verify_authorized, except: :index
     after_action :verify_policy_scoped, only: :index
 
-    def render_nothing status
-      render nothing: true, status: status
+    def render_nothing(status)
+      head status
     end
 
   private

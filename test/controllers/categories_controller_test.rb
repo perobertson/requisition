@@ -11,7 +11,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
     describe 'show' do
       it 'must be redirected to login' do
-        get :show, id: Category.all.sample.id
+        get :show, params: { id: Category.all.sample.id }
         response.status.must_equal 302
       end
     end
@@ -25,7 +25,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
     describe 'edit' do
       it 'must be redirected to login' do
-        get :edit, id: Category.all.sample.id
+        get :edit, params: { id: Category.all.sample.id }
         response.status.must_equal 302
       end
     end
@@ -39,14 +39,14 @@ class CategoriesControllerTest < ActionController::TestCase
 
     describe 'update' do
       it 'must be redirected to login' do
-        put :update, id: Category.all.sample.id
+        put :update, params: { id: Category.all.sample.id }
         response.status.must_equal 302
       end
     end
 
     describe 'destroy' do
       it 'must be redirected to login' do
-        delete :destroy, id: Category.all.sample.id
+        delete :destroy, params: { id: Category.all.sample.id }
         response.status.must_equal 302
       end
     end
@@ -76,36 +76,36 @@ class CategoriesControllerTest < ActionController::TestCase
         it 'must get index' do
           get :index
           assert_response :success
-          assert_not_nil assigns(:categories)
         end
 
         it 'must create category' do
           assert_difference('Category.count') do
-            post :create, category: { name: 'New Category' }
+            post :create, params: { category: { name: 'New Category' } }
           end
 
-          assert_redirected_to category_path(assigns(:category))
+          new_category = Category.order(:created_at).last
+          assert_redirected_to category_path new_category
         end
 
         it 'must show category' do
-          get :show, id: category.id
+          get :show, params: { id: category.id }
           assert_response :success
         end
 
         it 'must get edit' do
-          get :edit, id: category.id
+          get :edit, params: { id: category.id }
           assert_response :success
         end
 
         it 'must update category' do
-          patch :update, id: category.id, category: { name: 'Updated Category' }
-          assert_redirected_to category_path(assigns(:category))
+          patch :update, params: { id: category.id, category: { name: 'Updated Category' } }
+          assert_redirected_to category_path category
         end
 
         it 'must destroy category' do
           category = categories :category_empty
           assert_difference('Category.count', -1) do
-            delete :destroy, id: category.id
+            delete :destroy, params: { id: category.id }
           end
 
           assert_redirected_to categories_path

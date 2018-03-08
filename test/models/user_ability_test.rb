@@ -29,7 +29,7 @@ class UserAbilityTest < ActiveSupport::TestCase
     end
   end
 
-  def valid_user_ability attributes_to_delete = nil
+  def valid_user_ability(attributes_to_delete = nil)
     {
       user_id: users(:user1).id,
       ability_id: abilities(:ability_place_order).id

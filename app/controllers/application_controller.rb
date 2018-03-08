@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 protected
 
-  def append_info_to_payload payload
+  def append_info_to_payload(payload)
     # this adds a few things to logging payload
     super
     payload[:user_ip] = request.remote_ip

@@ -17,7 +17,7 @@ namespace :shipit do
       restart 'space-dolphins-staging'
     end
 
-    def restart app_name
+    def restart(app_name)
       key = ENV['HEROKU_API_KEY']
       abort 'HEROKU_API_KEY is required'.red if key.blank?
 

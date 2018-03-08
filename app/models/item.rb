@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Item < ApplicationRecord
   # Scopes
   scope(:for_sale,      -> { where(for_sale: true) })
   scope(:not_for_sale,  -> { where(for_sale: false) })
@@ -19,9 +19,9 @@ class Item < ActiveRecord::Base
   validates :type_id,   numericality: { only_integer: true, greater_than: 0 }
   validates :type_id,   uniqueness: true
 
-  before_destroy(proc { false })
+  before_destroy(proc { throw :abort })
 
-  def image_url size = 64
+  def image_url(size = 64)
     # TODO: validate the size choices
     if rendered?
       # Inventory type icons are available in resolutions up to 512x512.

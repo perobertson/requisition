@@ -1,4 +1,4 @@
-class Ability < ActiveRecord::Base
+class Ability < ApplicationRecord
   # Constants
   @@KINDS = [
     :place_order,

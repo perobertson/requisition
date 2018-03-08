@@ -1,4 +1,4 @@
-class RequireTimestamps < ActiveRecord::Migration
+class RequireTimestamps < ActiveRecord::Migration[4.2]
   def change
     %w[Item OrderItem Order].map(&:constantize).each do |table|
       table.where(created_at: nil).update_all created_at: Time.now

@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   # Associations
   has_many :items
 
@@ -22,6 +22,6 @@ private
       return
     end
     errors.add :base, 'cannot be destroyed while category has items in it'
-    false
+    throw :abort
   end
 end

@@ -19,7 +19,7 @@ module Api
             ability_id: ability_view_inventory.id
           }
         }
-        post :create, request_body
+        post :create, params: request_body
         response.status.must_equal 201, response.body
         response_body = JSON.parse response.body
         user_ability = UserAbility.find response_body['id']
@@ -36,7 +36,7 @@ module Api
             ability_id: ability_place_order.id
           }
         }
-        post :create, request_body
+        post :create, params: request_body
         response.status.must_equal 422, response.body
         response_body = JSON.parse response.body
         response_body['errors'].first['error']['field'].must_equal 'ability'
@@ -51,7 +51,7 @@ module Api
           id: user_ability.id
         }
         Timecop.freeze do
-          delete :destroy, request_body
+          delete :destroy, params: request_body
           response.status.must_equal 204, response.body
           UserAbility.find_by_id(user_ability.id).must_be_nil
         end
@@ -68,12 +68,12 @@ module Api
       end
 
       it 'must not be able to create a user ability' do
-        post :create, format: :json, user_id: @current_user.id, user_ability: { kind: 'change_user' }
+        post :create, params: { format: :json, user_id: @current_user.id, user_ability: { kind: 'change_user' } }
         response.status.must_equal 403
       end
 
       it 'must not be able to destroy a user ability' do
-        delete :destroy, format: :json, id: UserAbility.first.id
+        delete :destroy, params: { format: :json, id: UserAbility.first.id }
         response.status.must_equal 404
       end
     end

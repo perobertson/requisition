@@ -17,7 +17,7 @@ namespace :shipit do
       puts version 'space-dolphins-staging'
     end
 
-    def version app_name
+    def version(app_name)
       key = ENV['HEROKU_API_KEY']
       abort 'HEROKU_API_KEY is required'.red if key.blank?
 

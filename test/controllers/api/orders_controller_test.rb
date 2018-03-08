@@ -34,7 +34,7 @@ module Api
             ]
           }
         }
-        post :create, request_body
+        post :create, params: request_body
         response.status.must_equal 201
         response_body = JSON.parse response.body
 
@@ -46,7 +46,7 @@ module Api
           order_item.quantity.must_equal 1
         end
 
-        get :show, format: :json, id: response_body['id']
+        get :show, params: { format: :json, id: response_body['id'] }
         response.status.must_equal 200
         show_body = JSON.parse response.body
         response_body.must_equal show_body
@@ -72,7 +72,7 @@ module Api
       end
 
       it 'must be able to show one of their orders' do
-        get :show, format: :json, id: @current_user.orders.first.id
+        get :show, params: { format: :json, id: @current_user.orders.first.id }
         response.status.must_equal 200
         response_body = JSON.parse response.body
 
@@ -81,18 +81,18 @@ module Api
       end
 
       it 'must not be able to show an order for someone else' do
-        get :show, format: :json, id: Order.where.not(user: @current_user).first.id
+        get :show, params: { format: :json, id: Order.where.not(user: @current_user).first.id }
         response.status.must_equal 404
       end
 
       it 'must not be able to create an order' do
-        post :create, format: :json, order: { order_items_attributes: [{ quantity: 1 }] }
+        post :create, params: { format: :json, order: { order_items_attributes: [{ quantity: 1 }] } }
         response.status.must_equal 403
       end
 
       it 'must not be able to update an order' do
         skip 'there is no update order yet'
-        patch :update, format: :json, id: @current_user.orders.first.id, user_id: User.all.sample.id
+        patch :update, params: { format: :json, id: @current_user.orders.first.id, user_id: User.all.sample.id }
         response.status.must_equal 404
       end
     end
