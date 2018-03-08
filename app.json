@@ -1,0 +1,27 @@
+{
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.4"
+      }
+    },
+    {
+      "plan": "papertrail"
+    },
+    {
+      "plan": "rollbar"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "repository": "https://github.com/perobertson/requisition",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:setup"
+  },
+  "stack": "heroku-16",
+  "success_url": "/"
+}
