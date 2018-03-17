@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class UsersController < ApplicationController
   # GET/PATCH /users/finish_signup
   def finish_signup

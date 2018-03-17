@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 module Api
   class UsersControllerTest < ActionController::TestCase
-    let(:expected_keys) { %w(id created_at updated_at name).sort }
+    let(:expected_keys) { %w[id created_at updated_at name].sort }
 
     describe 'user api tests' do
       before do

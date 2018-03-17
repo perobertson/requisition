@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RequireTimestamps < ActiveRecord::Migration[4.2]
   def change
     %w[Item OrderItem Order].map(&:constantize).each do |table|

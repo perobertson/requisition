@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RemoveDeletedAtFromUserAbility < ActiveRecord::Migration[4.2]
   def up
     UserAbility.where.not(deleted_at: nil).destroy_all

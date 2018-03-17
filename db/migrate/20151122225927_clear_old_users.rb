@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ClearOldUsers < ActiveRecord::Migration[4.2]
   def change
     UserAbility.all.delete_all

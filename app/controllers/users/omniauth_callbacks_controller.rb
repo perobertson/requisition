@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def eve_online
@@ -13,7 +14,7 @@ module Users
     end
 
     def after_sign_in_path_for(resource)
-      place_order_ability = Ability.find_by_kind! :place_order
+      place_order_ability = Ability.find_by! kind: :place_order
       if resource.user_abilities.where.not(ability: place_order_ability).empty? || resource.email_verified?
         super resource
       else

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ApplicationController < ActionController::Base
   include Pundit
 
@@ -60,14 +61,14 @@ private
 
   def flash_message
     %i[danger warning info success].each do |type|
-      return flash[type] unless flash[type].blank?
+      return flash[type] if flash[type].present?
     end
     nil
   end
 
   def flash_type
     %i[danger warning info success].each do |type|
-      return type unless flash[type].blank?
+      return type if flash[type].present?
     end
     nil
   end

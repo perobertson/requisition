@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class ItemPolicyTest < ActiveSupport::TestCase
@@ -11,7 +12,7 @@ class ItemPolicyTest < ActiveSupport::TestCase
   def test_scope
     ItemPolicy::Scope.new(user, Item).resolve.count.must_equal Item.for_sale.count
 
-    user_with_abilities user, %i(view_inventory)
+    user_with_abilities user, %i[view_inventory]
     ItemPolicy::Scope.new(user, Item).resolve.count.must_equal Item.all.count
   end
 
@@ -49,19 +50,19 @@ class ItemPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must allow show for non for sale items' do
-      user_with_abilities user, %i(view_inventory)
+      user_with_abilities user, %i[view_inventory]
       item = Item.new for_sale: false
       subject = ItemPolicy.new user, item
       subject.show?.must_equal true
     end
 
     it 'must allow create' do
-      user_with_abilities user, %i(add_inventory)
+      user_with_abilities user, %i[add_inventory]
       subject.create?.must_equal true
     end
 
     it 'must allow update' do
-      user_with_abilities user, %i(change_inventory)
+      user_with_abilities user, %i[change_inventory]
       subject.update?.must_equal true
     end
 

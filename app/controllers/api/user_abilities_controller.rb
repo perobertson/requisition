@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Api
   class UserAbilitiesController < Api::BaseApiController
     def create
@@ -7,7 +8,7 @@ module Api
       end
 
       if params[:user_ability] && !@resource.ability_id
-        ability = Ability.find_by_kind params[:user_ability][:kind]
+        ability = Ability.find_by kind: params[:user_ability][:kind]
         @resource.ability = ability
       end
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class CategoryPolicyTest < ActiveSupport::TestCase
@@ -11,7 +12,7 @@ class CategoryPolicyTest < ActiveSupport::TestCase
   def test_scope
     CategoryPolicy::Scope.new(user, Category).resolve.count.must_equal Category.none.count
 
-    user_with_abilities user, %i(view_category)
+    user_with_abilities user, %i[view_category]
     CategoryPolicy::Scope.new(user, Category).resolve.count.must_equal Category.all.count
   end
 
@@ -35,22 +36,22 @@ class CategoryPolicyTest < ActiveSupport::TestCase
 
   describe 'has ability' do
     it 'must allow show' do
-      user_with_abilities user, %i(view_category)
+      user_with_abilities user, %i[view_category]
       subject.show?.must_equal true
     end
 
     it 'must allow create' do
-      user_with_abilities user, %i(add_category)
+      user_with_abilities user, %i[add_category]
       subject.create?.must_equal true
     end
 
     it 'must allow update' do
-      user_with_abilities user, %i(change_category)
+      user_with_abilities user, %i[change_category]
       subject.update?.must_equal true
     end
 
     it 'must allow destroy' do
-      user_with_abilities user, %i(change_category)
+      user_with_abilities user, %i[change_category]
       subject.destroy?.must_equal true
     end
   end

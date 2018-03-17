@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 module Api
   class OrdersControllerTest < ActionController::TestCase
-    let(:expected_keys) { %w(id created_at updated_at user_id).sort }
+    let(:expected_keys) { %w[id created_at updated_at user_id].sort }
 
     describe 'order api tests' do
       let(:naglfar) { items(:naglfar) }

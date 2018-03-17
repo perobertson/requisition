@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class UserAbilityPolicyTest < ActiveSupport::TestCase
@@ -12,7 +13,7 @@ class UserAbilityPolicyTest < ActiveSupport::TestCase
   def test_scope
     UserAbilityPolicy::Scope.new(user, UserAbility).resolve.count.must_equal UserAbility.none.count
 
-    user_with_abilities user, %i(view_users)
+    user_with_abilities user, %i[view_users]
     UserAbilityPolicy::Scope.new(user, UserAbility).resolve.count.must_equal UserAbility.all.count
   end
 
@@ -36,12 +37,12 @@ class UserAbilityPolicyTest < ActiveSupport::TestCase
 
   describe 'has ability' do
     it 'must allow show' do
-      user_with_abilities user, %i(view_users)
+      user_with_abilities user, %i[view_users]
       subject.show?.must_equal true
     end
 
     it 'must allow create' do
-      user_with_abilities user, %i(change_user)
+      user_with_abilities user, %i[change_user]
       subject.create?.must_equal true
     end
 
@@ -51,7 +52,7 @@ class UserAbilityPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must allow destroy' do
-      user_with_abilities user, %i(change_user)
+      user_with_abilities user, %i[change_user]
       subject.destroy?.must_equal true
     end
   end

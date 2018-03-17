@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PurchasesController < ApplicationController
   def index
     for_sale = policy_scope(Item).joins(:category).for_sale.order :name

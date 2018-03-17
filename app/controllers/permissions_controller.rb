@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PermissionsController < ApplicationController
   before_action :authenticate_user!
 

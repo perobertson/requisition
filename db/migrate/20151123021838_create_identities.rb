@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateIdentities < ActiveRecord::Migration[4.2]
   def change
     create_table :identities do |t|

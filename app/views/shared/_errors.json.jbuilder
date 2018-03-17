@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 json.errors resource.errors.messages.map(&:first) do |attr|
   json.error do
     json.field attr.to_s

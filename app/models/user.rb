@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class User < ApplicationRecord
-  TEMP_EMAIL_PREFIX = 'change@me'.freeze
+  TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   # Include default devise modules. Others available are:
@@ -54,7 +55,7 @@ class User < ApplicationRecord
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(email: email).first if email
+      user = User.find_by email: email if email
 
       # Create the user if it's a new registration
       if user.nil?
@@ -82,7 +83,7 @@ class User < ApplicationRecord
   end
 
   def image_url(size = 32)
-    character_id = identities.where(provider: :eve_online).first.try :uid
+    character_id = identities.find_by(provider: :eve_online)&.uid
     if character_id
       # TODO: validate the size choices (Not sure whats valid)
       "https://image.eveonline.com/Character/#{character_id}_#{size}.jpg"
@@ -103,7 +104,7 @@ private
         user_abilities.new ability: place_order
       end
     else
-      Ability.all.each do |ability|
+      Ability.find_each do |ability|
         user_abilities.new ability: ability
       end
     end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Item < ApplicationRecord
   # Scopes
   scope(:for_sale,      -> { where(for_sale: true) })

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 module Api
@@ -53,7 +54,7 @@ module Api
         Timecop.freeze do
           delete :destroy, params: request_body
           response.status.must_equal 204, response.body
-          UserAbility.find_by_id(user_ability.id).must_be_nil
+          UserAbility.find_by(id: user_ability.id).must_be_nil
         end
       end
     end

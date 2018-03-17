@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Users
   class SessionsController < Devise::SessionsController
     # before_filter :configure_sign_in_params, only: [:create]

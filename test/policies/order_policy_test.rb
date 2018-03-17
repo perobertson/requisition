@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class OrderPolicyTest < ActiveSupport::TestCase
@@ -41,7 +42,7 @@ class OrderPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must allow create' do
-      user_with_abilities user, %i(place_order)
+      user_with_abilities user, %i[place_order]
       subject.create?.must_equal true
     end
 

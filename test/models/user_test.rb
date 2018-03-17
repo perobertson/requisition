@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
@@ -56,7 +57,7 @@ class UserTest < ActiveSupport::TestCase
   describe 'has_ability?' do
     it 'must return true if the user has the ability' do
       Ability.KINDS.each do |kind|
-        ability = Ability.find_by_kind kind
+        ability = Ability.find_by kind: kind
         subject.user_abilities.create! ability: ability
         subject.has_ability?(kind).must_equal true
       end
@@ -72,7 +73,7 @@ class UserTest < ActiveSupport::TestCase
   describe 'dynamic helpers' do
     it 'must return true if the user has the ability' do
       Ability.KINDS.each do |kind|
-        ability = Ability.find_by_kind kind
+        ability = Ability.find_by kind: kind
         subject.user_abilities.create! ability: ability
         subject.send('can_' + kind.to_s + '?').must_equal true, "Failed on #{kind}"
       end

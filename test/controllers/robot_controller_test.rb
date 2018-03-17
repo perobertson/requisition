@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RobotControllerTest < ActionController::TestCase
   describe 'allowed robots' do
     before do
