@@ -19,7 +19,7 @@ Check out the [issue list](https://gitlab.com/perobertson/requisition/issues) to
 
 [![Circle CI](https://circleci.com/gh/perobertson/requisition.svg?style=shield)](https://circleci.com/gh/perobertson/requisition)
 [![Dependency Status](https://gemnasium.com/perobertson/requisition.svg)](https://gemnasium.com/perobertson/requisition)
-[![Security](https://hakiri.io/github/perobertson/requisition/develop.svg)](https://hakiri.io/github/perobertson/requisition/develop)
+[![security](https://hakiri.io/github/perobertson/requisition/master.svg)](https://hakiri.io/github/perobertson/requisition/master)
 [![Code Climate](https://codeclimate.com/github/perobertson/requisition/badges/gpa.svg)](https://codeclimate.com/github/perobertson/requisition)
 
 
