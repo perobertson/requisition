@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rake'
 require 'heroku_helper'
 require 'colorize'

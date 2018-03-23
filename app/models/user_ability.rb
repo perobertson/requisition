@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UserAbility < ApplicationRecord
   # Associations
   belongs_to :user, inverse_of: :user_abilities

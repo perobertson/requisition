@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.config.lograge.enabled = true
 
 # custom_options can be a lambda or hash

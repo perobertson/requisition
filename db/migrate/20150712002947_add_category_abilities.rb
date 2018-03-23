@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AddCategoryAbilities < ActiveRecord::Migration[4.2]
   def up
     Ability.create! kind: :view_category

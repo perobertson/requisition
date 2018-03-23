@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RemoveCharacterNameFromOrders < ActiveRecord::Migration[4.2]
   def up
     remove_column :orders, :character_name, :string, null: false

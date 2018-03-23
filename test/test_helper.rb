@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 ENV['MAILER_FROM_EMAIL'] ||= 'public.relations@email.com'
 ENV['REQUISITION_BUILDER_EMAIL'] ||= 'ship.builder@email.com'

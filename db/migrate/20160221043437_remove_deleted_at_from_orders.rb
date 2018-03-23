@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RemoveDeletedAtFromOrders < ActiveRecord::Migration[4.2]
   def up
     Order.where.not(deleted_at: nil).destroy_all

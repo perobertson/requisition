@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RemoveDeletedAtFromCategories < ActiveRecord::Migration[4.2]
   def up
     Category.where.not(deleted_at: nil).destroy_all

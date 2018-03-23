@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class InventoryController < ApplicationController
   before_action :authenticate_user!
 

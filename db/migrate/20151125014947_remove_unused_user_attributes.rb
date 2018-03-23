@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RemoveUnusedUserAttributes < ActiveRecord::Migration[4.2]
   def up
     ## Recoverable

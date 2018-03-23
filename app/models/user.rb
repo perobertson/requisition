@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class User < ApplicationRecord
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/

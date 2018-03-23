@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module ApplicationHelper
   def eve_sign_up_url
     'https://secure.eveonline.com/trial/?invc=e69021a7-cab4-4518-b76a-db8033d4e057&action=buddy'
