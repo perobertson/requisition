@@ -12,10 +12,10 @@ class OrderItemPolicy < ApplicationPolicy
   end
 
   def show?
-    @record && @record.order && @record.order.user == @user
+    @record&.order && @record.order.user == @user
   end
 
   def create?
-    @user && @user.can_place_order?
+    @user&.can_place_order?
   end
 end

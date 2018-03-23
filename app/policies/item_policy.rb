@@ -3,7 +3,7 @@
 class ItemPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if @user && @user.can_view_inventory?
+      if @user&.can_view_inventory?
         scope
       else
         scope.for_sale
@@ -12,14 +12,14 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def show?
-    @record.for_sale? || @user && @user.can_view_inventory?
+    @record.for_sale? || @user&.can_view_inventory?
   end
 
   def create?
-    @user && @user.can_add_inventory?
+    @user&.can_add_inventory?
   end
 
   def update?
-    @user && @user.can_change_inventory?
+    @user&.can_change_inventory?
   end
 end

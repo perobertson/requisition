@@ -3,7 +3,7 @@
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if @user && @user.can_view_users?
+      if @user&.can_view_users?
         scope
       else
         scope.none
@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    @user && @user.can_view_users?
+    @user&.can_view_users?
   end
 
   def update?

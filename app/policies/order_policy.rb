@@ -16,6 +16,6 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    @user && @user.can_place_order?
+    @user&.can_place_order?
   end
 end
