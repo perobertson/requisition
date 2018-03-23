@@ -9,7 +9,7 @@ class InitSchema < ActiveRecord::Migration[4.2]
       t.datetime 'created_at', null: false
       t.datetime 'updated_at', null: false
       t.datetime 'deleted_at'
-      t.string 'kind',       null: false
+      t.string 'kind', null: false
     end
 
     add_index 'abilities', ['kind'], name: 'index_abilities_on_kind', unique: true, using: :btree
@@ -18,7 +18,7 @@ class InitSchema < ActiveRecord::Migration[4.2]
       t.datetime 'created_at', null: false
       t.datetime 'updated_at', null: false
       t.datetime 'deleted_at'
-      t.string 'name',       null: false
+      t.string 'name', null: false
     end
 
     add_index 'categories', ['name'], name: 'index_categories_on_name', unique: true, using: :btree
@@ -27,8 +27,8 @@ class InitSchema < ActiveRecord::Migration[4.2]
       t.datetime 'created_at'
       t.datetime 'updated_at'
       t.datetime 'deleted_at'
-      t.integer 'type_id',     null: false
-      t.string 'name',        null: false
+      t.integer 'type_id', null: false
+      t.string 'name', null: false
       t.boolean 'for_sale',    null: false
       t.integer 'category_id', null: false
     end
@@ -72,7 +72,7 @@ class InitSchema < ActiveRecord::Migration[4.2]
       t.string 'reset_password_token'
       t.datetime 'reset_password_sent_at'
       t.datetime 'remember_created_at'
-      t.integer 'sign_in_count',          default: 0,  null: false
+      t.integer 'sign_in_count', default: 0, null: false
       t.datetime 'current_sign_in_at'
       t.datetime 'last_sign_in_at'
       t.inet 'current_sign_in_ip'
@@ -81,7 +81,7 @@ class InitSchema < ActiveRecord::Migration[4.2]
       t.datetime 'confirmed_at'
       t.datetime 'confirmation_sent_at'
       t.string 'unconfirmed_email'
-      t.integer 'failed_attempts',        default: 0,  null: false
+      t.integer 'failed_attempts', default: 0, null: false
       t.string 'unlock_token'
       t.datetime 'locked_at'
       t.datetime 'created_at',                          null: false
