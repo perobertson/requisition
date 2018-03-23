@@ -8,6 +8,6 @@ class RemoveDeletedAtFromUserAbility < ActiveRecord::Migration[4.2]
 
   def down
     add_column :user_abilities, :deleted_at, :datetime
-    add_index :user_abilities, [:user_id, :ability_id, :deleted_at], unique: true
+    add_index :user_abilities, %i[user_id ability_id deleted_at], unique: true
   end
 end

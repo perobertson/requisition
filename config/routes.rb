@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     # registrations: 'users/registrations',
     # unlocks: 'users/unlocks'
   }
-  match '/users/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+  match '/users/finish_signup' => 'users#finish_signup', via: %i[get patch], as: :finish_signup
 
   root 'purchases#index'
 
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   resources :categories
 
   namespace :api, defaults: { format: :json } do
-    resources :orders,      only: [:index, :create, :show]
-    resources :items,       only: [:index, :create, :show, :update]
-    resources :users,       only: [:index, :show, :update] do
+    resources :orders,      only: %i[index create show]
+    resources :items,       only: %i[index create show update]
+    resources :users,       only: %i[index show update] do
       resources :user_abilities,    only: [:create]
       resources :orders,            only: [:index]
     end

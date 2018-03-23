@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Ability < ApplicationRecord
-  @kinds = [
-    :place_order,
-    :view_inventory, :change_inventory, :add_inventory,
-    :view_users, :change_user,
-    :view_category, :change_category, :add_category
+  @kinds = %i[
+    place_order
+    view_inventory change_inventory add_inventory
+    view_users change_user
+    view_category change_category add_category
   ].freeze
   class << self
     attr_reader :kinds

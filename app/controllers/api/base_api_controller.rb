@@ -10,7 +10,7 @@ module Api
 
     # Callbacks
     before_action :authenticate_user!
-    before_action :set_resource, only: [:show, :update, :destroy]
+    before_action :set_resource, only: %i[show update destroy]
 
     after_action :verify_authorized, except: :index
     after_action :verify_policy_scoped, only: :index
