@@ -11,14 +11,14 @@ class AbilityTest < ActiveSupport::TestCase
     end
 
     it 'must have only 1 of each kind created' do
-      Ability.KINDS.each do |kind|
+      Ability.kinds.each do |kind|
         Ability.where(kind: kind).count.must_equal 1, kind
       end
     end
 
     it 'must not be able to modify kinds' do
-      proc { Ability.KINDS << 'test' }.must_raise RuntimeError
-      proc { Ability.KINDS = 'test' }.must_raise NoMethodError
+      proc { Ability.kinds << 'test' }.must_raise RuntimeError
+      proc { Ability.kinds = 'test' }.must_raise NoMethodError
     end
   end
 
@@ -28,7 +28,7 @@ class AbilityTest < ActiveSupport::TestCase
       Ability.delete_all
       assert_equal(0, Ability.count)
       Ability.create_missing!
-      assert_equal(Ability.KINDS.count, Ability.count)
+      assert_equal(Ability.kinds.count, Ability.count)
     end
   end
 end

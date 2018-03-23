@@ -57,7 +57,7 @@ class UserTest < ActiveSupport::TestCase
 
   describe 'has_ability?' do
     it 'must return true if the user has the ability' do
-      Ability.KINDS.each do |kind|
+      Ability.kinds.each do |kind|
         ability = Ability.find_by kind: kind
         subject.user_abilities.create! ability: ability
         subject.has_ability?(kind).must_equal true
@@ -65,7 +65,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must return false if the user does not have the ability' do
-      Ability.KINDS.each do |kind|
+      Ability.kinds.each do |kind|
         subject.has_ability?(kind).must_equal false
       end
     end
@@ -73,7 +73,7 @@ class UserTest < ActiveSupport::TestCase
 
   describe 'dynamic helpers' do
     it 'must return true if the user has the ability' do
-      Ability.KINDS.each do |kind|
+      Ability.kinds.each do |kind|
         ability = Ability.find_by kind: kind
         subject.user_abilities.create! ability: ability
         subject.send('can_' + kind.to_s + '?').must_equal true, "Failed on #{kind}"
@@ -81,7 +81,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must return false if the user does not have the ability' do
-      Ability.KINDS.each do |kind|
+      Ability.kinds.each do |kind|
         subject.send('can_' + kind.to_s + '?').must_equal false, "Failed on #{kind}"
       end
     end

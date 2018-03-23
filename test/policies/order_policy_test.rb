@@ -38,7 +38,7 @@ class OrderPolicyTest < ActiveSupport::TestCase
 
   describe 'has ability' do
     it 'must not allow show' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.show?.must_equal false
     end
 
@@ -48,12 +48,12 @@ class OrderPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must not allow update' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.update?.must_equal false
     end
 
     it 'must not allow destroy' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.destroy?.must_equal false
     end
   end

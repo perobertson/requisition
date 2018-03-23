@@ -42,12 +42,12 @@ class UserPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must not allow create' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.create?.must_equal false
     end
 
     it 'must not allow update' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.update?.must_equal false
     end
 
@@ -57,7 +57,7 @@ class UserPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must not allow destroy' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.destroy?.must_equal false
     end
   end

@@ -3,7 +3,7 @@
     <h4><%= user.name %></h4>
   </div>
   <div class="panel-body">
-    <% Ability.KINDS.each do |kind| %>
+    <% Ability.kinds.each do |kind| %>
       <div class="ability-container" data-ability-kind="<%= kind %>">
         <% if current_user.can_change_user? %>
           <% if user.has_ability? kind %>

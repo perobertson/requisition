@@ -48,7 +48,7 @@ class UserAbilityPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must not allow update' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.update?.must_equal false
     end
 

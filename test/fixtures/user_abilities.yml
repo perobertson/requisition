@@ -1,4 +1,4 @@
-<% Ability.KINDS.map(&:to_s).each do |ability| %>
+<% Ability.kinds.map(&:to_s).each do |ability| %>
 <%= "user_ability_user1_#{ability}:" %>
 <%= '  user: user1' %>
 <%= "  ability: 'ability_#{ability}'" %>

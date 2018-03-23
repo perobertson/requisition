@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   # Ability helper methods 'can_ability_kind?'
-  Ability.KINDS.each do |kind|
+  Ability.kinds.each do |kind|
     define_method('can_' + kind.to_s + '?') do
       has_ability? kind
     end

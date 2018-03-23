@@ -68,7 +68,7 @@ class ItemPolicyTest < ActiveSupport::TestCase
     end
 
     it 'must not allow destroy' do
-      user_with_abilities user, Ability.KINDS
+      user_with_abilities user, Ability.kinds
       subject.destroy?.must_equal false
     end
   end
