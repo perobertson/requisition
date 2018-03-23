@@ -1,3 +1,6 @@
 # frozen_string_literal: true
 
-json.(@resource, :id, :created_at, :updated_at, :user_id)
+json.id @resource.id
+json.created_at @resource.created_at
+json.updated_at @resource.updated_at
+json.user_id @resource.user_id
