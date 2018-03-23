@@ -19,6 +19,22 @@ module Api
       head status
     end
 
+    def index
+      raise NotImplementedError
+    end
+
+    def show
+      raise NotImplementedError
+    end
+
+    def update
+      raise NotImplementedError
+    end
+
+    def destroy
+      raise NotImplementedError
+    end
+
   private
 
     def user_not_authorized
