@@ -20,4 +20,14 @@ class AbilityTest < ActiveSupport::TestCase
       proc { Ability.KINDS = 'test' }.must_raise NoMethodError
     end
   end
+
+  describe 'setup' do
+    it 'must be able to create missing abilities' do
+      UserAbility.delete_all
+      Ability.delete_all
+      assert_equal(0, Ability.count)
+      Ability.create_missing!
+      assert_equal(Ability.KINDS.count, Ability.count)
+    end
+  end
 end

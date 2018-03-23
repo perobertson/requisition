@@ -12,4 +12,10 @@ class Ability < ApplicationRecord
   # Validations
   validates :kind, inclusion:  @@KINDS.map(&:to_s)
   validates :kind, uniqueness: true
+
+  def self.create_missing!
+    @@KINDS.each do |kind|
+      create! kind: kind unless Ability.where(kind: kind).any?
+    end
+  end
 end

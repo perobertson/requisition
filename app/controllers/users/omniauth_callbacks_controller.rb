@@ -14,6 +14,8 @@ module Users
     end
 
     def after_sign_in_path_for(resource)
+      Ability.create_missing!
+
       place_order_ability = Ability.find_by! kind: :place_order
       if resource.user_abilities.where.not(ability: place_order_ability).empty? || resource.email_verified?
         super resource
