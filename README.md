@@ -23,6 +23,14 @@ Check out the [issue list](https://gitlab.com/perobertson/requisition/issues) to
 [![Code Climate](https://codeclimate.com/github/perobertson/requisition/badges/gpa.svg)](https://codeclimate.com/github/perobertson/requisition)
 
 
+## Deploying
+
+**The Heroku button may not be fully functional yet.**
+
+Heroku buttons only work from GitHub, so go [here](https://github.com/perobertson/requisition#deploying) first and continue reading.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitLab at https://gitlab.com/perobertson/requisition.
