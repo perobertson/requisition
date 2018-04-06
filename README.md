@@ -25,8 +25,6 @@ Check out the [issue list](https://gitlab.com/perobertson/requisition/issues) to
 
 ## Deploying
 
-**The Heroku button may not be fully functional yet.**
-
 Heroku buttons only work from GitHub, so go [here](https://github.com/perobertson/requisition#deploying) first and continue reading.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
