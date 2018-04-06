@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    There are some environment variables that need to be configured before the app will work correctly.
+    <ul>
+      <% for variable in @missing_variables %>
+        <li><span class="text-danger"><%= variable[:key] %></span> - <%= variable[:message] %></li>
+      <% end %>
+    </ul>
+    <p>
+      There are a few free email providers out there that allow for small amounts of traffic, which is all this app needs.
+      <ul>
+        <li><a href="https://www.sparkpost.com/" target="_blank">Sparkpost</a></li>
+        <li><a href="https://sendgrid.com/" target="_blank">SendGrid</a></li>
+      </ul>
+    </p>
+  </div>
+</div>
