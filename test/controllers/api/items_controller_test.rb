@@ -41,7 +41,7 @@ module Api
           format: :json,
           item: {
             category_id: category.id,
-            type_id: Random.rand(100) + 1,
+            type_id: Random.rand(1..100),
             name: 'New Item',
             for_sale: false,
             rendered: true

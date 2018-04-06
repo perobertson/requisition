@@ -30,7 +30,7 @@ protected
 
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
-    redirect_to(request.referrer || root_path, status: :see_other)
+    redirect_to(request.referer || root_path, status: :see_other)
   end
 
   def flash_to_headers

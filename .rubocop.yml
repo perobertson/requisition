@@ -34,3 +34,11 @@ Style/StringLiterals:
 Style/WordArray:
   Exclude:
     - 'db/schema.rb'
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'db/schema.rb'
+
+# Ignore squashed schema
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/20150703021616_init_schema.rb'

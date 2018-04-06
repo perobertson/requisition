@@ -95,6 +95,6 @@ class InitSchema < ActiveRecord::Migration[4.2]
   end
 
   def down
-    fail 'Can not revert initial migration'
+    raise 'Can not revert initial migration'
   end
 end
