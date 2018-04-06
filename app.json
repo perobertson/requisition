@@ -23,7 +23,7 @@
   "name": "Requisition",
   "repository": "https://github.com/perobertson/requisition",
   "scripts": {
-    "postdeploy": "bundle exec rails db:setup"
+    "postdeploy": "bundle exec rails db:migrate"
   },
   "stack": "heroku-16",
   "success_url": "/"
