@@ -43,9 +43,9 @@ GEM
     autoprefixer-rails (8.2.0)
       execjs
     bcrypt (3.1.11)
-    better_errors (2.1.1)
+    better_errors (2.4.0)
       coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
+      erubi (>= 1.0.0)
       rack (>= 0.9.0)
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
@@ -80,6 +80,7 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     dpl (1.8.47)
+    erubi (1.7.1)
     erubis (2.7.0)
     excon (0.61.0)
     execjs (2.7.0)
@@ -301,7 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors (~> 2.1.1)
+  better_errors (~> 2.4.0)
   binding_of_caller (~> 0.7.2)
   bootstrap-sass (~> 3.3.7)
   bootstrap-switch-rails (~> 3.3.3)
