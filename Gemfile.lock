@@ -80,6 +80,11 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     dpl (1.9.5)
+    dpl-heroku (1.9.5)
+      dpl (= 1.9.5)
+      faraday
+      netrc
+      rendezvous
     erubi (1.7.1)
     erubis (2.7.0)
     excon (0.61.0)
@@ -312,7 +317,7 @@ DEPENDENCIES
   colorize (~> 0.8.1)
   devise (~> 4.0)
   dotenv-rails (~> 2.2.1)
-  dpl (~> 1.9.5)
+  dpl-heroku (~> 1.9.5)
   gon (~> 6.1.0)
   guard (~> 2.14.1)
   guard-minitest (~> 2.4.6)
