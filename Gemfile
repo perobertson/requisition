@@ -41,7 +41,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest', '~> 5.10.0'
+  gem 'minitest', '~> 5.11.3'
   # Code coverage for Ruby 1.9+ with a powerful configuration library
   # and automatic merging of coverage across test suites
   gem 'simplecov', '~> 0.15.1'
