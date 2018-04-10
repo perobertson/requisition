@@ -57,7 +57,7 @@ group :default, :deploy do
   gem 'heroics', '0.0.17', require: false
   # Colorize the terminal
   gem 'colorize', '~> 0.8.1', require: false
-  gem 'dpl', '~> 1.8.47', require: false
+  gem 'dpl', '~> 1.9.5', require: false
 end
 
 # Error reporting
