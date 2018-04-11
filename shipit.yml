@@ -3,16 +3,6 @@ machine:
     APP_PRODUCTION: space-dolphins
     APP_STAGING: space-dolphins-staging
 
-tasks:
-  restart:
-    action: "Restart"
-    description: "Sometimes needed if you want the application to restart but don't want to ship any new code."
-    steps:
-      - bundle exec rake shipit:restart
-
-fetch:
-  - bundle exec rake shipit:version
-
 dependencies:
   pre:
     - gem install bundler

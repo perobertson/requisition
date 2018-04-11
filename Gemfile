@@ -52,11 +52,6 @@ group :test do
 end
 
 group :default, :deploy do
-  # A wrapper library around the heroku platform api for easy app management
-  gem 'heroku-platform-helper', '~> 0.2.1', require: false
-  gem 'heroics', '0.0.17', require: false
-  # Colorize the terminal
-  gem 'colorize', '~> 0.8.1', require: false
   gem 'dpl-heroku', '~> 1.9.5', require: false
 end
 
