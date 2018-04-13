@@ -1,0 +1,56 @@
+.fetch_latest: &fetch_latest
+  name: fetch latest code
+  command: |
+    git config --global user.email "unittests@circleci.com"
+    git config --global user.name "Unit Tests"
+    git remote add -t master upstream git@github.com:perobertson/requisition.git
+    git fetch upstream master
+    git merge --no-commit --no-edit upstream/master
+
+
+version: 2
+jobs:
+  test:
+    working_directory: ~/requisition
+    docker:
+      - image: circleci/ruby:2.4.3
+        environment:
+          DB_USER: circleci
+          RACK_ENV: test
+          RAILS_ENV: test
+      - image: circleci/postgres:9.6-alpine
+        environment:
+          POSTGRES_DB: requisition_test
+          POSTGRES_USER: circleci
+
+    steps:
+      - checkout
+      - run:
+          <<: *fetch_latest
+      - run: bundle -v
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      - run: bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
+      - store_artifacts:
+          path: rubocop.html
+          destination: rubocop.html
+      - run: rm rubocop.html
+
+      - run: bundle exec rails db:create db:migrate
+      - run: git status --short && test "$(git status --short)" = ""
+      - run: bundle exec rails assets:precompile
+      - run: bundle exec rails test
+      - store_artifacts:
+          path: coverage/
+          destination: coverage
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
+
