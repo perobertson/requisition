@@ -31,7 +31,7 @@ group :development, :test do
   # Trust me, better errors
   gem 'better_errors', '~> 2.4.0'
   # Debug console on error page
-  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'binding_of_caller', '~> 0.8.0'
   # For finding security vulnerabilities
   gem 'brakeman', '~> 3.6.2'
   # Gives you spec syntax like Rspec but for minitest
