@@ -90,7 +90,7 @@ gem 'turbolinks', '~> 2.5'
 gem 'jbuilder', '~> 2.2'
 
 # For getting controller data into the js
-gem 'gon', '~> 6.1.0'
+gem 'gon', '~> 6.2.0'
 # gives us the SASS version of bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 # a switch component for bootstrap
