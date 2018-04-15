@@ -36,6 +36,7 @@ $(document).on "turbolinks:load", ->
       .done ->
         new Requisition.FlashMessage "Order placed", "alert-success"
       .fail (xhr) ->
+        # TODO: switch to using the response json
         msg = xhr.getResponseHeader("X-Message")
         msg ||= "Could not place order"
         new Requisition.FlashMessage msg, "alert-danger"

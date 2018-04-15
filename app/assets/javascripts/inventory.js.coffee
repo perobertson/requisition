@@ -9,6 +9,7 @@ $(document).on "turbolinks:load", ->
         contentType: "application/json"
         data: JSON.stringify item: for_sale: state
       .fail (jqXHR, status, errorThrown) =>
+        # TODO: switch to using the response json
         msg = jqXHR.getResponseHeader("X-Message")
         new Requisition.FlashMessage(msg, "alert-danger") if msg?
 
@@ -21,6 +22,7 @@ $(document).on "turbolinks:load", ->
       .done (data, textStatus, jqXHR) =>
         window.location.reload()
       .fail (jqXHR, status, errorThrown) =>
+        # TODO: switch to using the response json
         msg = jqXHR.getResponseHeader("X-Message")
         new Requisition.FlashMessage(msg, "alert-danger") if msg?
 
@@ -43,8 +45,8 @@ $(document).on "turbolinks:load", ->
 
     $("#new-item").on "ajax:error", (event, jqXHR, errorThrown) ->
       msg = jqXHR.getResponseHeader("X-Message")
-      new Requisition.FlashMessage(msg, "alert-danger") if msg?
-      data = JSON.parse(jqXHR.responseText)
+      new Requisition.FlashMessage(msg, "alert-danger") if not not msg
+      data = jqXHR.responseJSON
       return unless data?
-      $(data.error_messages).each (index, item) ->
-        new Requisition.FlashMessage(item.message, "alert-danger")
+      $(data.error_messages).each (index, msg) ->
+        new Requisition.FlashMessage(msg, "alert-danger")

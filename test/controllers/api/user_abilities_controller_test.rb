@@ -41,7 +41,12 @@ module Api
         post :create, params: request_body
         response.status.must_equal 422, response.body
         response_body = JSON.parse response.body
-        response_body['errors'].first['error']['field'].must_equal 'ability'
+        response_body.must_equal(
+          'errors' => [
+            { 'field' => 'ability', 'messages' => ['has already been taken'] }
+          ],
+          'error_messages' => ['Ability has already been taken']
+        )
       end
 
       it 'must remove an ability from a user' do

@@ -58,6 +58,32 @@ module Api
         response_body.must_equal show_body
       end
 
+      it 'must return creation errors' do
+        request_body = {
+          format: :json,
+          item: {
+            name: 'Missing category'
+          }
+        }
+        post :create, params: request_body
+        response.status.must_equal 422, response.body
+        response_body = JSON.parse response.body
+        response_body.must_equal(
+          'errors' => [
+            { 'field' => 'category', 'messages' => ['must exist', "can't be blank"] },
+            { 'field' => 'for_sale', 'messages' => ['is not included in the list'] },
+            { 'field' => 'type_id', 'messages' => ["can't be blank", 'is not a number'] }
+          ],
+          'error_messages' => [
+            'Category must exist',
+            "Category can't be blank",
+            'For sale is not included in the list',
+            "Type can't be blank",
+            'Type is not a number'
+          ]
+        )
+      end
+
       it 'must change the items category' do
         category_id = Category.ids.delete_if { |id| id == item.category_id }.sample
 
