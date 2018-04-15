@@ -1,4 +1,4 @@
-$(document).on "page:change", ->
+$(document).on "turbolinks:load", ->
   if $("body[data-controller=purchases][data-action=index]").get 0
 
     incrementQuantity = (input, img)->
