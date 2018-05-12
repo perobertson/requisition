@@ -7,6 +7,7 @@ module Api
     layout false
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     # Callbacks
     before_action :authenticate_user!
@@ -44,6 +45,10 @@ module Api
         # Dont expose the existance of a resource
         render_nothing :not_found
       end
+    end
+
+    def record_not_found
+      render_nothing :not_found
     end
   end
 end

@@ -39,6 +39,8 @@ jobs:
           destination: rubocop.html
       - run: rm rubocop.html
 
+      - run: bundle exec brakeman --run-all-checks --rails5 --confidence-level=2
+
       - run: bundle exec rails db:create db:migrate
       - run: git status --short && test "$(git status --short)" = ""
       - run: bundle exec rails assets:precompile

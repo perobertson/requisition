@@ -53,6 +53,11 @@ module Api
         show_body = JSON.parse response.body
         response_body.must_equal show_body
       end
+
+      it 'must not be able to show an unknown order' do
+        get :show, params: { format: :json, id: Order.order(id: :desc).first.id + 1 }
+        response.status.must_equal 404
+      end
     end
 
     describe 'no abilities' do
@@ -84,6 +89,11 @@ module Api
 
       it 'must not be able to show an order for someone else' do
         get :show, params: { format: :json, id: Order.where.not(user: @current_user).first.id }
+        response.status.must_equal 404
+      end
+
+      it 'must not be able to show an unknown order' do
+        get :show, params: { format: :json, id: Order.order(id: :desc).first.id + 1 }
         response.status.must_equal 404
       end
 

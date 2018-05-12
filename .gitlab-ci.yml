@@ -21,7 +21,7 @@ variables:
     - bundle check || bundle install --without=production,development,deploy,doc
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
 
-lint:
+rubocop:
   <<: *dependencies
   stage: test
   tags:
@@ -31,6 +31,14 @@ lint:
       - rubocop.html
   script:
     - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
+
+brakeman:
+  <<: *dependencies
+  stage: test
+  tags:
+    - ruby
+  script:
+    - bundle exec brakeman --run-all-checks --rails5 --confidence-level=2
 
 test:
   <<: *dependencies
