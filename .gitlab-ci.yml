@@ -19,7 +19,7 @@ variables:
 
 rubocop:
   stage: test
-  image: ruby:2.4.4
+  image: ruby:2.5.1
   tags:
     - docker
   <<: *before
@@ -31,7 +31,7 @@ rubocop:
 
 brakeman:
   stage: test
-  image: ruby:2.4.4
+  image: ruby:2.5.1
   tags:
     - docker
   <<: *before
@@ -40,7 +40,7 @@ brakeman:
 
 test:
   stage: test
-  image: ruby:2.4.4
+  image: ruby:2.5.1
   services:
   - postgres:9.6-alpine
   tags:
@@ -78,7 +78,7 @@ dependency_scanning:
 
 staging:
   stage: deploy
-  image: ruby:2.4.4
+  image: ruby:2.5.1
   tags:
     - docker
   script:
@@ -90,7 +90,7 @@ staging:
 
 production:
   stage: deploy
-  image: ruby:2.4.4
+  image: ruby:2.5.1
   tags:
     - docker
   script:
