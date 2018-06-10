@@ -13,7 +13,7 @@ jobs:
   test:
     working_directory: ~/requisition
     docker:
-      - image: circleci/ruby:2.4.3
+      - image: circleci/ruby:2.4.4
         environment:
           DB_USER: circleci
           RACK_ENV: test
