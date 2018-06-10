@@ -50,23 +50,23 @@ class UserTest < ActiveSupport::TestCase
       user.reload
 
       Ability.all.each do |ability|
-        user.has_ability?(ability.kind).must_equal true
+        user.ability?(ability.kind).must_equal true
       end
     end
   end
 
-  describe 'has_ability?' do
+  describe 'ability?' do
     it 'must return true if the user has the ability' do
       Ability.kinds.each do |kind|
         ability = Ability.find_by kind: kind
         subject.user_abilities.create! ability: ability
-        subject.has_ability?(kind).must_equal true
+        subject.ability?(kind).must_equal true
       end
     end
 
     it 'must return false if the user does not have the ability' do
       Ability.kinds.each do |kind|
-        subject.has_ability?(kind).must_equal false
+        subject.ability?(kind).must_equal false
       end
     end
   end
@@ -90,7 +90,7 @@ class UserTest < ActiveSupport::TestCase
   def valid_user(attributes_to_delete = nil)
     {
       name: 'New User',
-      email: 'new_user@gmail.com',
+      email: 'new_user@gmail.com'
     }.except!(*attributes_to_delete)
   end
 end

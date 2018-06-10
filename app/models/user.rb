@@ -27,14 +27,14 @@ class User < ApplicationRecord
   after_initialize :set_defaults, if: :new_record?
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
-  def has_ability?(kind)
+  def ability?(kind)
     user_abilities.joins(:ability).where(abilities: { kind: kind }).any?
   end
 
   # Ability helper methods 'can_ability_kind?'
   Ability.kinds.each do |kind|
     define_method('can_' + kind.to_s + '?') do
-      has_ability? kind
+      ability? kind
     end
   end
 
@@ -46,7 +46,7 @@ class User < ApplicationRecord
     # to prevent the identity being locked with accidentally created accounts.
     # Note that this may leave zombie accounts (with no associated identity) which
     # can be cleaned up at a later date.
-    user = signed_in_resource ? signed_in_resource : identity.user
+    user = signed_in_resource || identity.user
 
     # Create the user if needed
     if user.nil?
@@ -62,7 +62,7 @@ class User < ApplicationRecord
       if user.nil?
         user = User.new(
           name: auth.info.character_name,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          email: email || "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
         )
         user.skip_confirmation!
         user.save!

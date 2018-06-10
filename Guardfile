@@ -20,7 +20,8 @@
 # Defines the matching rules for Guard.
 guard :minitest, spring: true, all_on_start: false do
   watch(%r{^test/(.*)/?(.*)_test\.rb$})
-  watch(%r{^Gemfile*}) { 'test' }
+  watch('Gemfile') { 'test' }
+  watch('Gemfile.lock') { 'test' }
   watch('test/test_helper.rb') { 'test' }
   watch(%r{^test/fixtures/(.*?)\.yml$}) { 'test' }
 
