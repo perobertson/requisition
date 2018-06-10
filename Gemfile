@@ -56,7 +56,7 @@ group :default, :deploy do
 end
 
 # Error reporting
-gem 'rollbar', '~> 2.15.6'
+gem 'rollbar', '~> 2.16.2'
 # For killing long running connections
 gem 'rack-timeout', '~> 0.4.2'
 
