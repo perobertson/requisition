@@ -12,8 +12,8 @@ class User < ApplicationRecord
   # :lockable,
   # :registerable,
   # :validatable,
-  devise :database_authenticatable,
-         :confirmable,
+  devise :confirmable,
+         :database_authenticatable, # only needed so the delete session path is available
          :omniauthable
 
   # Associations
@@ -62,9 +62,7 @@ class User < ApplicationRecord
       if user.nil?
         user = User.new(
           name: auth.info.character_name,
-          # username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation!
         user.save!
