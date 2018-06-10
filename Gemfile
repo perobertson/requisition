@@ -58,7 +58,7 @@ end
 # Error reporting
 gem 'rollbar', '~> 2.16.2'
 # For killing long running connections
-gem 'rack-timeout', '~> 0.4.2'
+gem 'rack-timeout', '~> 0.5.1'
 
 # Puma web server
 gem 'puma', '~> 3.11.4'
