@@ -1,41 +1,57 @@
 #!/usr/bin/env bash
 
+# Display Commands
 set -x
 
-if [ "$ENVIRONMENT" = "production" ]; then
-  APP_NAME="$APP_PRODUCTION";
+if test "$BASH" = "" || "$BASH" -uc "a=();true \"\${a[@]}\"" 2>/dev/null; then
+    # Bash 4.4, Zsh
+    # e: Exit on non 0 exit codes
+    # u: Check for undeclared variables
+    # o pipefail: Fail if any exit code in a pipeline is a fail
+    set -euo pipefail
 else
-  APP_NAME="$APP_STAGING";
+    # Bash 4.3 and older chokes on empty arrays with set -u.
+    set -eo pipefail
+fi
+# null the glob when nothing matches
+shopt -s nullglob
+# enable recursive globbing
+shopt -s globstar
+
+if [ "$ENVIRONMENT" = "production" ]; then
+    APP_NAME="$APP_PRODUCTION";
+else
+    APP_NAME="$APP_STAGING";
 fi
 
 bundle install --with=deploy
 status=$?
 if [ $status -ne 0 ]; then
-  exit $status
+    exit $status
 fi
 
-bundle exec dpl --provider=heroku --app=$APP_NAME --api-key=$HEROKU_API_KEY;
+bundle exec dpl --provider=heroku --app="$APP_NAME" --api-key="$HEROKU_API_KEY";
 status=$?
 if [ $status -ne 0 ]; then
-  exit $status
+    exit $status
 fi
 
 mkdir -p tmp
 logfile="tmp/deploy_$(date --iso-8601=seconds)"
 status=$(curl -s \
-  -o "$logfile" \
-  -w "%{http_code}" \
-  -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
-  -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer ${HEROKU_API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "attach": false,
-    "command": "bundle exec rails db:migrate",
-    "type": "run"
-  }';
+    -o "$logfile" \
+    -w "%{http_code}" \
+    -X POST "https://api.heroku.com/apps/$APP_NAME/dynos" \
+    -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer ${HEROKU_API_KEY}" \
+    -H "Content-Type: application/json" \
+    -d '{
+        "attach": false,
+        "command": "bundle exec rails db:migrate",
+        "type": "run"
+    }';
 )
 
-cat $logfile
+cat "$logfile"
 if [ "$status" != '201' ]; then
-  exit $status
+    exit "$status"
 fi
