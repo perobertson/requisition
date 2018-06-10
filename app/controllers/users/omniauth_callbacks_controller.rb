@@ -5,13 +5,14 @@ module Users
     def eve_online
       Ability.create_missing!
 
-      @user = User.find_for_oauth(env['omniauth.auth'], current_user)
+      auth_hash = request.env['omniauth.auth']
+      @user = User.find_for_oauth(auth_hash, current_user)
 
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'EVE Online') if is_navigational_format?
       else
-        session["devise.#{provider}_data"] = env['omniauth.auth']
+        session["devise.#{provider}_data"] = auth_hash
         redirect_to new_user_registration_url
       end
     end
