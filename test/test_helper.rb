@@ -53,7 +53,7 @@ end
 module ActionController
   class TestCase
     # use the devise test helpers for controller tests
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
     def teardown
       switch_login nil
