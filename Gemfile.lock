@@ -242,7 +242,7 @@ GEM
       railties (>= 4.2.0, < 5.3)
     rollbar (2.16.2)
       multi_json
-    rubocop (0.57.1)
+    rubocop (0.57.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5)
