@@ -97,4 +97,4 @@ gem 'gon', '~> 6.2.1'
 # gives us the SASS version of bootstrap
 gem 'bootstrap-sass', '~> 3.3.7'
 # a switch component for bootstrap
-gem 'bootstrap-switch-rails', '~> 3.3.3'
+gem 'bootstrap-switch-rails', '~> 3.3.4'
