@@ -12,7 +12,7 @@ group :production do
   # For heroku logging and static assets
   gem 'rails_12factor', '~> 0.0.3'
   # App stats
-  gem 'newrelic_rpm', '~> 5.3'
+  gem 'newrelic_rpm', '~> 5.4'
 end
 
 group :development do
