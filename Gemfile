@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1', group: %i[default deploy]
+gem 'rails', '~> 5.2.2', group: %i[default deploy]
 
 group :production do
   # For heroku logging and static assets
