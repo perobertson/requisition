@@ -95,6 +95,6 @@ gem 'jbuilder', '~> 2.8'
 # For getting controller data into the js
 gem 'gon', '~> 6.2.1'
 # gives us the SASS version of bootstrap
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.0'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails', '~> 3.3.4'
