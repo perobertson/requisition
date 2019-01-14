@@ -19,7 +19,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 2.0.2'
 
-  gem 'guard', '~> 2.14.1'
+  gem 'guard', '~> 2.15.0'
   gem 'guard-minitest', '~> 2.4.6'
 end
 
