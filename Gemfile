@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # language and framework version
 ruby '2.5.1'
@@ -83,7 +84,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', '~> 0.12.3', platforms: :ruby
+# gem 'mini_racer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.3.3'
@@ -98,3 +99,6 @@ gem 'gon', '~> 6.2.1'
 gem 'bootstrap-sass', '~> 3.4.1'
 # a switch component for bootstrap
 gem 'bootstrap-switch-rails', '~> 3.3.4'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,28 +1,38 @@
+# https://about.gitlab.com/2016/05/23/gitlab-container-registry/
 stages:
-  - dependencies
+  - build
   - test
   - deploy
 
 variables:
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY/perobertson/requisition/tests:$CI_BUILD_REF_NAME
+  CONTAINER_TEST_IMAGE_LATEST: $CI_REGISTRY/perobertson/requisition/tests:master
   RAILS_ENV: test
   RACK_ENV: test
   DB_HOST: postgres
   DB_USER: postgres
   DB_PASSWORD: ""
 
-.before: &before
+build_image:
+  stage: build
+  image: docker:git
+  tags:
+    - docker
+  services:
+    - name: docker:dind
   before_script:
-    - mkdir -p /cache/bundle
-    - ls -lAh /cache/bundle
-    - bundle check || bundle install --without=production,development,deploy,doc
-    - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - docker pull $CONTAINER_TEST_IMAGE_LATEST || true
+    - docker pull $CONTAINER_TEST_IMAGE || true
+    - docker build --pull --cache-from="$CONTAINER_TEST_IMAGE_LATEST" --cache-from="$CONTAINER_TEST_IMAGE" -t $CONTAINER_TEST_IMAGE .
+    - docker push $CONTAINER_TEST_IMAGE
 
 rubocop:
   stage: test
-  image: ruby:2.5.1
+  image: $CONTAINER_TEST_IMAGE
   tags:
     - docker
-  <<: *before
   script:
     - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
   artifacts:
@@ -31,29 +41,41 @@ rubocop:
 
 brakeman:
   stage: test
-  image: ruby:2.5.1
+  image: $CONTAINER_TEST_IMAGE
   tags:
     - docker
-  <<: *before
   script:
     - bundle exec brakeman --run-all-checks --rails5 --confidence-level=2
 
-test:
+test_generated_files:
   stage: test
-  image: ruby:2.5.1
+  image: ruby:2.5.1-alpine
   services:
   - postgres:9.6-alpine
   tags:
     - docker
-  <<: *before
+  script:
+    - apk update
+    - apk add build-base git nodejs postgresql-dev tzdata
+    - bundle install
+    - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
+    - bundle exec rails db:create
+    - bundle exec rails db:migrate
+    - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
+
+rails_tests:
+  stage: test
+  image: $CONTAINER_TEST_IMAGE
+  services:
+  - postgres:9.6-alpine
+  tags:
+    - docker
   artifacts:
     paths:
       - coverage/
   script:
     - bundle exec rails db:create
     - bundle exec rails db:migrate
-    - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
-    - bundle exec rails assets:precompile
     - bundle exec rails test
 
 dependency_scanning:
