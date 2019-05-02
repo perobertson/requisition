@@ -28,7 +28,7 @@ group :development, :test do
   # Lets you go back and forth in time virtually
   gem 'timecop', '~> 0.9.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 10.0.2'
+  gem 'byebug', '~> 11.0.1'
   # Trust me, better errors
   gem 'better_errors', '~> 2.5.1'
   # Debug console on error page
