@@ -84,9 +84,9 @@ GEM
     dotenv-rails (2.7.2)
       dotenv (= 2.7.2)
       railties (>= 3.2, < 6.1)
-    dpl (1.10.7)
-    dpl-heroku (1.10.7)
-      dpl (= 1.10.7)
+    dpl (1.10.8)
+    dpl-heroku (1.10.8)
+      dpl (= 1.10.8)
       faraday
       netrc
       rendezvous
@@ -309,7 +309,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2.2)
   devise (~> 4.0)
   dotenv-rails (~> 2.7.2)
-  dpl-heroku (~> 1.10.7)
+  dpl-heroku (~> 1.10.8)
   gon (~> 6.2.1)
   guard (~> 2.15.0)
   guard-minitest (~> 2.4.6)
