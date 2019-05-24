@@ -34,7 +34,7 @@ group :development, :test do
   # Debug console on error page
   gem 'binding_of_caller', '~> 0.8.0'
   # For finding security vulnerabilities
-  gem 'brakeman', '~> 4.5.0'
+  gem 'brakeman', '~> 4.5.1'
   # Gives you spec syntax like Rspec but for minitest
   gem 'minitest-spec-rails', '~> 5.5.0'
   # For custom environment variables
