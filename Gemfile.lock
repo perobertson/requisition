@@ -236,7 +236,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.19.4)
+    rollbar (2.20.0)
       multi_json
     rubocop (0.70.0)
       jaro_winkler (~> 1.5.1)
@@ -326,7 +326,7 @@ DEPENDENCIES
   rack-timeout (~> 0.5.1)
   rails (~> 5.2.2)
   rails_12factor (~> 0.0.3)
-  rollbar (~> 2.19.4)
+  rollbar (~> 2.20.0)
   rubocop (< 1.0)
   sass-rails (~> 5.0.6)
   simplecov (~> 0.16.1)
