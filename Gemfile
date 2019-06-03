@@ -60,7 +60,7 @@ end
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Error reporting
-gem 'rollbar', '~> 2.20.0'
+gem 'rollbar', '~> 2.20.1'
 # For killing long running connections
 gem 'rack-timeout', '~> 0.5.1'
 
