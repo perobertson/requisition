@@ -53,7 +53,7 @@ group :test do
 end
 
 group :default, :deploy do
-  gem 'dpl-heroku', '~> 1.10.10', require: false
+  gem 'dpl-heroku', '~> 1.10.11', require: false
 end
 
 # Reduces boot times through caching; required in config/boot.rb
