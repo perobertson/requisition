@@ -49,7 +49,7 @@ brakeman:
 
 test_generated_files:
   stage: test
-  image: ruby:2.5.1-alpine
+  image: ruby:2.5.5-alpine
   services:
   - postgres:9.6-alpine
   tags:
@@ -100,7 +100,7 @@ dependency_scanning:
 
 staging:
   stage: deploy
-  image: ruby:2.5.1
+  image: ruby:2.5.5
   tags:
     - docker
   script:
@@ -112,7 +112,7 @@ staging:
 
 production:
   stage: deploy
-  image: ruby:2.5.1
+  image: ruby:2.5.5
   tags:
     - docker
   script:

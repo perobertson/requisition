@@ -1,4 +1,4 @@
-FROM ruby:2.5.1-alpine
+FROM ruby:2.5.5-alpine
 
 # TODO: what was this for?
 VOLUME ["/var/www/requisition/downloads"]
