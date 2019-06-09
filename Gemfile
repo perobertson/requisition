@@ -98,7 +98,7 @@ gem 'gon', '~> 6.2.1'
 # gives us the SASS version of bootstrap
 gem 'bootstrap-sass', '~> 3.4.1'
 # a switch component for bootstrap
-gem 'bootstrap-switch-rails', '~> 3.3.4'
+gem 'bootstrap-switch-rails', '~> 3.3.5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
