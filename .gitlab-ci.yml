@@ -57,6 +57,7 @@ test_generated_files:
   script:
     - apk update
     - apk add build-base git nodejs postgresql-dev tzdata
+    - gem install bundler
     - bundle install
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
     - bundle exec rails db:create
