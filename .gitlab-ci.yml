@@ -105,6 +105,7 @@ staging:
   tags:
     - docker
   script:
+    - gem install bundler
     - ENVIRONMENT=staging ./bin/deploy
   environment:
     name: staging
@@ -117,6 +118,7 @@ production:
   tags:
     - docker
   script:
+    - gem install bundler
     - ENVIRONMENT=production ./bin/deploy
   environment:
     name: production
