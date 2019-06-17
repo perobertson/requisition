@@ -27,6 +27,7 @@ jobs:
       - checkout
       - run:
           <<: *fetch_latest
+      - run: gem install bundler
       - run: bundle -v
 
       - run:
