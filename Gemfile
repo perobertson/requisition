@@ -75,7 +75,7 @@ gem 'pundit', '~> 1.1.0'
 
 # Logging add-on that compresses Rails multi-line output
 # so that it doesn't get mixed up with other requests in parallel
-gem 'lograge', '~> 0.11.1'
+gem 'lograge', '~> 0.11.2'
 # Postgres database
 gem 'pg', '~> 1.1.4'
 # Use SCSS for stylesheets
