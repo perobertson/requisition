@@ -38,7 +38,7 @@ group :development, :test do
   # Gives you spec syntax like Rspec but for minitest
   gem 'minitest-spec-rails', '~> 5.5.0'
   # For custom environment variables
-  gem 'dotenv-rails', '~> 2.7.2'
+  gem 'dotenv-rails', '~> 2.7.4'
 end
 
 group :test do
