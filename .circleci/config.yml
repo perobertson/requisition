@@ -34,7 +34,7 @@ jobs:
           name: Bundle Install
           command: bundle check || bundle install
 
-      - run: bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
+      - run: bundle exec rubocop --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
       - store_artifacts:
           path: rubocop.html
           destination: rubocop.html

@@ -34,7 +34,7 @@ rubocop:
   tags:
     - docker
   script:
-    - bundle exec rubocop --rails --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
+    - bundle exec rubocop --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
   artifacts:
     paths:
       - rubocop.html
