@@ -25,7 +25,7 @@ build_image:
   extends:
     - .kaniko
   script:
-    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_TEST_IMAGE
+    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_TEST_IMAGE --reproducible
   tags:
     - docker
 
@@ -85,7 +85,7 @@ release-image:
   extends:
     - .kaniko
   script:
-    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_RELEASE_IMAGE
+    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_RELEASE_IMAGE --reproducible --build-arg RAILS_ENV=production
   tags:
     - docker
   only:
