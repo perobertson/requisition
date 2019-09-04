@@ -50,15 +50,13 @@ brakeman:
 
 test_generated_files:
   stage: test
-  image: ruby:2.5.5-alpine
+  image: $CONTAINER_TEST_IMAGE
   services:
   - postgres:9.6-alpine
   tags:
     - docker
   script:
-    - apk update
-    - apk add build-base git nodejs postgresql-dev tzdata
-    - gem install bundler
+    - apk add git
     - bundle install
     - git status --short && test "$(git status --short | grep Gemfile.lock)" = ""
     - bundle exec rails db:create
