@@ -28,6 +28,9 @@ RUN echo "RAILS_ENV: $RAILS_ENV"; \
   else bundle install; \
   fi
 
+ARG SECRET_KEY_BASE
+ENV SECRET_KEY_BASE="${SECRET_KEY_BASE}"
+
 COPY . /var/www/requisition/
 RUN ["bundle", "exec", "rails", "assets:precompile", "--trace"]
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
