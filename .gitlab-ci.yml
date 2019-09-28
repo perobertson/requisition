@@ -22,6 +22,8 @@ include:
 
 build_image:
   stage: build
+  retry:
+    max: 2
   extends:
     - .kaniko
   script:
@@ -80,6 +82,8 @@ rails_tests:
 
 release-image:
   stage: deploy
+  retry:
+    max: 2
   extends:
     - .kaniko
   script:
