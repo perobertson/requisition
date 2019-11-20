@@ -264,7 +264,7 @@ GEM
       ffi (~> 1.9.6)
       rake
     shellany (0.0.1)
-    simplecov (0.17.0)
+    simplecov (0.17.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -331,7 +331,7 @@ DEPENDENCIES
   rubocop (< 1.0)
   rubocop-rails (~> 2.3)
   sass-rails (~> 5.0.6)
-  simplecov (~> 0.17.0)
+  simplecov (~> 0.17.1)
   spring (~> 2.1.0)
   timecop (~> 0.9.1)
   turbolinks (~> 5.2)
