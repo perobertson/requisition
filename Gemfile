@@ -63,7 +63,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Error reporting
 gem 'rollbar', '~> 2.22.1'
 # For killing long running connections
-gem 'rack-timeout', '~> 0.5.1'
+gem 'rack-timeout', '~> 0.5.2'
 
 # Puma web server
 gem 'puma', '~> 3.12.1'
