@@ -36,7 +36,7 @@ group :development, :test do
   # For finding security vulnerabilities
   gem 'brakeman', '~> 4.5.1'
   # Gives you spec syntax like Rspec but for minitest
-  gem 'minitest-spec-rails', '~> 5.5.0'
+  gem 'minitest-spec-rails', '~> 6.0.1'
   # For custom environment variables
   gem 'dotenv-rails', '~> 2.7.5'
 end
