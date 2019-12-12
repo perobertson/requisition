@@ -66,7 +66,7 @@ gem 'rollbar', '~> 2.22.1'
 gem 'rack-timeout', '~> 0.6.0'
 
 # Puma web server
-gem 'puma', '~> 3.12.1'
+gem 'puma', '~> 3.12.2'
 
 # Auth
 gem 'devise', '~> 4.7'
