@@ -1,8 +1,5 @@
 FROM ruby:2.5.5-alpine
 
-# TODO: what was this for?
-VOLUME ["/var/www/requisition/downloads"]
-
 RUN mkdir -p /var/www/requisition/ \
   && apk update \
   && apk add \
