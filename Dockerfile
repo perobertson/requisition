@@ -1,4 +1,4 @@
-FROM ruby:2.5.5-alpine
+FROM ruby:2.5.7-alpine
 
 RUN mkdir -p /var/www/requisition/ \
   && apk update \
