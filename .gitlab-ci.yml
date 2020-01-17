@@ -7,10 +7,9 @@
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
 
 variables:
-  CONTAINER_CACHE_REPO: $CI_REGISTRY_IMAGE/cache
-  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
-  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE/tests:$CI_BUILD_REF_NAME
-  CONTAINER_TEST_IMAGE_LATEST: $CI_REGISTRY_IMAGE/tests:master
+  CONTAINER_CACHE_REPO: ${CI_REGISTRY_IMAGE}/cache
+  CONTAINER_RELEASE_IMAGE: ${CI_REGISTRY_IMAGE}:latest
+  CONTAINER_TEST_IMAGE: ${CI_REGISTRY_IMAGE}/tests:${CI_BUILD_REF_SLUG}
   RAILS_ENV: test
   RACK_ENV: test
   DB_HOST: postgres
@@ -27,13 +26,21 @@ build_image:
   extends:
     - .kaniko
   script:
-    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_TEST_IMAGE --reproducible
+    - |
+      /kaniko/executor \
+        --cache=true \
+        --cache-repo=${CONTAINER_CACHE_REPO} \
+        --context=${CI_PROJECT_DIR} \
+        --destination=${CONTAINER_TEST_IMAGE} \
+        --dockerfile=${CI_PROJECT_DIR}/Dockerfile \
+        --reproducible \
+        --single-snapshot
   tags:
     - docker
 
 rubocop:
   stage: test
-  image: $CONTAINER_TEST_IMAGE
+  image: ${CONTAINER_TEST_IMAGE}
   tags:
     - docker
   script:
@@ -44,7 +51,7 @@ rubocop:
 
 brakeman:
   stage: test
-  image: $CONTAINER_TEST_IMAGE
+  image: ${CONTAINER_TEST_IMAGE}
   tags:
     - docker
   script:
@@ -52,9 +59,9 @@ brakeman:
 
 test_generated_files:
   stage: test
-  image: $CONTAINER_TEST_IMAGE
+  image: ${CONTAINER_TEST_IMAGE}
   services:
-  - postgres:9.6-alpine
+    - postgres:9.6-alpine
   tags:
     - docker
   script:
@@ -67,9 +74,9 @@ test_generated_files:
 
 rails_tests:
   stage: test
-  image: $CONTAINER_TEST_IMAGE
+  image: ${CONTAINER_TEST_IMAGE}
   services:
-  - postgres:9.6-alpine
+    - postgres:9.6-alpine
   tags:
     - docker
   artifacts:
@@ -87,7 +94,17 @@ release-image:
   extends:
     - .kaniko
   script:
-    - /kaniko/executor --cache=true --cache-repo=$CONTAINER_CACHE_REPO --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $CONTAINER_RELEASE_IMAGE --reproducible --build-arg RAILS_ENV=production --build-arg SECRET_KEY_BASE=set_at_runtime
+    - |
+      /kaniko/executor \
+      --build-arg RAILS_ENV=production \
+      --build-arg SECRET_KEY_BASE=set_at_runtime \
+      --cache=true \
+      --cache-repo=${CONTAINER_CACHE_REPO} \
+      --context=${CI_PROJECT_DIR} \
+      --destination=${CONTAINER_RELEASE_IMAGE} \
+      --dockerfile=${CI_PROJECT_DIR}/Dockerfile \
+      --reproducible \
+      --single-snapshot
   tags:
     - docker
   only:
