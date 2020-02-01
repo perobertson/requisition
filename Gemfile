@@ -28,7 +28,7 @@ group :development, :test do
   # Lets you go back and forth in time virtually
   gem 'timecop', '~> 0.9.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 11.0.1'
+  gem 'byebug', '~> 11.1.1'
   # Trust me, better errors
   gem 'better_errors', '~> 2.5.1'
   # Debug console on error page
@@ -45,7 +45,7 @@ group :test do
   gem 'minitest', '~> 5.14.0'
   # Code coverage for Ruby 1.9+ with a powerful configuration library
   # and automatic merging of coverage across test suites
-  gem 'simplecov', '~> 0.17.1'
+  gem 'simplecov', '~> 0.18.1'
   # For test status
   gem 'minitest-ci', '~> 3.4.0'
   # Static analysis against the ruby style guide
