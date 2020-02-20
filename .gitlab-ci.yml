@@ -33,8 +33,7 @@ build_image:
         --context=${CI_PROJECT_DIR} \
         --destination=${CONTAINER_TEST_IMAGE} \
         --dockerfile=${CI_PROJECT_DIR}/Dockerfile \
-        --reproducible \
-        --single-snapshot
+        --reproducible
   tags:
     - docker
 
