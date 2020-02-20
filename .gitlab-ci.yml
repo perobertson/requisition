@@ -60,7 +60,7 @@ test_generated_files:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
   services:
-    - postgres:9.6-alpine
+    - postgres:9.6.16-alpine
   tags:
     - docker
   script:
@@ -75,7 +75,7 @@ rails_tests:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
   services:
-    - postgres:9.6-alpine
+    - postgres:9.6.16-alpine
   tags:
     - docker
   artifacts:
