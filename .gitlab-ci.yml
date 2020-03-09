@@ -19,7 +19,7 @@ variables:
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-build_image:
+build:image:
   stage: build
   retry:
     max: 2
@@ -34,35 +34,27 @@ build_image:
         --destination=${CONTAINER_TEST_IMAGE} \
         --dockerfile=${CI_PROJECT_DIR}/Dockerfile \
         --reproducible
-  tags:
-    - docker
 
-rubocop:
+test:rubocop:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
-  tags:
-    - docker
   script:
     - bundle exec rubocop --fail-level=warning --display-cop-names --format=progress --format=offenses --format=html --out="rubocop.html"
   artifacts:
     paths:
       - rubocop.html
 
-brakeman:
+test:brakeman:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
-  tags:
-    - docker
   script:
     - bundle exec brakeman --run-all-checks --rails5 --confidence-level=2
 
-test_generated_files:
+test:generated:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
   services:
     - postgres:9.6.16-alpine
-  tags:
-    - docker
   script:
     - apk add git
     - bundle install
@@ -71,13 +63,11 @@ test_generated_files:
     - bundle exec rails db:migrate
     - git status --short && test "$(git status --short | grep db/schema.rb)" = ""
 
-rails_tests:
+test:rails:
   stage: test
   image: ${CONTAINER_TEST_IMAGE}
   services:
     - postgres:9.6.16-alpine
-  tags:
-    - docker
   artifacts:
     paths:
       - coverage/
@@ -86,7 +76,7 @@ rails_tests:
     - bundle exec rails db:migrate
     - bundle exec rails test
 
-release-image:
+deploy:image:
   stage: deploy
   retry:
     max: 2
@@ -104,16 +94,14 @@ release-image:
       --dockerfile=${CI_PROJECT_DIR}/Dockerfile \
       --reproducible \
       --single-snapshot
-  tags:
-    - docker
   only:
     - master
 
-staging:
+deploy:staging:
   stage: deploy
   image: ruby:2.5.7
   tags:
-    - docker
+    - private
   script:
     - gem install bundler
     - ENVIRONMENT=staging ./bin/deploy
@@ -122,11 +110,11 @@ staging:
   only:
     - master
 
-production:
+deploy:production:
   stage: deploy
   image: ruby:2.5.7
   tags:
-    - docker
+    - private
   script:
     - gem install bundler
     - ENVIRONMENT=production ./bin/deploy
