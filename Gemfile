@@ -7,7 +7,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', group: %i[default deploy]
+gem 'rails', '~> 6.0.2', group: %i[default deploy]
 
 group :production do
   # For heroku logging and static assets
@@ -79,7 +79,7 @@ gem 'lograge', '~> 0.11.2'
 # Postgres database
 gem 'pg', '~> 1.2.2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.6'
+gem 'sass-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
