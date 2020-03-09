@@ -30,7 +30,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '~> 11.1.1'
   # Trust me, better errors
-  gem 'better_errors', '~> 2.5.1'
+  gem 'better_errors', '~> 2.6.0'
   # Debug console on error page
   gem 'binding_of_caller', '~> 0.8.0'
   # For finding security vulnerabilities
