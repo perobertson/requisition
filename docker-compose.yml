@@ -12,4 +12,4 @@ services:
       - "3000:3000"
 
   db:
-    image: postgres:9.6-alpine
+    image: postgres:9.6.16-alpine
