@@ -77,7 +77,7 @@ gem 'pundit', '~> 1.1.0'
 # so that it doesn't get mixed up with other requests in parallel
 gem 'lograge', '~> 0.11.2'
 # Postgres database
-gem 'pg', '~> 1.2.2'
+gem 'pg', '~> 1.2.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
